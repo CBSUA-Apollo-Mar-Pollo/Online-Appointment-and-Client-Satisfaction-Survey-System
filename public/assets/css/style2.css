@@ -1,0 +1,61 @@
+* {
+    font-family: Inter;
+}
+
+.TopNavbar {
+    position: absolute;
+    z-index: 1;
+    padding: 0 0 0 0;
+}
+
+#timage {
+    height: 70px;
+    float: left;    
+    margin: 0 0 0 -100%;
+}
+
+@media screen {
+    @media (max-width: 480px) {
+        #timage {
+            margin: 0 0 0 0;
+        }
+    }
+}
+    
+#tnav1 {
+    max-width: 100%;
+}
+
+#tnavcontent {
+    float: left;    
+    margin: 0 0 0 -58%;
+}
+
+@media screen {
+    @media (max-width: 480px) {
+        #tnavcontent {
+            margin: 0 0 0 0;
+        }
+    }
+}
+
+#bbutton {
+    margin-top: 20px;
+}
+
+#HomeTitle {
+    margin-top: 80px;
+}
+
+#bh1 {
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+#bp {
+    font-size: 23px;
+}
+
+#WelcomePage .typed {
+    color: #007aff;
+}

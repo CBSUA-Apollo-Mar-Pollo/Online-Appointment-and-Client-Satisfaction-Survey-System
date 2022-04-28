@@ -1,5 +1,5 @@
 <template>
-  <section id="SurveyPage" class="SurveyPage">
+  <section id="SurveyForm" class="SurveyPage">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2>SATISFACTION SURVEY</h2>

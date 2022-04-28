@@ -8,6 +8,7 @@ import store from "./store";
 import "./assets/style.css";
 import "./assets/tailwind.css";
 import "./assets/main.css";
+import "./assets/index.js";
 
 createApp(App).use(store).use(router).mount("#app");
 createApp(NavBar).use(store).use(router).mount("#NavBar");

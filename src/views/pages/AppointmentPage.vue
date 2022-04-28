@@ -1,5 +1,5 @@
 <template>
-  <section id="AppointmentPage" class="AppointmentPage">
+  <section id="AppointmentForm" class="AppointmentPage">
     <div class="container" data-aos="fade-up">
       <div class="container mt-5">
         <div class="row">

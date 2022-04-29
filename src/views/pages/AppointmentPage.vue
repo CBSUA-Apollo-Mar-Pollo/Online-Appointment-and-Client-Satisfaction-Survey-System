@@ -14,7 +14,12 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <p>First Name*</p>
-                  <input type="text" class="form-control" placeholder="Juan" v-model="fName"/>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Juan"
+                    v-model="fName"
+                  />
                 </div>
                 <div class="col-md-6">
                   <p>Last Name*</p>
@@ -46,7 +51,12 @@
 
                 <div class="col-12">
                   <p>Affliation of Client (School/Company)*</p>
-                  <input type="tel" class="form-control" placeholder="" v-model="AffliationOfClient"/>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder=""
+                    v-model="AffliationOfClient"
+                  />
                 </div>
 
                 <div class="col-md-12">
@@ -133,78 +143,88 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { test } from '@/parse/test'
-import Parse from 'parse'
+import { ref } from "vue";
+import { test } from "@/parse/test";
+import Parse from "parse";
 
 export default {
   setup() {
-
-    const fName = ref('')
-    const lName = ref('')
-    const emailAdd = ref('')
-    const contactNum = ref('')
-    const AffliationOfClient = ref('')
-    const reasonOfVisit = ref('')
-    const date = ref('')
-    const time = ref('')
-    const comments = ref('')
+    const fName = ref("");
+    const lName = ref("");
+    const emailAdd = ref("");
+    const contactNum = ref("");
+    const AffliationOfClient = ref("");
+    const reasonOfVisit = ref("");
+    const date = ref("");
+    const time = ref("");
+    const comments = ref("");
 
     const onSubmit = () => {
-       test.save({
-          fName : fName.value,
-          lName : lName.value,
-          emailAdd : emailAdd.value,
-          contactNum : contactNum.value,
-          AffliationOfClient : AffliationOfClient.value,
-          reasonOfVisit : reasonOfVisit.value,
-          date : date.value,
-          time : time.value,
-          comments : comments.value,
-        }).then(function(data) {
-         console.log(data)
-       }.bind(this),(error) => {
-         console.log(error)
-       })  
+      test
+        .save({
+          fName: fName.value,
+          lName: lName.value,
+          emailAdd: emailAdd.value,
+          contactNum: contactNum.value,
+          AffliationOfClient: AffliationOfClient.value,
+          reasonOfVisit: reasonOfVisit.value,
+          date: date.value,
+          time: time.value,
+          comments: comments.value,
+        })
+        .then(
+          function (data) {
+            console.log(data);
+          }.bind(this),
+          (error) => {
+            console.log(error);
+          }
+        );
       console.log({
-        fName : fName.value,
-        lName : lName.value,
-        emailAdd : emailAdd.value,
-        contactNum : contactNum.value,
-        AffliationOfClient : AffliationOfClient.value,
-        reasonOfVisit : reasonOfVisit.value,
-        date : date.value,
-        time : time.value,
-        comments : comments.value,
-      })
-      fName.value = ''
-      lName.value = ''
-      emailAdd.value = ''
-      contactNum.value = ''
-      AffliationOfClient.value = ''
-      reasonOfVisit.value = ''
-      date.value = ''
-      time.value = ''
-      comments.value = ''
-    }
+        fName: fName.value,
+        lName: lName.value,
+        emailAdd: emailAdd.value,
+        contactNum: contactNum.value,
+        AffliationOfClient: AffliationOfClient.value,
+        reasonOfVisit: reasonOfVisit.value,
+        date: date.value,
+        time: time.value,
+        comments: comments.value,
+      });
+      fName.value = "";
+      lName.value = "";
+      emailAdd.value = "";
+      contactNum.value = "";
+      AffliationOfClient.value = "";
+      reasonOfVisit.value = "";
+      date.value = "";
+      time.value = "";
+      comments.value = "";
+    };
 
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
-    query.find()
-    .then((data) => {
-      console.log(data.map((e) => e.attributes))
-    }, (error) => {
-      console.log(error)
-    });
-    
+    query.find().then(
+      (data) => {
+        console.log(data.map((e) => e.attributes));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-    return { 
+    return {
       onSubmit,
-      fName , lName ,
-      emailAdd , contactNum ,
-      AffliationOfClient , reasonOfVisit ,
-      date , time , comments
-    }
-  }
+      fName,
+      lName,
+      emailAdd,
+      contactNum,
+      AffliationOfClient,
+      reasonOfVisit,
+      date,
+      time,
+      comments,
+    };
+  },
 };
 </script>

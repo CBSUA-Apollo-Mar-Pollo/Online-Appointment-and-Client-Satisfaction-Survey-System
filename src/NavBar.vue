@@ -10,9 +10,9 @@
     </nav>
     <nav id="tnav2" class="container flex justify-around py-5 mx-auto bg-white">
       <div id="tnavcontent" class="space-x-8 text-black">
-        <a href="#WelcomePage">HOME</a>
-        <a href="#AppointmentPage">APPOINTMENT</a>
-        <a href="#SurveyPage">LOGIN</a>
+        <router-link to="#WelcomePage">HOME</router-link>
+        <router-link to="#AppointmentPage">APPOINTMENT</router-link>
+        <router-link to="#SurveyPage">LOGIN</router-link>
       </div>
     </nav>
   </div>

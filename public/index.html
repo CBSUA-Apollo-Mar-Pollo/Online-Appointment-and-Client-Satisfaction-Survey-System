@@ -25,17 +25,12 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style2.css" rel="stylesheet">
-
     <!-- Tailwind CDN -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-  
-  <div id="NavBar"></div>
+  </section>
 
     <!-- Mobile nav toggle button -->
     <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -44,17 +39,17 @@
       <nav id="navbar" class="bnav b-nav">
         <ul>
           <li>
-            <a href="#WelcomePage" class="nav-link scrollto active"
+            <a href="#Welcome" class="nav-link scrollto active"
               ><i class="bx bx-home"></i> <span>WELCOME</span></a
             >
           </li>
           <li>
-            <a href="#AppointmentPage" class="nav-link scrollto"
+            <a href="#AppointmentForm" class="nav-link scrollto"
               ><i class="bi bi-card-text"></i> <span>APPOINTMENT FORM</span></a
             >
           </li>
           <li>
-            <a href="#SurveyPage" class="nav-link scrollto"
+            <a href="#SurveyForm" class="nav-link scrollto"
               ><i class="bi bi-card-checklist"></i>
               <span>SATISFACTION SURVEY</span></a
             >
@@ -63,19 +58,9 @@
       </nav>
     </header>
 
-  <section id="WelcomePage" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1 id="HomeTitle">Appointment System</h1>
-      <h1 id="bh1">
-        lorem
-        <span class="typed" data-typed-items="ipsum dolor sit amet"></span>
-      </h1>
-      <p id="bp">
-        Ut enim ad minim veniam, quis nostrud exercitation<br>ullamco laboris nisi ut aliquip ex ea commodo.
-      </p>
-      <a href="#AppointmentPage">
-        <button id="bbutton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">CLICK HERE TO FILL OUT OUR FORM</button>
-      </a>
+  <section id="Welcome" class="p-0">
+    <div id="NavBar"></div>
+    <div id="WelcomePage"></div>
   </section>
 
     <div id="app"></div>
@@ -95,7 +80,6 @@
       <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
       <script src="assets/vendor/typed.js/typed.min.js"></script>
       <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  
-      <script src="assets/js/main.js"></script>
+      <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 </html>

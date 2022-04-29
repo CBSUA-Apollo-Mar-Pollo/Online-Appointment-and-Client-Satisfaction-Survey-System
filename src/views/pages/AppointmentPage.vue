@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <section id="AppointmentPage" class="AppointmentPage">
+  <section id="AppointmentForm" class="AppointmentPage">
     <div class="container" data-aos="fade-up">
       <div class="container mt-5">
         <div class="row">
@@ -135,6 +135,8 @@
 <script>
 import { ref } from 'vue'
 import { test } from '@/parse/test'
+import Parse from 'parse'
+
 export default {
   setup() {
 
@@ -185,6 +187,16 @@ export default {
       time.value = ''
       comments.value = ''
     }
+
+    const Data = Parse.Object.extend("test");
+    const query = new Parse.Query(Data);
+    query.find()
+    .then((data) => {
+      console.log(data.map((e) => e.attributes))
+    }, (error) => {
+      console.log(error)
+    });
+    
 
     return { 
       onSubmit,

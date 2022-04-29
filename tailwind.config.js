@@ -23,10 +23,6 @@ module.exports = {
         secondary: "#ffed4a",
         danger: "#e3342f",
       },
-      fontFamily: {
-        sans: ["Graphik", "sans-serif"],
-        serif: ["Merriweather", "serif"],
-      },
       extend: {
         spacing: {
           128: "32rem",

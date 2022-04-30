@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MasterView from "../views/MasterView.vue";
+import WelcomePage from "../views/WelcomePage.vue";
+import AppointmentPage from "../views/AppointmentPage.vue";
+import SurveyPage from "../views/SurveyPage.vue";
 
 const routes = [
   {
     path: "/",
-    name: "MasterView",
-    component: MasterView,
+    name: "WelcomePage",
+    component: WelcomePage,
+  },
+  {
+    path: "/AppointmentForm",
+    name: "AppointmentPage",
+    component: AppointmentPage,
+  },
+  {
+    path: "/SurveyForm",
+    name: "SurveyPage",
+    component: SurveyPage,
   },
   // {
   //   path: "/about",

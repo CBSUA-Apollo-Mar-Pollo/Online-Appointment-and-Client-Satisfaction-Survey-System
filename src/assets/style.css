@@ -208,12 +208,17 @@ a:hover {
 }
 
 .b-nav a:hover,
-.b-nav .active,
 .b-nav .active:focus,
 .b-nav li:hover>a {
     color: #fff;
-    background: #0563bb;
+    background: #4ba0c7;
 }
+
+.b-nav li:active>a {
+    color: #fff;
+    background: #246b8b;
+}
+
 
 .b-nav a:hover span,
 .b-nav .active span,

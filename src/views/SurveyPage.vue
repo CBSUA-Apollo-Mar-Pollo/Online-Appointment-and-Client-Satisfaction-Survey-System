@@ -191,13 +191,13 @@ button:hover {
   background-color: #0666a3;
 }
 .section-title h2 {
-  padding: 0 0 0 170px;
+  padding: 10px 0 0 170px;
   color: #7dd3fc;
 }
 .survey {
   color: rgb(85, 85, 85);
   font-size: 18px;
-  padding: 0 160px 20px 170px;
+  padding: 0px 160px 20px 170px;
 }
 @media (min-width: 568px) {
   th,

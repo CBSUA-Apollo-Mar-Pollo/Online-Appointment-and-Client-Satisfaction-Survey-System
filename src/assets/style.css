@@ -1,6 +1,4 @@
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
+/* General */
 
 body {
     color: #272829;
@@ -16,44 +14,8 @@ a:hover {
     text-decoration: none;
 }
 
-/*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
 
-.back-to-top {
-    position: fixed;
-    visibility: hidden;
-    opacity: 0;
-    right: 15px;
-    bottom: 15px;
-    z-index: 996;
-    background: #0563bb;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    transition: all 0.4s;
-}
-
-.back-to-top i {
-    font-size: 28px;
-    color: #fff;
-    line-height: 0;
-}
-
-.back-to-top:hover {
-    background: #0678e3;
-    color: #fff;
-}
-
-.back-to-top.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
+/* Preloader */
 
 #preloader {
     position: fixed;
@@ -99,10 +61,8 @@ a:hover {
     }
 }
 
+/* Disable aos animation delay on mobile devices */
 
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
 
 @media screen and (max-width: 768px) {
     [data-aos-delay] {
@@ -110,10 +70,7 @@ a:hover {
     }
 }
 
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
+/* Header */
 
 #header {
     position: fixed;
@@ -141,11 +98,7 @@ a:hover {
     }
 }
 
-
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-
+/* Navigation Menu */
 
 /**
 * Desktop Navigation 
@@ -203,20 +156,21 @@ a:hover {
     .b-nav a span,
     .b-nav a:focus span {
         display: none;
-        color: #fff;
+        color: #45505b;
+        ;
     }
 }
 
 .b-nav a:hover,
 .b-nav .active:focus,
 .b-nav li:hover>a {
-    color: #fff;
-    background: #4ba0c7;
+    color: #ffffff;
+    background: #7dd3fc;
 }
 
 .b-nav li:active>a {
-    color: #fff;
-    background: #246b8b;
+    color: #ffffff;
+    background: #7dd3fc;
 }
 
 
@@ -224,13 +178,13 @@ a:hover {
 .b-nav .active span,
 .b-nav .active:focus span,
 .b-nav li:hover>a span {
-    color: #fff;
+    color: #ffffff;
 }
 
 .b-nav a:hover,
 .b-nav li:hover>a {
     width: 100%;
-    color: #fff;
+    color: #45505b;
 }
 
 .b-nav a:hover span,
@@ -277,14 +231,11 @@ a:hover {
 }
 
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
+/* Homepage */
 
 .WelcomePage {
     width: 100%;
     height: 100vh;
-    /* background: url("../img/image.jpg") top right no-repeat; */
     background-size: cover;
     position: relative;
 }
@@ -355,10 +306,7 @@ a:hover {
     }
 }
 
-
-/*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
+/* Section */
 
 section {
     padding: 60px 0;
@@ -373,132 +321,10 @@ section {
 .section-title h2 {
     font-size: 32px;
     font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
     position: relative;
     color: #45505b;
 }
-
-/* .section-title h2::before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 120px;
-    height: 1px;
-    background: #ddd;
-    bottom: 1px;
-    left: calc(50% - 60px);
-}
-
-.section-title h2::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: #929293;
-    bottom: 0;
-    left: calc(50% - 20px);
-} */
 
 .section-title p {
     margin-bottom: 0;
-}
-
-
-/*--------------------------------------------------------------
-# AppointmentPage
---------------------------------------------------------------*/
-
-.AppointmentPage .content h3 {
-    font-weight: 700;
-    font-size: 26px;
-    color: #728394;
-}
-
-.AppointmentPage .content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.AppointmentPage .content ul li {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.AppointmentPage .content ul strong {
-    margin-right: 10px;
-}
-
-.AppointmentPage .content ul i {
-    font-size: 16px;
-    margin-right: 5px;
-    color: #0563bb;
-    line-height: 0;
-}
-
-.AppointmentPage .content p:last-child {
-    margin-bottom: 0;
-}
-
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-
-#footer {
-    background: #f7f8f9;
-    color: #45505b;
-    font-size: 14px;
-    text-align: center;
-    padding: 30px 0;
-}
-
-#footer h3 {
-    font-size: 36px;
-    font-weight: 700;
-    position: relative;
-    padding: 0;
-    margin: 0 0 15px 0;
-}
-
-#footer p {
-    font-size: 15;
-    font-style: italic;
-    padding: 0;
-    margin: 0 0 40px 0;
-}
-
-#footer .social-links {
-    margin: 0 0 40px 0;
-}
-
-#footer .social-links a {
-    font-size: 18px;
-    display: inline-block;
-    background: #0563bb;
-    color: #fff;
-    line-height: 1;
-    padding: 8px 0;
-    margin-right: 4px;
-    border-radius: 50%;
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    transition: 0.3s;
-}
-
-#footer .social-links a:hover {
-    background: #0678e3;
-    color: #fff;
-    text-decoration: none;
-}
-
-#footer .copyright {
-    margin: 0 0 5px 0;
-}
-
-#footer .credits {
-    font-size: 13px;
 }

@@ -8,4 +8,7 @@ import "./assets/tailwind.css";
 import "./assets/main.css";
 import "./assets/index.js";
 
-createApp(App).use(store).use(router).mount("#app");
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
+createApp(App).use(store).use(router).use(VueSweetalert2).mount("#app");

@@ -1,15 +1,10 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-link /> -->
-  <MasterView></MasterView>
+  <NavBar></NavBar>
 </template>
 
 <script>
 import Parse from "parse";
-import MasterView from "./views/MasterView.vue";
+import NavBar from "./views/NavBar.vue";
 
 Parse.serverURL = "http://localhost:1337/api";
 Parse.initialize(
@@ -18,7 +13,9 @@ Parse.initialize(
 );
 
 export default {
-  components: { MasterView },
+  components: {
+    NavBar,
+  },
 };
 </script>
 <style></style>

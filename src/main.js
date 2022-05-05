@@ -1,7 +1,5 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import NavBar from "./components/NavBar";
-import WelcomePage from "./views/pages/WelcomePage";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
@@ -10,6 +8,7 @@ import "./assets/tailwind.css";
 import "./assets/main.css";
 import "./assets/index.js";
 
-createApp(App).use(store).use(router).mount("#app");
-createApp(NavBar).use(store).use(router).mount("#NavBar");
-createApp(WelcomePage).use(store).use(router).mount("#WelcomePage");
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
+createApp(App).use(store).use(router).use(VueSweetalert2).mount("#app");

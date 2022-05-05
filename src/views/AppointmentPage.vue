@@ -1,14 +1,22 @@
-<!--eslint-disable-->
 <template>
   <section id="AppointmentForm" class="AppointmentPage p-0">
     <div class="container" data-aos="fade-up">
-      <div class="container mt-5">
+      <div class="container app-con">
         <div class="row">
-          <div class="col-md-6 offset-md-3 border p-4 shadow bg-light">
+          <div class="col-md-6 offset-md-3 border p-4 shadow">
             <div class="col-12">
-              <h3 class="fw-normal text-secondary fs-4 text-uppercase mb-4">
-                Appointment form
-              </h3>
+              <div class="section-title pb-0">
+                <h2>Appointment form</h2>
+              </div>
+              <p class="instruction pb-3">
+                Instructions: To set an appointment at any CHED Office, kindly
+                accomplish the required fields in the form below. Select a CHED
+                Office you would like to set an appointment with and indicate
+                your preferred schedule as well as your reason for visit. Click
+                on "Request Appointment" to submit your response. Approval of
+                requested appointments is subject to the availability of the
+                selected office.
+              </p>
             </div>
             <form @submit.prevent="onSubmit">
               <div class="row g-3">
@@ -118,20 +126,23 @@
                     v-model="comments"
                   ></textarea>
                 </div>
-                <div class="col-12 mt-5">
-                  <button
-                    style="background-color: #1ea0df"
+                <div class="text-center mt-5">
+                  <a
+                    class="col-8 btn btn-primary"
+                    href="/AssessmentForm"
+                    role="button"
                     type="submit"
-                    class="btn btn-primary float-end"
                   >
-                    Request My Appointment
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-secondary float-end me-2 loading"
+                    Next </a
+                  ><br />
+                  <a
+                    class="col-8 btn btn-basic mt-2"
+                    role="button"
+                    type="submit"
+                    @click="showAlert"
                   >
                     Cancel
-                  </button>
+                  </a>
                 </div>
               </div>
             </form>
@@ -141,6 +152,40 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.app-con {
+  margin-top: 3rem !important;
+}
+
+.section-title h2 {
+  padding: 10px 0 0 0px;
+  color: #008aff;
+  text-align: left;
+}
+
+.instruction {
+  color: #626262;
+  text-align: justify;
+}
+
+.btn-primary {
+  background-color: #008aff;
+}
+
+.btn-basic {
+  background-color: #f8f9fa;
+}
+
+@media only screen and (max-width: 600px) {
+  .AppointmentPage {
+    padding: 0;
+  }
+  .app-con {
+    margin-top: 1rem !important;
+  }
+}
+</style>
 
 <script>
 import { ref } from "vue";
@@ -225,6 +270,32 @@ export default {
       time,
       comments,
     };
+  },
+
+  methods: {
+    showAlert() {
+      // Use sweetalert2
+      this.$swal
+        .fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$swal.fire(
+              "Canceled!",
+              "Your appointment has been canceled.",
+              "success"
+            );
+            window.location = "/";
+          }
+        });
+    },
   },
 };
 </script>

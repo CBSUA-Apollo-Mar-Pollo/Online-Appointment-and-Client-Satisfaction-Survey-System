@@ -1,7 +1,7 @@
 <template>
   <!-- Main content -->
   <section class="slice pt-4 pb-8">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
       <div class="row row-grid align-items-center">
         <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
           <!-- Image -->

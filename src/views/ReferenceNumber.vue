@@ -33,7 +33,7 @@
         <h2 class="ref">Reference ID</h2>
       </div>
       <p>To see your appointment status, copy the request number below</p>
-      <h2 class="number">12345</h2>
+      <h2 class="number">#{{ ReferenceNumber }}</h2>
       <div class="text-center">
         <a
           class="col-2 btn bg-light"
@@ -57,6 +57,21 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  setup() {
+    const Referencenum = Math.random().toString().substr(2, 8);
+    const year = new Date().getUTCFullYear();
+    const ReferenceNumber = Referencenum+`-${year}` ;
+    
+    return {
+      ReferenceNumber
+    }
+  },
+}
+</script>
 
 <style scoped>
 .container {

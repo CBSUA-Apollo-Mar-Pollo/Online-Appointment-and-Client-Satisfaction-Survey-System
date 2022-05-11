@@ -4,18 +4,18 @@
       <header class="header">
         <div class="section-title text-center pb-0">
           <h2>COVID-19 Form</h2>
+          <br />
           <p class="survey">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et.
+            For the health and safety of our community,declaration of illness is required.
+            Be sure that the information youll give is accurate and complete.Please get immediate
+            medical attention if you have any of the COVID-19 signs.
           </p>
         </div>
       </header>
-      <form id="survey-form">
+      <form id="survey-form" @submit.prevent="onSubmit">
         <div class="form-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?</p>
-          <table id="symptoms-table">
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?</p>
+           <table id="symptoms-table">
             <thead>
               <tr>
                 <th></th>
@@ -435,53 +435,45 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
         </div>
         <hr />
-        <div class="form-group form-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-          <label class="other-difficulties"></label>
-          <textarea
-            class="form-control"
-            name="difficulties"
-            id="other-difficulties"
-            rows="3"
-          ></textarea>
-        </div>
         <hr />
         <div class="form-check form-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p>Do you have any of the following symptoms ?</p>
+          <br />
           <label class="form-check-label">
             <input
               type="checkbox"
               class="form-check-input"
               name="difficulties"
-              id="Cardiovascular-diseases"
-              value="checkedValue"
+              id="Persistent Cough"
+              value="New and Persistent Cough"
+              v-model="difficulties"
             />
-
-            Lorem ipsum
+            New and Persistent Cough
           </label>
           <label class="form-check-label">
             <input
               type="checkbox"
               class="form-check-input"
               name="difficulties"
-              id="Asthma"
-              value="checkedValue"
+              id="Shortness of breath"
+              value="Shortness of breath or any difficulty breathing"
+              v-model="difficulties"
             />
-            Lorem ipsum
+            Shortness of breath or any difficulty breathing 
           </label>
           <label class="form-check-label">
             <input
               type="checkbox"
               class="form-check-input"
               name="difficulties"
-              id="Cancer"
-              value="checkedValue"
+              id="Fever"
+              value="Fever"
+              v-model="difficulties"
             />
-
-            Lorem ipsum
+            Fever
           </label>
           <label class="form-check-label">
             <input
@@ -489,43 +481,25 @@
               class="form-check-input"
               name="difficulties"
               id="Diabetes"
-              value="checkedValue"
+              value="No Symptoms"
+              v-model="difficulties"
             />
-            Lorem ipsum
-          </label>
-          <label class="form-check-label">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              name="difficulties"
-              id="Bronchitis"
-              value="checkedValue"
-            />
-            Lorem ipsum
-          </label>
-          <label class="form-check-label">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              name="difficulties"
-              id="Other"
-              value="checkedValue"
-            />
-            Lorem ipsum
+            No Symptoms
           </label>
         </div>
-        <hr />
         <div class="form-check form-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+          <p>Have you been in contact with anyone in the last 15 days who is experiencing these symptoms ?</p>
+          <br/>
           <label class="form-check-label">
             <input
               type="radio"
               class="form-check-input"
               name="past-15-days"
               id="1-5"
-              value="checkedValue"
+              value="Yes"
+              v-model="past15days"
             />
-            Lorem ipsum
+            Yes
           </label>
           <label class="form-check-label">
             <input
@@ -533,52 +507,71 @@
               class="form-check-input"
               name="past-15-days"
               id="5-10"
-              value="checkedValue"
+              value="No"
+              v-model="past15days"
             />
-            Lorem ipsum
-          </label>
-          <label class="form-check-label">
-            <input
-              type="radio"
-              class="form-check-input"
-              name="past-15-days"
-              id="10-15"
-              value="checkedValue"
-            />
-            Lorem ipsum
-          </label>
-          <label class="form-check-label">
-            <input
-              type="radio"
-              class="form-check-input"
-              name="past-15-days"
-              id="15-20"
-              value="checkedValue"
-            />
-            Lorem ipsum
-          </label>
-          <label class="form-check-label">
-            <input
-              type="radio"
-              class="form-check-input"
-              name="past-15-days"
-              id="More-than-50"
-              value="checkedValue"
-            />
-            Lorem ipsum
+            No
           </label>
         </div>
+        <div class="form-check form-content">
+          <p>Have you been in contact with anyone who has since tested positive for Covid-19? </p>
+          <br/>
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="PositiveContact"
+              id="1-5"
+              value="Yes"
+              v-model="PositiveContact"
+            />
+            Yes
+          </label>
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="PositiveContact"
+              id="5-10"
+              value="No"
+              v-model="PositiveContact"
+            />
+            No
+          </label>
+          <label class="form-check-label">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="PositiveContact"
+              id="5-10"
+              value="Not Sure"
+              v-model="PositiveContact"
+            />
+            Not Sure
+          </label>
+        </div>
+          <div class="form-group form-content">
+            <p>Have you travelled abroad in the last 1-2 months? Where did you go ?</p>
+            <label class="other-difficulties"></label>
+            <textarea
+              class="form-control"
+              name="difficulties"
+              id="other-difficulties"
+              v-model="travelAbroad"
+              rows="3"
+            ></textarea>
+          </div>
         <hr />
         <br />
         <div class="text-center">
-          <a
+          <button
             class="col-8 btn bg-primary text-white"
             href="/ReferenceNumber"
             role="button"
             id="submit"
             type="submit"
           >
-            Request My Appointment </a
+            Request My Appointment </button
           ><br />
           <a
             class="col-8 bg-light text-primary"
@@ -594,6 +587,76 @@
     </div>
   </section>
 </template>
+
+<script>
+import { ref } from "vue";
+import { test } from "@/parse/test";
+import { covidForm } from "@/parse/covid19form";
+import Parse from "parse";
+import { useRouter } from 'vue-router'
+
+export default ({
+  setup() {
+    const difficulties = ref([]);
+    const past15days = ref("");
+    const PositiveContact = ref("");
+    const travelAbroad = ref("");
+    const userData = JSON.parse(localStorage.getItem('storedData'));
+    const router = useRouter();
+
+    const onSubmit = () => {
+    console.log({
+      symptoms :difficulties._rawValue,
+      past15days : past15days.value,
+      PositiveContact : PositiveContact.value,
+      travelAbroad: travelAbroad.value,
+      emailAdd : userData.emailAdd
+    })
+    test.save(userData)
+    covidForm.save({
+      symptoms :difficulties._rawValue,
+      past15days : past15days.value,
+      PositiveContact : PositiveContact.value,
+      travelAbroad: travelAbroad.value,
+      emailAdd : userData.emailAdd
+    })
+     router.push({ name : "ReferenceNumber" })
+    }
+
+    console.log(userData)
+    // test
+    //     .save({
+    //       fName: fName.value,
+    //       lName: lName.value,
+    //       emailAdd: emailAdd.value,
+    //       contactNum: contactNum.value,
+    //       AffliationOfClient: AffliationOfClient.value,
+    //       reasonOfVisit: reasonOfVisit.value,
+    //       date: date.value,
+    //       time: time.value,
+    //       comments: comments.value,
+    //     })
+    //     .then(
+    //       function (data) {
+    //         console.log(data);
+    //       }.bind(this),
+    //       (error) => {
+    //         console.log(error);
+    //       }
+    //     );
+    return {
+      onSubmit,
+      difficulties,
+      past15days,
+      PositiveContact,
+      travelAbroad,
+      userData
+    };
+  },
+  
+})
+</script>
+
 
 <style scoped>
 .section-title h2 {

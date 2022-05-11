@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="col-12">
-                  <p>Comment/s*</p>
+                  <p>Reason for Appointment:</p>
                   <textarea
                     class="form-control"
                     placeholder="Message"
@@ -127,13 +127,13 @@
                   ></textarea>
                 </div>
                 <div class="text-center mt-5">
-                  <a
+                  <button
                     class="col-8 btn btn-primary"
                     href="/AssessmentForm"
                     role="button"
                     type="submit"
                   >
-                    Next </a
+                    Next </button
                   ><br />
                   <a
                     class="col-8 btn btn-basic mt-2"
@@ -191,9 +191,12 @@
 import { ref } from "vue";
 import { test } from "@/parse/test";
 import Parse from "parse";
+import { useRouter } from 'vue-router'
 
 export default {
   setup() {
+    const router = useRouter();
+
     const fName = ref("");
     const lName = ref("");
     const emailAdd = ref("");
@@ -205,27 +208,7 @@ export default {
     const comments = ref("");
 
     const onSubmit = () => {
-      test
-        .save({
-          fName: fName.value,
-          lName: lName.value,
-          emailAdd: emailAdd.value,
-          contactNum: contactNum.value,
-          AffliationOfClient: AffliationOfClient.value,
-          reasonOfVisit: reasonOfVisit.value,
-          date: date.value,
-          time: time.value,
-          comments: comments.value,
-        })
-        .then(
-          function (data) {
-            console.log(data);
-          }.bind(this),
-          (error) => {
-            console.log(error);
-          }
-        );
-      console.log({
+      const data = ref({
         fName: fName.value,
         lName: lName.value,
         emailAdd: emailAdd.value,
@@ -236,15 +219,9 @@ export default {
         time: time.value,
         comments: comments.value,
       });
-      fName.value = "";
-      lName.value = "";
-      emailAdd.value = "";
-      contactNum.value = "";
-      AffliationOfClient.value = "";
-      reasonOfVisit.value = "";
-      date.value = "";
-      time.value = "";
-      comments.value = "";
+      console.log(data._rawValue);  
+      localStorage.setItem('storedData', JSON.stringify(data._rawValue))
+      router.push({ name : "SelfAssessment" })
     };
 
     const Data = Parse.Object.extend("test");
@@ -271,6 +248,7 @@ export default {
       comments,
     };
   },
+
 
   methods: {
     showAlert() {

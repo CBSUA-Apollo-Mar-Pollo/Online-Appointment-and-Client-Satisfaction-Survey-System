@@ -10,20 +10,72 @@
         the status of your appointment request:
       </p>
 
-      <form>
+      <form @submit.prevent="onSubmit">
         <div>
-          <input type="text" class="p-1 mt-3 border-2" id="text2" required />
+          <input type="text" class="p-1 mt-3 border-2" id="text2" required v-model="referenceNum"/>
         </div>
-        <input
+        <!-- <input
           type="button"
           class="col-2 btn bg-primary text-white mt-3 button"
-          value="Submit"
           @click="showAlert"
-        />
+          value="Submit"
+        /> -->
+        <button class="col-2 btn bg-primary text-white mt-3 button">Submit</button>
       </form>
     </div>
   </div>
 </template>
+
+<script>
+import { ref } from "vue";
+// eslint-disable-next-line no-unused-vars
+import { test } from "@/parse/test";
+import Parse from "parse";
+import { useRouter } from "vue-router";
+
+export default {
+  
+  setup() {
+    const referenceNum = ref("");
+    const onSubmit = () => {
+      const Data = Parse.Object.extend("test");
+      const query = new Parse.Query(Data);
+      query.equalTo("referenceNum" , { referenceNum : referenceNum.value} ).then(
+        (data) => {
+          console.log(data.map((e) => e.attributes));
+        },
+        (error) => {
+          console.log(error);
+        }
+    );
+    console.log({ referenceNum : referenceNum.value})
+    }
+
+    return {
+      referenceNum , 
+      onSubmit
+    }
+  },
+  methods: {
+    showAlert() {
+      // Use sweetalert2
+      this.$swal
+        .fire({
+          title: "Processed",
+          text: "",
+          icon: "success",
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes",
+        })
+        .then(function () {
+          window.location = "/SurveyForm";
+        });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .container {
@@ -152,25 +204,3 @@
 }
 </style>
 
-<script>
-export default {
-  methods: {
-    showAlert() {
-      // Use sweetalert2
-      this.$swal
-        .fire({
-          title: "Processed",
-          text: "",
-          icon: "success",
-          showCancelButton: false,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes",
-        })
-        .then(function () {
-          window.location = "/SurveyForm";
-        });
-    },
-  },
-};
-</script>

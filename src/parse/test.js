@@ -14,6 +14,7 @@ var test = {
       date,
       time,
       comments,
+      referenceNum
     } = args;
 
     const object = new Test();
@@ -26,6 +27,7 @@ var test = {
     object.set("date", date);
     object.set("time", time);
     object.set("comments", comments);
+    object.set("referenceNum", referenceNum);
     return object.save();
   },
 };

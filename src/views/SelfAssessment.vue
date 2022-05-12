@@ -616,7 +616,7 @@ export default {
 
     const onSubmit = () => {
       console.log({
-        symptoms: difficulties.value._rawValue,
+        symptoms: difficulties._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
@@ -624,36 +624,16 @@ export default {
       });
       test.save(userData);
       covidForm.save({
-        symptoms: difficulties.value._rawValue,
+        symptoms: difficulties._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
         emailAdd: userData.emailAdd,
       });
+      
       router.push({ name: "ReferenceNumber" });
     };
-
     console.log(userData);
-    // test
-    //     .save({
-    //       fName: fName.value,
-    //       lName: lName.value,
-    //       emailAdd: emailAdd.value,
-    //       contactNum: contactNum.value,
-    //       AffliationOfClient: AffliationOfClient.value,
-    //       reasonOfVisit: reasonOfVisit.value,
-    //       date: date.value,
-    //       time: time.value,
-    //       comments: comments.value,
-    //     })
-    //     .then(
-    //       function (data) {
-    //         console.log(data);
-    //       }.bind(this),
-    //       (error) => {
-    //         console.log(error);
-    //       }
-    //     );
     return {
       onSubmit,
       difficulties,

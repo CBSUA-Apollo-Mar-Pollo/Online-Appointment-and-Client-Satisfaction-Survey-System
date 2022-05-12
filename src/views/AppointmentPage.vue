@@ -208,6 +208,10 @@ export default {
     const time = ref("");
     const comments = ref("");
 
+    const Referencenum = Math.random().toString().substr(2, 8);
+    const year = new Date().getUTCFullYear();
+    const referenceNum = Referencenum + `-${year}`;
+
     const onSubmit = () => {
       const data = ref({
         fName: fName.value,
@@ -219,9 +223,10 @@ export default {
         date: date.value,
         time: time.value,
         comments: comments.value,
+        referenceNum: referenceNum
       });
-      console.log(data.value._rawValue);
-      localStorage.setItem("storedData", JSON.stringify(data.value._rawValue));
+      console.log(data._rawValue);
+      localStorage.setItem("storedData", JSON.stringify(data._rawValue));
       router.push({ name: "SelfAssessment" });
     };
 

@@ -6,9 +6,10 @@
           <h2>COVID-19 Form</h2>
           <br />
           <p class="survey">
-            For the health and safety of our community,declaration of illness is required.
-            Be sure that the information youll give is accurate and complete.Please get immediate
-            medical attention if you have any of the COVID-19 signs.
+            For the health and safety of our community,declaration of illness is
+            required. Be sure that the information youll give is accurate and
+            complete.Please get immediate medical attention if you have any of
+            the COVID-19 signs.
           </p>
         </div>
       </header>
@@ -462,7 +463,7 @@
               value="Shortness of breath or any difficulty breathing"
               v-model="difficulties"
             />
-            Shortness of breath or any difficulty breathing 
+            Shortness of breath or any difficulty breathing
           </label>
           <label class="form-check-label">
             <input
@@ -488,8 +489,11 @@
           </label>
         </div>
         <div class="form-check form-content">
-          <p>Have you been in contact with anyone in the last 15 days who is experiencing these symptoms ?</p>
-          <br/>
+          <p>
+            Have you been in contact with anyone in the last 15 days who is
+            experiencing these symptoms ?
+          </p>
+          <br />
           <label class="form-check-label">
             <input
               type="radio"
@@ -514,8 +518,11 @@
           </label>
         </div>
         <div class="form-check form-content">
-          <p>Have you been in contact with anyone who has since tested positive for Covid-19? </p>
-          <br/>
+          <p>
+            Have you been in contact with anyone who has since tested positive
+            for Covid-19?
+          </p>
+          <br />
           <label class="form-check-label">
             <input
               type="radio"
@@ -550,17 +557,19 @@
             Not Sure
           </label>
         </div>
-          <div class="form-group form-content">
-            <p>Have you travelled abroad in the last 1-2 months? Where did you go ?</p>
-            <label class="other-difficulties"></label>
-            <textarea
-              class="form-control"
-              name="difficulties"
-              id="other-difficulties"
-              v-model="travelAbroad"
-              rows="3"
-            ></textarea>
-          </div>
+        <div class="form-group form-content">
+          <p>
+            Have you travelled abroad in the last 1-2 months? Where did you go ?
+          </p>
+          <label class="other-difficulties"></label>
+          <textarea
+            class="form-control"
+            name="difficulties"
+            id="other-difficulties"
+            v-model="travelAbroad"
+            rows="3"
+          ></textarea>
+        </div>
         <hr />
         <br />
         <div class="text-center">
@@ -571,7 +580,7 @@
             id="submit"
             type="submit"
           >
-            Request My Appointment </button
+            Request My Appointment</button
           ><br />
           <a
             class="col-8 bg-light text-primary"
@@ -592,38 +601,39 @@
 import { ref } from "vue";
 import { test } from "@/parse/test";
 import { covidForm } from "@/parse/covid19form";
+// eslint-disable-next-line no-unused-vars
 import Parse from "parse";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
-export default ({
+export default {
   setup() {
     const difficulties = ref([]);
     const past15days = ref("");
     const PositiveContact = ref("");
     const travelAbroad = ref("");
-    const userData = JSON.parse(localStorage.getItem('storedData'));
+    const userData = JSON.parse(localStorage.getItem("storedData"));
     const router = useRouter();
 
     const onSubmit = () => {
-    console.log({
-      symptoms :difficulties._rawValue,
-      past15days : past15days.value,
-      PositiveContact : PositiveContact.value,
-      travelAbroad: travelAbroad.value,
-      emailAdd : userData.emailAdd
-    })
-    test.save(userData)
-    covidForm.save({
-      symptoms :difficulties._rawValue,
-      past15days : past15days.value,
-      PositiveContact : PositiveContact.value,
-      travelAbroad: travelAbroad.value,
-      emailAdd : userData.emailAdd
-    })
-     router.push({ name : "ReferenceNumber" })
-    }
+      console.log({
+        symptoms: difficulties.value._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+      test.save(userData);
+      covidForm.save({
+        symptoms: difficulties.value._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+      router.push({ name: "ReferenceNumber" });
+    };
 
-    console.log(userData)
+    console.log(userData);
     // test
     //     .save({
     //       fName: fName.value,
@@ -650,13 +660,11 @@ export default ({
       past15days,
       PositiveContact,
       travelAbroad,
-      userData
+      userData,
     };
   },
-  
-})
+};
 </script>
-
 
 <style scoped>
 .section-title h2 {

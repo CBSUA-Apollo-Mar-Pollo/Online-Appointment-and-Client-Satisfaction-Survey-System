@@ -133,7 +133,7 @@
                     role="button"
                     type="submit"
                   >
-                    Next </button
+                    Next</button
                   ><br />
                   <a
                     class="col-8 btn btn-basic mt-2"
@@ -189,9 +189,10 @@
 
 <script>
 import { ref } from "vue";
+// eslint-disable-next-line no-unused-vars
 import { test } from "@/parse/test";
 import Parse from "parse";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -219,9 +220,9 @@ export default {
         time: time.value,
         comments: comments.value,
       });
-      console.log(data._rawValue);  
-      localStorage.setItem('storedData', JSON.stringify(data._rawValue))
-      router.push({ name : "SelfAssessment" })
+      console.log(data.value._rawValue);
+      localStorage.setItem("storedData", JSON.stringify(data.value._rawValue));
+      router.push({ name: "SelfAssessment" });
     };
 
     const Data = Parse.Object.extend("test");
@@ -248,7 +249,6 @@ export default {
       comments,
     };
   },
-
 
   methods: {
     showAlert() {

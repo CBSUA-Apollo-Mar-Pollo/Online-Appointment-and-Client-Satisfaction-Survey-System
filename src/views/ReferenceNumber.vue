@@ -59,18 +59,17 @@
 </template>
 
 <script>
-
 export default {
   setup() {
     const Referencenum = Math.random().toString().substr(2, 8);
     const year = new Date().getUTCFullYear();
-    const ReferenceNumber = Referencenum+`-${year}` ;
-    
+    const ReferenceNumber = Referencenum + `-${year}`;
+
     return {
-      ReferenceNumber
-    }
+      ReferenceNumber,
+    };
   },
-}
+};
 </script>
 
 <style scoped>

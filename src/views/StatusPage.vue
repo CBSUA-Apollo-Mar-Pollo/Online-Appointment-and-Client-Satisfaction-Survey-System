@@ -1,4 +1,5 @@
 <template>
+<NavBar/>
   <div class="container">
     <div class="animation-ctn">
       <br />
@@ -152,4 +153,12 @@
 }
 </style>
 
-<script></script>
+<script>
+import NavBar from "./NavBar.vue";
+
+export default {
+  components: {
+    NavBar,
+  },
+};
+</script>

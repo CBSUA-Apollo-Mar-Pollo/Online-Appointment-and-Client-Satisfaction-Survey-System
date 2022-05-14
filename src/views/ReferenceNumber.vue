@@ -1,4 +1,5 @@
 <template>
+<NavBar/>
   <div class="container">
     <div class="animation-ctn">
       <div class="icon icon--order-success svg justify-around d-flex">
@@ -57,18 +58,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  setup() {
-    const ReferenceNumber = JSON.parse(localStorage.getItem("storedData"));
-
-    return {
-      ReferenceNumber,
-    };
-  },
-};
-</script>
 
 <style scoped>
 .container {
@@ -196,3 +185,21 @@ export default {
   animation: colored-circle 0.6s ease-in-out 0.7s backwards;
 }
 </style>
+
+<script>
+import NavBar from "./NavBar.vue";
+
+export default {
+  components: {
+    NavBar,
+  },
+
+  setup() {
+    const ReferenceNumber = JSON.parse(localStorage.getItem("storedData"));
+
+    return {
+      ReferenceNumber,
+    };
+  },
+};
+</script>

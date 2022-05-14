@@ -1,4 +1,5 @@
 <template>
+<NavBar/>
   <div class="container d-flex justify-around mt-5">
     <div class="content">
       <div class="text">Login Form</div>
@@ -150,3 +151,13 @@ button:focus {
   text-decoration: underline;
 }
 </style>
+
+<script>
+import NavBar from "./NavBar.vue";
+
+export default {
+  components: {
+    NavBar,
+  },
+};
+</script>

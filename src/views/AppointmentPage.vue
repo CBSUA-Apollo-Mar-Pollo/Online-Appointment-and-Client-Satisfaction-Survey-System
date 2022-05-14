@@ -1,4 +1,5 @@
 <template>
+<NavBar/>
   <section id="AppointmentForm" class="AppointmentPage p-0">
     <div class="container" data-aos="fade-up">
       <div class="container app-con">
@@ -188,6 +189,7 @@
 </style>
 
 <script>
+import NavBar from "./NavBar.vue";
 import { ref } from "vue";
 // eslint-disable-next-line no-unused-vars
 import { test } from "@/parse/test";
@@ -195,6 +197,10 @@ import Parse from "parse";
 import { useRouter } from "vue-router";
 
 export default {
+  components: {
+    NavBar,
+  },
+  
   setup() {
     const router = useRouter();
 

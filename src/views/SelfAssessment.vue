@@ -1,4 +1,5 @@
 <template>
+<NavBar/>
   <section id="SurveyForm" class="SurveyPage">
     <div class="container" data-aos="fade-up">
       <header class="header">
@@ -597,55 +598,6 @@
   </section>
 </template>
 
-<script>
-import { ref } from "vue";
-import { test } from "@/parse/test";
-import { covidForm } from "@/parse/covid19form";
-// eslint-disable-next-line no-unused-vars
-import Parse from "parse";
-import { useRouter } from "vue-router";
-
-export default {
-  setup() {
-    const difficulties = ref([]);
-    const past15days = ref("");
-    const PositiveContact = ref("");
-    const travelAbroad = ref("");
-    const userData = JSON.parse(localStorage.getItem("storedData"));
-    const router = useRouter();
-
-    const onSubmit = () => {
-      console.log({
-        symptoms: difficulties._rawValue,
-        past15days: past15days.value,
-        PositiveContact: PositiveContact.value,
-        travelAbroad: travelAbroad.value,
-        emailAdd: userData.emailAdd,
-      });
-      test.save(userData);
-      covidForm.save({
-        symptoms: difficulties._rawValue,
-        past15days: past15days.value,
-        PositiveContact: PositiveContact.value,
-        travelAbroad: travelAbroad.value,
-        emailAdd: userData.emailAdd,
-      });
-      
-      router.push({ name: "ReferenceNumber" });
-    };
-    console.log(userData);
-    return {
-      onSubmit,
-      difficulties,
-      past15days,
-      PositiveContact,
-      travelAbroad,
-      userData,
-    };
-  },
-};
-</script>
-
 <style scoped>
 .section-title h2 {
   padding: 50px 50px 0px 50px;
@@ -823,3 +775,57 @@ input[type="radio"] input[type="checkbox"] {
   justify-content: center;
 }
 </style>
+
+<script>
+import NavBar from "./NavBar.vue";
+import { ref } from "vue";
+import { test } from "@/parse/test";
+import { covidForm } from "@/parse/covid19form";
+// eslint-disable-next-line no-unused-vars
+import Parse from "parse";
+import { useRouter } from "vue-router";
+
+export default {
+  components: {
+    NavBar,
+  },
+
+  setup() {
+    const difficulties = ref([]);
+    const past15days = ref("");
+    const PositiveContact = ref("");
+    const travelAbroad = ref("");
+    const userData = JSON.parse(localStorage.getItem("storedData"));
+    const router = useRouter();
+
+    const onSubmit = () => {
+      console.log({
+        symptoms: difficulties._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+      test.save(userData);
+      covidForm.save({
+        symptoms: difficulties._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+      
+      router.push({ name: "ReferenceNumber" });
+    };
+    console.log(userData);
+    return {
+      onSubmit,
+      difficulties,
+      past15days,
+      PositiveContact,
+      travelAbroad,
+      userData,
+    };
+  },
+};
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <!-- Main content -->
+<NavBar/>
   <section class="slice pt-4 pb-8">
     <div class="container" data-aos="fade-up">
       <div class="row row-grid align-items-center">
@@ -39,3 +39,13 @@
 </template>
 
 <style scoped src="../assets/welcomepage.css"></style>
+
+<script>
+import NavBar from "./NavBar.vue";
+
+export default {
+  components: {
+    NavBar,
+  },
+};
+</script>

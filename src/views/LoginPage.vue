@@ -16,11 +16,23 @@
         </div>
         <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
         <button>Sign in</button>
-        <!-- <div class="signup">
-          Not a member?
-          <a href="#">signup now</a>
-        </div> -->
       </form>
+      <!--Temporary Buttons-->
+        <button
+          class="col-2 btn bg-info text-white mt-3 button"
+          type="submit"
+          onclick="location.href='/Admin';"
+        >
+          Admin
+        </button>
+        <button
+          class="col-2 btn bg-success text-white mt-3 button"
+          type="submit"
+          onclick="location.href='/Employee';"
+        >
+          Employee
+        </button>
+      <!--Temporary Buttons-->
     </div>
   </div>
 </template>
@@ -38,7 +50,7 @@ body {
 }
 
 .content {
-  width: 530px;
+  width: 430px;
   background: #ffffff;
   border-radius: 10px;
   padding: 40px 30px;
@@ -123,17 +135,17 @@ button {
   color: rgb(255, 255, 255);
   font-size: 18px;
   font-weight: 600;
-  background: #7dd3fc;
+  background: #008aff;
   border: none;
   outline: none;
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: 2px 2px 5px #babecc, -5px -5px 10px #ffffff73;
 }
 
 button:focus {
-  color: #3498db;
+  color: #0e7ac2;
   box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+  color: white;
 }
 
 .signup {
@@ -149,6 +161,16 @@ button:focus {
 
 .signup a:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .col-2 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
+  .content {
+    width: 430px;
+  }
 }
 </style>
 

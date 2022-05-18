@@ -227,13 +227,12 @@ button:hover {
   form {
     width: 100%;
     padding: 20px;
-    background: #fff;
     box-shadow: 0 2px 5px #ccc;
   }
   .survey {
     color: rgb(85, 85, 85);
     font-size: 14px;
-    padding: 20px;
+    padding: 10px;
     margin-top: -15px;
     text-align: justify;
   }
@@ -242,6 +241,9 @@ button:hover {
     padding: 0 0 5px 0;
     text-align: center;
     margin: 0 auto;
+  }
+  .survey-content {
+    padding: 30px 3px 3px 3px;
   }
 }
 </style>

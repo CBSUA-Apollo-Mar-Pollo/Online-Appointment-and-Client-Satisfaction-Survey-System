@@ -36,24 +36,17 @@
       <p>To see your appointment status, copy the request number below</p>
       <h2 class="number">#{{ ReferenceNumber.referenceNum }}</h2>
       <div class="text-center">
-        <a
-          class="col-2 btn bg-light"
-          href="/ReferenceNumber"
-          role="button"
-          id="submit"
-          type="submit"
+        <button
+          class="col-2 btn bg-light mt-3 button"
         >
-          Copy </a
+          Copy</button
         ><br />
-        <a
-          class="col-2 btn bg-primary text-white mt-1"
-          href="/AppointmentStatus"
-          role="button"
-          id="submit"
-          type="submit"
+        <button
+          class="col-2 btn bg-primary text-white mt-3 button"
+          onclick="location.href='/AppointmentStatus';"
         >
           Next
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -183,6 +176,26 @@
 .icon--order-success svg circle#colored {
   -webkit-animation: colored-circle 0.6s ease-in-out 0.7s backwards;
   animation: colored-circle 0.6s ease-in-out 0.7s backwards;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-top: 30px;
+    width: 90%;
+  }
+  .AppointmentPage {
+    padding: 0;
+  }
+  .app-con {
+    margin-top: 1rem !important;
+  }
+  .number {
+    font-size: 30px;
+  }
+  .col-2 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
 }
 </style>
 

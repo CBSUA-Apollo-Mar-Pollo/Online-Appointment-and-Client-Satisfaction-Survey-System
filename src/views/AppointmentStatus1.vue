@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <div class="container">
     <div class="animation-ctn">
       <br />
@@ -10,31 +11,109 @@
         the status of your appointment request:
       </p>
 
-      <form name="form1" id="form1">
+      <form @submit.prevent="onSubmit">
         <div>
-          <input type="text" class="p-1 mt-3 border-2" id="text2" required />
+          <input
+            type="text"
+            class="p-1 mt-3 border-2"
+            id="text2"
+            required
+            v-model="referenceNum"
+          />
         </div>
-        <input
-          type="submit"
+        <button
+          @click="toggleModal"
+          type="button"
           class="col-2 btn bg-primary text-white mt-3 button"
-          value="Submit"
-          @click="showAlert"
-        />
+        >
+          Submit</button
+        ><br />
+        <button
+          class="col-2 btn bg-primary text-white mt-3 button"
+          type="submit"
+          onclick="location.href='/SurveyForm';"
+        >
+          Next
+        </button>
       </form>
     </div>
+    <Modal @close="toggleModal" :modalActive="modalActive"> </Modal>
   </div>
 </template>
 
-<style scoped>
+<script>
+import NavBar from "./NavBar.vue";
+import Modal from "../components/StatusModal.vue";
+import { ref } from "vue";
+import { test } from "@/parse/test";
+import Parse from "parse";
+import { useRouter } from "vue-router";
+
+export default {
+  name: "Home",
+  components: {
+    NavBar,
+    Modal,
+  },
+  setup() {
+    const referenceNum = ref("");
+    const onSubmit = () => {
+      const Data = Parse.Object.extend("test");
+      const query = new Parse.Query(Data);
+      query.equalTo("referenceNum", { referenceNum: referenceNum.value }).then(
+        (data) => {
+          console.log(data.map((e) => e.attributes));
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      console.log({ referenceNum: referenceNum.value });
+    };
+
+    const modalActive = ref(false);
+
+    const toggleModal = () => {
+      modalActive.value = !modalActive.value;
+    };
+
+    return { referenceNum, onSubmit, modalActive, toggleModal };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.home {
+  background-color: rgba(0, 176, 234, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+
+    h1,
+    p {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
 .container {
   box-shadow: 0 2px 5px rgb(175, 175, 175);
   padding: 5px;
-  width: 50%;
+  width: 90%;
   margin-top: 30px;
-}
-
-.bg-light {
-  color: #008aff;
 }
 
 .section-title h2 {
@@ -150,6 +229,11 @@
   -webkit-animation: colored-circle 0.6s ease-in-out 0.7s backwards;
   animation: colored-circle 0.6s ease-in-out 0.7s backwards;
 }
-</style>
 
-<script></script>
+@media screen and (max-width: 600px) {
+  .col-2 {
+    flex: 0 0 auto;
+    width: 41.66666667%;
+  }
+}
+</style>

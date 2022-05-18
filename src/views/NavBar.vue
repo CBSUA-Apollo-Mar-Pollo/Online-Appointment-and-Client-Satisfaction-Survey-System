@@ -58,7 +58,6 @@
       </ul>
     </div>
   </label>
-  <router-view />
 </template>
 
 <style scoped>

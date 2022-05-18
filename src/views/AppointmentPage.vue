@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <section id="AppointmentForm" class="AppointmentPage p-0">
     <div class="container" data-aos="fade-up">
       <div class="container app-con">
@@ -106,13 +107,6 @@
                         name="files"
                         multiple="multiple"
                       />
-                      <!-- <p>
-                        <input
-                          type="submit"
-                          value="Upload Files"
-                          class="btn btn-lg btn-primary"
-                        />
-                      </p> -->
                     </form>
                   </div>
                   <div class="col-md-4"></div>
@@ -178,6 +172,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .container {
+    margin-top: 30px;
+  }
   .AppointmentPage {
     padding: 0;
   }
@@ -188,6 +185,7 @@
 </style>
 
 <script>
+import NavBar from "./NavBar.vue";
 import { ref } from "vue";
 // eslint-disable-next-line no-unused-vars
 import { test } from "@/parse/test";
@@ -195,6 +193,10 @@ import Parse from "parse";
 import { useRouter } from "vue-router";
 
 export default {
+  components: {
+    NavBar,
+  },
+  
   setup() {
     const router = useRouter();
 

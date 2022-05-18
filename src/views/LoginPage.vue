@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <div class="container d-flex justify-around mt-5">
     <div class="content">
       <div class="text">Login Form</div>

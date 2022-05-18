@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <section id="SurveyForm" class="SurveyPage p-0">
     <div class="container" data-aos="fade-up">
       <div class="survey-content">

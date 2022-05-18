@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <section id="SurveyForm" class="SurveyPage">
     <div class="container" data-aos="fade-up">
       <header class="header">
@@ -800,7 +800,7 @@ export default {
 
     const onSubmit = () => {
       console.log({
-        symptoms: difficulties._rawValue,
+        symptoms: difficulties.value._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
@@ -808,13 +808,13 @@ export default {
       });
       test.save(userData);
       covidForm.save({
-        symptoms: difficulties._rawValue,
+        symptoms: difficulties.value._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
         emailAdd: userData.emailAdd,
       });
-      
+
       router.push({ name: "ReferenceNumber" });
     };
     console.log(userData);

@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <div class="container">
     <div class="animation-ctn">
       <div class="icon icon--order-success svg justify-around d-flex">

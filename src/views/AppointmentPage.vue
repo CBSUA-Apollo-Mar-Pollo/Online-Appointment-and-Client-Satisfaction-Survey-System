@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <section id="AppointmentForm" class="AppointmentPage p-0">
     <div class="container" data-aos="fade-up">
       <div class="container app-con">
@@ -107,13 +107,6 @@
                         name="files"
                         multiple="multiple"
                       />
-                      <!-- <p>
-                        <input
-                          type="submit"
-                          value="Upload Files"
-                          class="btn btn-lg btn-primary"
-                        />
-                      </p> -->
                     </form>
                   </div>
                   <div class="col-md-4"></div>

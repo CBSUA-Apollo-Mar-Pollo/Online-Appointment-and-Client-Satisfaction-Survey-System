@@ -1,9 +1,10 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
 import Parse from "parse";
+/* eslint-disable vue/no-unused-components */
 import NavBar from "./views/NavBar.vue";
 
 Parse.serverURL = "http://localhost:1337/api";

@@ -1,5 +1,5 @@
 <template>
-<NavBar/>
+  <NavBar />
   <section class="slice pt-4 pb-8">
     <div class="container" data-aos="fade-up">
       <div class="row row-grid align-items-center">

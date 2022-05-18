@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <section id="SurveyForm" class="SurveyPage">
     <div class="container" data-aos="fade-up">
       <header class="header">
@@ -13,432 +14,7 @@
           </p>
         </div>
       </header>
-      <form id="survey-form" @submit.prevent="onSubmit">
-        <div class="form-content">
-          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?</p>
-           <table id="symptoms-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>No</th>
-                <th>Slight</th>
-                <th>Medium</th>
-                <th>High</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cold"
-                      id="no-cold-id"
-                      type="radio"
-                      value="No-cold"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cold"
-                      id="id-slight-cold"
-                      type="radio"
-                      value="slightcold"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cold"
-                      id="id-medium-cold"
-                      type="radio"
-                      value="mediumcold"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cold"
-                      id="id-highcold"
-                      type="radio"
-                      value="highcold"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Fever"
-                      id="id-nofever"
-                      type="radio"
-                      value="Nofever"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Fever"
-                      id="id-slightfever"
-                      type="radio"
-                      value="slightfever"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Fever"
-                      id="id-mediumfever"
-                      type="radio"
-                      value="mediumfever"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Fever"
-                      id="id-highfever"
-                      type="radio"
-                      value="checkedValue"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cough"
-                      id="id-nocough"
-                      type="radio"
-                      value="nocough"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cough"
-                      id="id-slightcough"
-                      type="radio"
-                      value="checkedValue"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cough"
-                      id="id-mediumcough"
-                      type="radio"
-                      value="mediumcough"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Cough"
-                      id="id-highcough"
-                      type="radio"
-                      value="highcough"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Shortness-of-Breath"
-                      id="id-No-ShortnessofBreath"
-                      type="radio"
-                      value="NoShortnessofBreath"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Shortness-of-Breath"
-                      id="id-slight-ShortnessofBreath"
-                      type="radio"
-                      value="slight-ShortnessofBreath"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Shortness-of-Breath"
-                      id="id-medium-ShortnessofBreath"
-                      type="radio"
-                      value="medium-ShortnessofBreath"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Shortness-of-Breath"
-                      id="id-high-ShortnessofBreath"
-                      type="radio"
-                      value="high-ShortnessofBreath"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Headache"
-                      id="id-no-Headache"
-                      type="radio"
-                      value="no-Headache"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Headache"
-                      id="id-slight-Headache"
-                      type="radio"
-                      value="slight-Headache"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Headache"
-                      id="id-medium-headache"
-                      type="radio"
-                      value="medium-headache"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Headache"
-                      id="id-high-headache"
-                      type="radio"
-                      value="high-headache"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Muscle-Pain"
-                      id="id-no-Muscle-Pain"
-                      type="radio"
-                      value="no-Muscle-Pain"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Muscle-Pain"
-                      id="id-slight-Muscle-Pain"
-                      type="radio"
-                      value="slight-Muscle-Pain"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Muscle-Pain"
-                      id="id-medium-Muscle-Pain"
-                      type="radio"
-                      value="medium-Muscle-Pain"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Muscle-Pain"
-                      id="is-medium-Muscle-Pain"
-                      type="radio"
-                      value="medium-Muscle-Pain"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Sore-Throat"
-                      id="id-no-sore-throat"
-                      type="radio"
-                      value="checkedValue"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Sore-Throat"
-                      id="id-slight-sore-throat"
-                      type="radio"
-                      value="slight-sore-throat"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Sore-Throat"
-                      id="id-medium-sore-throat"
-                      type="radio"
-                      value="medium-sore-throat"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Sore-Throat"
-                      id="id-high-sore-throat"
-                      type="radio"
-                      value="high-sore-throat"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Diarrhea"
-                      id="id-no-Diarrhea"
-                      type="radio"
-                      value="no-Diarrhea"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Diarrhea"
-                      id="id-slight-Diarrhea"
-                      type="radio"
-                      value="slight-Diarrhea"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Diarrhea"
-                      id="id-medium-Diarrhea"
-                      type="radio"
-                      value="medium-Diarrhea"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-                <td>
-                  <label class="form-check-label-table">
-                    <input
-                      class="form-check-input"
-                      name="Diarrhea"
-                      id="id-high-Diarrhea"
-                      type="radio"
-                      value="high-Diarrhea"
-                      aria-label=""
-                    />
-                  </label>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
-        </div>
-        <hr />
+      <form class="mt-3" id="survey-form" @submit.prevent="onSubmit">
         <hr />
         <div class="form-check form-content">
           <p>Do you have any of the following symptoms ?</p>
@@ -597,55 +173,6 @@
   </section>
 </template>
 
-<script>
-import { ref } from "vue";
-import { test } from "@/parse/test";
-import { covidForm } from "@/parse/covid19form";
-// eslint-disable-next-line no-unused-vars
-import Parse from "parse";
-import { useRouter } from "vue-router";
-
-export default {
-  setup() {
-    const difficulties = ref([]);
-    const past15days = ref("");
-    const PositiveContact = ref("");
-    const travelAbroad = ref("");
-    const userData = JSON.parse(localStorage.getItem("storedData"));
-    const router = useRouter();
-
-    const onSubmit = () => {
-      console.log({
-        symptoms: difficulties._rawValue,
-        past15days: past15days.value,
-        PositiveContact: PositiveContact.value,
-        travelAbroad: travelAbroad.value,
-        emailAdd: userData.emailAdd,
-      });
-      test.save(userData);
-      covidForm.save({
-        symptoms: difficulties._rawValue,
-        past15days: past15days.value,
-        PositiveContact: PositiveContact.value,
-        travelAbroad: travelAbroad.value,
-        emailAdd: userData.emailAdd,
-      });
-      
-      router.push({ name: "ReferenceNumber" });
-    };
-    console.log(userData);
-    return {
-      onSubmit,
-      difficulties,
-      past15days,
-      PositiveContact,
-      travelAbroad,
-      userData,
-    };
-  },
-};
-</script>
-
 <style scoped>
 .section-title h2 {
   padding: 50px 50px 0px 50px;
@@ -665,7 +192,7 @@ export default {
 }
 
 .form-content {
-  padding: 30px 50px 30px 50px;
+  padding: 30px 50px 0 50px;
 }
 
 .container {
@@ -823,3 +350,57 @@ input[type="radio"] input[type="checkbox"] {
   justify-content: center;
 }
 </style>
+
+<script>
+import NavBar from "./NavBar.vue";
+import { ref } from "vue";
+import { test } from "@/parse/test";
+import { covidForm } from "@/parse/covid19form";
+// eslint-disable-next-line no-unused-vars
+import Parse from "parse";
+import { useRouter } from "vue-router";
+
+export default {
+  components: {
+    NavBar,
+  },
+
+  setup() {
+    const difficulties = ref([]);
+    const past15days = ref("");
+    const PositiveContact = ref("");
+    const travelAbroad = ref("");
+    const userData = JSON.parse(localStorage.getItem("storedData"));
+    const router = useRouter();
+
+    const onSubmit = () => {
+      console.log({
+        symptoms: difficulties.value._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+      test.save(userData);
+      covidForm.save({
+        symptoms: difficulties.value._rawValue,
+        past15days: past15days.value,
+        PositiveContact: PositiveContact.value,
+        travelAbroad: travelAbroad.value,
+        emailAdd: userData.emailAdd,
+      });
+
+      router.push({ name: "ReferenceNumber" });
+    };
+    console.log(userData);
+    return {
+      onSubmit,
+      difficulties,
+      past15days,
+      PositiveContact,
+      travelAbroad,
+      userData,
+    };
+  },
+};
+</script>

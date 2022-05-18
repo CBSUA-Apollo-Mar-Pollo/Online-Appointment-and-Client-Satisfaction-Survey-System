@@ -3,3 +3,23 @@
 * {
     font-family: Inter;
 }
+
+html {
+    --scrollbarBG: #7dd3fc;
+    --thumbBG: #ffffff;
+  }
+  body::-webkit-scrollbar {
+    width: 11px;
+  }
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 5px;
+    border: 2px solid var(--scrollbarBG);
+  }

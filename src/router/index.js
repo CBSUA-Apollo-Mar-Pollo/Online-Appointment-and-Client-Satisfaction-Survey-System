@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import WelcomePage from "../views/WelcomePage.vue";
 import AppointmentPage from "../views/AppointmentPage.vue";
-import AppointmentStatus from "../views/AppointmentStatus.vue";
-import StatusPage from "../views/StatusPage.vue";
+import AppointmentStatus1 from "../views/AppointmentStatus1.vue";
+import AppointmentStatus2 from "../views/AppointmentStatus2.vue";
 import SelfAssessment from "../views/SelfAssessment.vue";
 import ReferenceNumber from "../views/ReferenceNumber.vue";
 import SatisfactionSurvey from "../views/SatisfactionSurvey.vue";
@@ -21,13 +21,13 @@ const routes = [
   },
   {
     path: "/AppointmentStatus",
-    name: "AppointmentStatus",
-    component: AppointmentStatus,
+    name: "AppointmentStatus1",
+    component: AppointmentStatus1,
   },
   {
     path: "/CheckStatus",
-    name: "StatusPage",
-    component: StatusPage,
+    name: "AppointmentStatus2",
+    component: AppointmentStatus2,
   },
   {
     path: "/SurveyForm",

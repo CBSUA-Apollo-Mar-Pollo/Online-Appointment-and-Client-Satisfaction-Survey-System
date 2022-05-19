@@ -7,10 +7,12 @@ import SelfAssessment from "../views/SelfAssessment.vue";
 import ReferenceNumber from "../views/ReferenceNumber.vue";
 import SatisfactionSurvey from "../views/SatisfactionSurvey.vue";
 import LoginPage from "../views/LoginPage.vue";
-import DashboardHome from "../views/admin/pages/Home.vue";
-import Dashboard from "../views/admin/components/Dashboard.vue";
+
+import AdminHome from "../views/admin/pages/Home.vue";
+import AdminDashboard from "../views/admin/components/Dashboard.vue";
 import ManageAdmin from "../views/admin/components/ManageAdmin.vue";
 import ManageEmployee from "../views/admin/components/ManageEmployee.vue";
+
 import EmployeeHome from "../views/employee/pages/Home.vue";
 import EmployeeDashboard from "../views/employee/components/Dashboard.vue";
 import ManageAppointment from "../views/employee/components/ManageAppointment.vue";
@@ -57,10 +59,10 @@ const routes = [
     name: "LoginPage",
     component: LoginPage,
   },
-  { path: '/Admin', redirect: { name: 'DashboardHome' } },
-  { path: '/dashboard', component: Dashboard, children: [
-      { path: '/Admin', redirect: { name: 'DashboardHome' } },
-      { path: 'home', name: 'DashboardHome', component: DashboardHome }
+  { path: '/Admin', redirect: { name: 'AdminHome' } },
+  { path: '/AdminDashboard', component: AdminDashboard, children: [
+      { path: '/Admin', redirect: { name: 'AdminHome' } },
+      { path: 'home', name: 'AdminHome', component: AdminHome }
     ]
   },
   {

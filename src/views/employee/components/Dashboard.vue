@@ -29,7 +29,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 export default {
-  name: 'Dashboard',
+  name: 'EmployeeDashboard',
   computed: {
     ...mapState(['sideBarOpen'])
   },

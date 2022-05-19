@@ -21,14 +21,14 @@
         <button
           class="col-2 btn bg-info text-white mt-3 button"
           type="submit"
-          onclick="location.href='/Admin';"
+          onclick="location.href='/AdminDashboard';"
         >
           Admin
         </button>
         <button
           class="col-2 btn bg-success text-white mt-3 button"
           type="submit"
-          onclick="location.href='/Employee';"
+          onclick="location.href='/EmployeeDashboard';"
         >
           Employee
         </button>

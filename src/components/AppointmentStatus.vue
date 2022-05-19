@@ -50,9 +50,10 @@ export default {
     const onSubmit = () => {
       const Data = Parse.Object.extend("test");
       const query = new Parse.Query(Data);
-      query.equalTo("referenceNum", { referenceNum: referenceNum.value }).then(
+      query.equalTo("referenceNum" , referenceNum.value);
+      query.first().then(
         (data) => {
-          console.log(data.map((e) => e.attributes));
+          console.log(data.attributes);
         },
         (error) => {
           console.log(error);

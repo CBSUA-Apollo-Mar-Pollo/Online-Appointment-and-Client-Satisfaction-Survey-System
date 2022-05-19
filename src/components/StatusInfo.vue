@@ -44,7 +44,7 @@
                         ><i class="bi bi-calendar-week-fill"></i>
                         Time/Date</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">1:00PM 01-01-2022</span>
                     </div>
                   </td>
                 </tr>
@@ -55,7 +55,7 @@
                         ><i class="bi bi-card-heading"></i> Affliation of
                         Client</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">Lorem Ipsum</span>
                     </div>
                   </td>
                 </tr>
@@ -66,7 +66,7 @@
                         ><i class="bi bi-card-heading"></i> Reason for the
                         Visit</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">Reason 1 - Division</span>
                     </div>
                   </td>
                 </tr>
@@ -78,9 +78,7 @@
                         Appointment</span
                       >
                       <span class="subheadings"
-                        >Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.</span
+                        >Lorem ipsum</span
                       >
                     </div>
                   </td>
@@ -115,6 +113,7 @@
 
 .modal-body {
   padding: 0rem !important;
+  width: 800px;
 }
 
 .modal-title {
@@ -208,5 +207,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-body {
+    width: 350px;
+}
 }
 </style>

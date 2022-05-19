@@ -1,4 +1,4 @@
-# oacss
+# Online Appointment and Client Satisfaction Survey (OACSS)
 
 ## Project setup
 ```

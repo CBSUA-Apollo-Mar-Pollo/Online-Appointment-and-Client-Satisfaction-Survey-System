@@ -18,20 +18,20 @@
         <button>Sign in</button>
       </form>
       <!--Temporary Buttons-->
-        <button
-          class="col-2 btn bg-info text-white mt-3 button"
-          type="submit"
-          onclick="location.href='/Admin';"
-        >
-          Admin
-        </button>
-        <button
-          class="col-2 btn bg-success text-white mt-3 button"
-          type="submit"
-          onclick="location.href='/Employee';"
-        >
-          Employee
-        </button>
+      <button
+        class="col-2 btn bg-info text-white mt-3 button"
+        type="submit"
+        onclick="location.href='/Admin';"
+      >
+        Admin
+      </button>
+      <button
+        class="col-2 btn bg-success text-white mt-3 button"
+        type="submit"
+        onclick="location.href='/Employee';"
+      >
+        Employee
+      </button>
       <!--Temporary Buttons-->
     </div>
   </div>

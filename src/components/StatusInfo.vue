@@ -77,9 +77,7 @@
                         ><i class="bi bi-circle-fill"></i> Reason for
                         Appointment</span
                       >
-                      <span class="subheadings"
-                        >Lorem ipsum</span
-                      >
+                      <span class="subheadings">Lorem ipsum</span>
                     </div>
                   </td>
                 </tr>
@@ -212,6 +210,6 @@
 @media screen and (max-width: 600px) {
   .modal-body {
     width: 350px;
-}
+  }
 }
 </style>

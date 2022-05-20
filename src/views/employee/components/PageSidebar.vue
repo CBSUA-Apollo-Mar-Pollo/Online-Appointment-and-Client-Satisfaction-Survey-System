@@ -4,7 +4,7 @@
             <p class="font-semibold text-3xl text-blue-400 pl-4">EMPLOYEE</p>
           </div>
           <div class="mb-4 px-4">
-            <p class="pl-4 text-sm font-semibold mb-1">MAIN</p>
+            <p class="text-left pl-4 text-sm font-semibold mb-1">MAIN</p>
 
             <a href="/EmployeeDashboard">
             <div class="w-full flex items-center text-blue-400 h-10 pl-4 bg-gray-200 rounded-lg cursor-pointer">
@@ -50,7 +50,7 @@
 import { mapState } from 'vuex'
 
 export default {
-    name: 'Sidebar',
+    name: 'PageSidebar',
     computed: {
         ...mapState(['sideBarOpen'])
     }

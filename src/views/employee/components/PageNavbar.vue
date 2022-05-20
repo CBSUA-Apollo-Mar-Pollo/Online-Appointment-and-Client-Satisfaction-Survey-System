@@ -28,7 +28,7 @@
 import { mapState } from 'vuex'
 
 export default {
-    name: 'Navbar',
+    name: 'PageNavbar',
     computed: {
         ...mapState(['sideBarOpen'])
     },

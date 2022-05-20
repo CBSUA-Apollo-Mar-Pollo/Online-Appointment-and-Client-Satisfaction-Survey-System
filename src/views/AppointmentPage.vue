@@ -227,8 +227,8 @@ export default {
         comments: comments.value,
         referenceNum: referenceNum
       });
-      console.log(data._rawValue);
-      localStorage.setItem("storedData", JSON.stringify(data._rawValue));
+      console.log(data.value._rawValue);
+      localStorage.setItem("storedData", JSON.stringify(data.value._rawValue));
       router.push({ name: "SelfAssessment" });
     };
 

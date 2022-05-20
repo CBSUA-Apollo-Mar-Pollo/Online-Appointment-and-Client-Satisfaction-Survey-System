@@ -36,12 +36,14 @@
 <script>
 import Modal from "./StatusModal.vue";
 import { ref } from "vue";
+// eslint-disable-next-line
 import { test } from "@/parse/test";
 import Parse from "parse";
+// eslint-disable-next-line
 import { useRouter } from "vue-router";
 
 export default {
-  name: "Home",
+  name: "AppointmentStatus",
   components: {
     Modal,
   },

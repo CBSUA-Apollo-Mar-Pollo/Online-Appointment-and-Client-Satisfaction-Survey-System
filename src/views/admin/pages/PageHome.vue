@@ -2,7 +2,7 @@
     <div id="home">
 
         <!-- breadcrumb -->
-            <nav class="text-sm font-semibold mb-6" aria-label="Breadcrumb">
+            <nav class="text-left text-sm font-semibold mb-6" aria-label="Breadcrumb">
               <ol class="list-none p-0 inline-flex">
                 <li class="flex items-center text-blue-500">
                   <a href="#" class="text-gray-700">Home</a>
@@ -84,7 +84,7 @@
 import Chart from 'chart.js'
 
 export default {
-    name: 'EmployeeHome',
+    name: 'AdminHome',
     data() {
         return {
             buyersData: {

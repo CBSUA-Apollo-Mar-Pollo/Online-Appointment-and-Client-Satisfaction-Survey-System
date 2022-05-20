@@ -37,23 +37,25 @@
         </button>
       </form>
     </div>
-    <Modal @close="toggleModal" :modalActive="modalActive"> </Modal>
+    <StatusModal @close="toggleModal" :modalActive="modalActive"> </StatusModal>
   </div>
 </template>
 
 <script>
 import NavBar from "./NavBar.vue";
-import Modal from "../components/StatusModal.vue";
+import StatusModal from "../components/StatusModal.vue";
 import { ref } from "vue";
+// eslint-disable-next-line
 import { test } from "@/parse/test";
 import Parse from "parse";
+// eslint-disable-next-line
 import { useRouter } from "vue-router";
 
 export default {
-  name: "Home",
+  name: "AppointmentStatus1",
   components: {
     NavBar,
-    Modal,
+    StatusModal,
   },
   setup() {
     const referenceNum = ref("");

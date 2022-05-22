@@ -22,7 +22,6 @@
         </div>
         <button
           @click="toggleModal"
-          type="button"
           class="col-2 btn bg-primary text-white mt-3 button"
         >
           Submit
@@ -35,7 +34,8 @@
 
 <script>
 import Modal from "./StatusModal.vue";
-import { ref } from "vue";
+import { ref , computed } from "vue";
+import { useStore } from 'vuex'
 import { test } from "@/parse/test";
 import Parse from "parse";
 import { useRouter } from "vue-router";
@@ -46,14 +46,17 @@ export default {
     Modal,
   },
   setup() {
+    const store = useStore();
+
     const referenceNum = ref("");
     const onSubmit = () => {
       const Data = Parse.Object.extend("test");
       const query = new Parse.Query(Data);
       query.equalTo("referenceNum" , referenceNum.value);
       query.first().then(
-        (data) => {
+        async (data) => {
           console.log(data.attributes);
+          await store.dispatch('appointmentStatus' , data.attributes)
         },
         (error) => {
           console.log(error);

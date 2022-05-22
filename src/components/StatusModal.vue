@@ -29,6 +29,7 @@ export default {
   setup(props, { emit }) {
     const close = () => {
       emit("close");
+      //window.location.reload();
     };
 
     return { close };

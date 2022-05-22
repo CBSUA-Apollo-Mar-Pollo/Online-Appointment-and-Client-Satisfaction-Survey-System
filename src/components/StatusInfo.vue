@@ -31,10 +31,10 @@
                 <tr>
                   <td>
                     <span class="heading d-block"
-                      ><i class="bi bi-person-fill"></i> Juan Dela Cruz</span
+                      ><i class="bi bi-person-fill"></i>{{ appointmentStatus?.fName + " " + appointmentStatus?.lName}}</span
                     >
-                    <span class="subheadings d-block">09XXXXXXXX</span>
-                    <span class="subheadings d-block">username@domain.com</span>
+                    <span class="subheadings d-block">{{ appointmentStatus?.contactNum }}</span>
+                    <span class="subheadings d-block">{{ appointmentStatus?.emailAdd }}</span>
                   </td>
                 </tr>
                 <tr>
@@ -44,7 +44,7 @@
                         ><i class="bi bi-calendar-week-fill"></i>
                         Time/Date</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">{{ appointmentStatus?.time + " " + appointmentStatus?.date}}</span>
                     </div>
                   </td>
                 </tr>
@@ -55,7 +55,7 @@
                         ><i class="bi bi-card-heading"></i> Affliation of
                         Client</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">{{ appointmentStatus?.AffliationOfClient }}</span>
                     </div>
                   </td>
                 </tr>
@@ -66,7 +66,7 @@
                         ><i class="bi bi-card-heading"></i> Reason for the
                         Visit</span
                       >
-                      <span class="subheadings">5:00PM 3-12-2020</span>
+                      <span class="subheadings">{{ appointmentStatus?.reasonOfVisit }}</span>
                     </div>
                   </td>
                 </tr>
@@ -78,9 +78,7 @@
                         Appointment</span
                       >
                       <span class="subheadings"
-                        >Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.</span
+                        >{{ appointmentStatus?.comments }}</span
                       >
                     </div>
                   </td>
@@ -93,6 +91,24 @@
     </div>
   </div>
 </template>
+
+<script>
+import { ref , computed } from "vue";
+import { useStore } from 'vuex'
+
+export default {
+  setup() {
+    const store = useStore();
+    const appointmentStatus = ref(JSON.parse(localStorage.getItem("appointmentStatus")));
+    console.log(appointmentStatus.fName)
+
+    return {
+      appointmentStatus: computed(() => store.state.status)
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 .container {
@@ -114,7 +130,7 @@
 }
 
 .modal-body {
-  padding: 0rem !important;
+  padding: 0 10rem !important;
 }
 
 .modal-title {

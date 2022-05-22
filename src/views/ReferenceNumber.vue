@@ -34,13 +34,13 @@
         <h2 class="ref">Reference ID</h2>
       </div>
       <p>To see your appointment status, copy the request number below</p>
-      <h2 class="number">#{{ ReferenceNumber.referenceNum }}</h2>
+      <h2 class="number">{{ ReferenceNumber.referenceNum }}</h2>
       <div class="text-center">
-        <button
+        <!-- <button
           class="col-2 btn bg-light mt-3 button"
         >
-          Copy</button
-        ><br />
+          Copy</button -->
+        <br />
         <button
           class="col-2 btn bg-primary text-white mt-3 button"
           onclick="location.href='/AppointmentStatus';"

@@ -130,7 +130,8 @@ export default {
 }
 
 .modal-body {
-  padding: 0 10rem !important;
+  padding: 0rem !important;
+  width: 800px;
 }
 
 .modal-title {
@@ -224,5 +225,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-body {
+    width: 350px;
+}
 }
 </style>

@@ -72,7 +72,7 @@
                   <p>Reason for the Visit*</p>
                   <select class="form-select" v-model="reasonOfVisit">
                     <option selected>Select Reason/s*</option>
-                    <option value="Reason 1">Reason 1 - Division</option>
+                    <option value="Reason 1">Reason 1 - Sample</option>
                     <option value="Reason 2">Reason 2 - Division</option>
                     <option value="Reason 3">Reason 3 - Division</option>
                   </select>

@@ -7,6 +7,8 @@ import SelfAssessment from "../views/SelfAssessment.vue";
 import ReferenceNumber from "../views/ReferenceNumber.vue";
 import SatisfactionSurvey from "../views/SatisfactionSurvey.vue";
 import LoginPage from "../views/LoginPage.vue";
+import Admin from "../views/admin/Dashboard.vue";
+import Employee from "../views/Employee/Dashboard.vue";
 
 const routes = [
   {
@@ -48,6 +50,16 @@ const routes = [
     path: "/Login",
     name: "LoginPage",
     component: LoginPage,
+  },
+  {
+    path: "/Admin",
+    name: "Admin",
+    component: Admin,
+  },
+  {
+    path: "/Employee",
+    name: "Employee",
+    component: Employee,
   },
 ];
 

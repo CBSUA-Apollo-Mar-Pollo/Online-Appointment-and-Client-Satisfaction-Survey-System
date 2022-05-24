@@ -38,11 +38,13 @@ export default {
   setup() {
     const referenceNum = ref("");
     const onSubmit = () => {
-      const Data = Parse.Object.extend("test");
-      const query = new Parse.Query(Data);
-      query.equalTo("referenceNum" , { referenceNum : referenceNum.value} ).then(
+      
+      var Data = Parse.Object.extend("test");
+      var query = new Parse.Query(Data);
+      query.equalTo("referenceNum" , referenceNum.value );
+      query.first().then(
         (data) => {
-          console.log(data.map((e) => e.attributes));
+          console.log(data.attributes);
         },
         (error) => {
           console.log(error);

@@ -1,0 +1,33 @@
+.home {
+  margin: 0 50px auto;
+}
+.m-l-10 {
+  margin-left:10px;
+}
+.errorMsg {
+  color: red;
+  font-size: 12px;
+}
+.heading {
+  padding-bottom: 15px;
+}
+
+.table-title {
+  font-weight: bold;
+  color: #008aff;
+  text-align: center;
+  margin: 20px;
+}
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+  width: 250px;
+}
+
+tbody {
+  font-size: 14px;
+  text-align: center;
+}

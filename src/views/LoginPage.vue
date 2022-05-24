@@ -3,21 +3,19 @@
   <div class="container d-flex justify-around mt-5">
     <div class="content">
       <div class="text">Login Form</div>
-      <form action="#">
+      <form @submit.prevent="handleSubmit">
         <div class="field">
-          <span class="fas fa-user"></span>
-          <input type="text" required />
-          <label>Email or Phone</label>
+          <input type="email" placeholder="Email" name="email" v-model="email" required>
         </div>
         <div class="field">
           <span class="fas fa-lock"></span>
-          <input type="password" />
-          <label>Password</label>
+          <input type="password" placeholder="Password" id="password" name="password" v-model="password" required>
         </div>
         <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
+        <div v-if="er">{{ er }}</div>
         <button>Sign in</button>
       </form>
-      <!--Temporary Buttons-->
+      <!-- Temporary Buttons
         <button
           class="col-2 btn bg-info text-white mt-3 button"
           type="submit"
@@ -31,11 +29,58 @@
           onclick="location.href='/Employee';"
         >
           Employee
-        </button>
+        </button> -->
       <!--Temporary Buttons-->
     </div>
   </div>
 </template>
+
+<script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router'
+import Parse from "parse";
+import NavBar from "./NavBar.vue";
+
+export default {
+  components: {
+    NavBar,
+  },
+  setup(){
+    const store = useStore()
+    const router = useRouter()
+
+    const email = ref('')
+    const password = ref('')
+    const er = ref(null)
+    var user = new Parse.User();
+    user.set("email" , email.value);
+    user.set("password" , email.value);
+
+    const handleSubmit = async () => {
+      // try {
+      //   await store.dispatch('login' , { email: email.value , password: password.value})
+      //   //router.push('/Admin')
+      // } catch (err) {
+      //   error.value = "Authentication failed"
+      // }
+      console.log(email.value , password.value)
+      Parse.User.logIn(email.value , password.value).then(function(user){
+        console.log(Parse.User.current().attributes.ACL.permissionsById['role:Employee'])
+        var res = Parse.User.current().attributes.ACL.permissionsById ;
+        if(res['role:Employee']) {
+          router.push('/Employee')
+        } else if(res['role:admin']){
+          router.push('/Admin')
+        }  
+      } , function error(err) {
+        er.value = "Authentication Failed"
+      }) 
+    }
+    return { handleSubmit, email, password , er}
+  }
+};
+</script>
 
 <style scoped>
 * {
@@ -80,9 +125,9 @@ body {
   outline: none;
   border: none;
   color: #595959;
-  background: #e7f4ff;
-  border-radius: 25px;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+  background: #e6effa;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 6px #babecc, inset -5px -5px 10px #ffffff73;
 }
 
 .field input:focus ~ label {
@@ -174,12 +219,3 @@ button:focus {
 }
 </style>
 
-<script>
-import NavBar from "./NavBar.vue";
-
-export default {
-  components: {
-    NavBar,
-  },
-};
-</script>

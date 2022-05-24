@@ -375,7 +375,7 @@ export default {
 
     const onSubmit = () => {
       console.log({
-        symptoms: difficulties.value._rawValue,
+        symptoms: difficulties._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
@@ -383,7 +383,7 @@ export default {
       });
       test.save(userData);
       covidForm.save({
-        symptoms: difficulties.value._rawValue,
+        symptoms: difficulties._rawValue,
         past15days: past15days.value,
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,

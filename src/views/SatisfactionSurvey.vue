@@ -3,7 +3,7 @@
   <section id="SurveyForm" class="SurveyPage p-0">
     <div class="container" data-aos="fade-up">
       <div class="survey-content">
-        <form action="/">
+        <form  @submit.prevent="handleSubmit">
           <table>
             <div class="section-title text-left">
               <h2>Client Satisfaction Survey</h2>
@@ -34,51 +34,51 @@
               <td class="first-col">
                 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
               </td>
-              <td><input type="radio" value="none" name="q1" /></td>
-              <td><input type="radio" value="none" name="q1" /></td>
-              <td><input type="radio" value="none" name="q1" /></td>
-              <td><input type="radio" value="none" name="q1" /></td>
-              <td><input type="radio" value="none" name="q1" /></td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo1"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo1"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo1"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo1"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo1"/></td>
             </tr>
             <tr>
               <td class="first-col">
                 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
               </td>
-              <td><input type="radio" value="none" name="q2" /></td>
-              <td><input type="radio" value="none" name="q2" /></td>
-              <td><input type="radio" value="none" name="q2" /></td>
-              <td><input type="radio" value="none" name="q2" /></td>
-              <td><input type="radio" value="none" name="q2" /></td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo2"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo2"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo2"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo2"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo2"/></td>
             </tr>
             <tr>
               <td class="first-col">
                 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
               </td>
-              <td><input type="radio" value="none" name="q3" /></td>
-              <td><input type="radio" value="none" name="q3" /></td>
-              <td><input type="radio" value="none" name="q3" /></td>
-              <td><input type="radio" value="none" name="q3" /></td>
-              <td><input type="radio" value="none" name="q3" /></td>
+               <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo3"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo3"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo3"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo3"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo3"/></td>
             </tr>
             <tr>
               <td class="first-col">
                 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
               </td>
-              <td><input type="radio" value="none" name="q4" /></td>
-              <td><input type="radio" value="none" name="q4" /></td>
-              <td><input type="radio" value="none" name="q4" /></td>
-              <td><input type="radio" value="none" name="q4" /></td>
-              <td><input type="radio" value="none" name="q4" /></td>
+               <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo4"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo4"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo4"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo4"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo4"/></td>
             </tr>
             <tr>
               <td class="first-col">
                 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
               </td>
-              <td><input type="radio" value="none" name="q5" /></td>
-              <td><input type="radio" value="none" name="q5" /></td>
-              <td><input type="radio" value="none" name="q5" /></td>
-              <td><input type="radio" value="none" name="q5" /></td>
-              <td><input type="radio" value="none" name="q5" /></td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo5"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo5"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo5"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo5"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo5"/></td>
             </tr>
           </table>
           <h4 class="pt-4">Comment/s:</h4>
@@ -86,6 +86,7 @@
             class="rounded"
             rows="5"
             placeholder=" Your answer "
+            v-model="comment"
           ></textarea>
           <div class="btn-block">
             <button class="col-5" type="submit" href="/">Submit</button>
@@ -95,6 +96,65 @@
     </div>
   </section>
 </template>
+
+<script>
+import NavBar from "./NavBar.vue";
+import { ref } from "vue";
+// eslint-disable-next-line no-unused-vars
+import Parse from "parse";
+import { useRouter } from "vue-router";
+import { css } from '@/parse/css'
+
+
+export default {
+  components: {
+    NavBar,
+  },
+
+  setup() {
+    const router = useRouter();
+    const userData = JSON.parse(localStorage.getItem("storedData"));
+    const pickedNo1 = ref("");
+    const pickedNo2 = ref("");
+    const pickedNo3 = ref("");
+    const pickedNo4 = ref("");
+    const pickedNo5 = ref("");
+    const comment = ref("");
+
+    const handleSubmit = () => {
+      console.log({
+        No1: pickedNo1.value,
+        No2: pickedNo2.value,
+        No3: pickedNo3.value,
+        No4: pickedNo4.value,
+        No5: pickedNo5.value,
+        comment: comment.value,
+        emailAdd: userData.emailAdd,
+      });
+      css.save({
+        pickedNo1: pickedNo1.value,
+        pickedNo2: pickedNo2.value,
+        pickedNo3: pickedNo3.value,
+        pickedNo4: pickedNo4.value,
+        pickedNo5: pickedNo5.value,
+        comment: comment.value,
+        emailAdd: userData.emailAdd,
+      });
+
+      router.push({ name: "WelcomePage" });
+    };
+    return {
+      handleSubmit,
+      pickedNo1,
+      pickedNo2,
+      pickedNo3,
+      pickedNo4,
+      pickedNo5,
+      comment
+    };
+  },
+};
+</script>
 
 <style scoped>
 html,
@@ -248,12 +308,3 @@ button:hover {
 }
 </style>
 
-<script>
-import NavBar from "./NavBar.vue";
-
-export default {
-  components: {
-    NavBar,
-  },
-};
-</script>

@@ -15,6 +15,11 @@
 <script>
 import NavBar from "./NavBar.vue";
 import Table from '../../components/Employee/AppointmentTable.vue'
+import { ref , reactive } from "vue";
+// eslint-disable-next-line no-unused-vars
+import { test } from "@/parse/test";
+import Parse from "parse";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -22,17 +27,28 @@ export default {
     Table
   },
   setup(){
+    var appointmentData = ref([])
+    const Data = Parse.Object.extend("test");
+    const query = new Parse.Query(Data);
+    query.find().then(
+      async (data) => {
+        console.log(data.map((e) => e.id));
+        console.log(data.map((e) => e.attributes));
+        appointmentData.value = await data.map((e) => e.attributes)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-    //An array of values for the data
-       const appointmentData = [
-      {ID:"12345", Firstname: "Lucy", Lastname:"Sy", Email:"a@abc.com", Contact:"09876543218", Affliation:"Lorem ipsum", Reason:"Lorem ipsum", Date:"Lorem ipsum", Message: "Lorem ipsum"},
-     {ID:"12346", Firstname: "Haze", Lastname:"Swift", Email:"b@abc.com", Contact:"09876543213", Affliation:"Lorem ipsum", Reason:"Lorem ipsum", Date:"Lorem ipsum", Message: "Lorem ipsum"},
-      {ID:"12347", Firstname: "Carl", Lastname:"Cruz", Email:"c@abc.com", Contact:"09876543212", Affliation:"Lorem ipsum", Reason:"Lorem ipsum", Date:"Lorem ipsum", Message: "Lorem ipsum"},
-    ]
+    console.log(appointmentData);
+
 
     const fields = [
-      'ID','Firstname','Lastname','Email','Contact','Affliation','Reason','Date','Message'
+      'FirstName','Lastname','Email','Contact','Affliation','Reason','Date','Message'
     ]
+
+    
 
     return{appointmentData,fields}
   },

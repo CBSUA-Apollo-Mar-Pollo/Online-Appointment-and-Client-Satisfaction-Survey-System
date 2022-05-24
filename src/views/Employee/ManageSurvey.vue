@@ -1,120 +1,57 @@
 <template>
 <div>
-<NavBar />
-  <div class="container">
-    <h3 class="table-title">Manage Survey</h3>
-    <div>
-      <b-table
-        striped
-        hover
-        :items="listItems"
-        :fields="fields"
-        :current-page="currentPage"
-        :per-page="0">
-        <template v-slot:cell(action)="data">
-          <b-button size="sm" class="mr-1" @click="edit(data)">
-            Edit
-          </b-button>
-          <b-button size="sm" @click="deleteRecord(data)">
-            Delete
-          </b-button>
-        </template>
-        </b-table>
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalPages"
-          :per-page="recordsPerPage">
-        </b-pagination>
-        <loading :active.sync="isLoading"
-          :can-cancel="true"
-          :is-full-page="true"></loading>
+    <NavBar />
+    <div class="container text-center  mt-5 mb-5">
+    <h1 class="table-title mt-5 fw-bolder">Manage Survey</h1>
+     <div class="table-responsive my-5">
+      
+      <!-- The table component -->
+       <Table :fields='fields' :surveyData ="surveyData"></Table>
+     </div>
     </div>
-  </div>
 </div>
 </template>
 
 <script>
 import NavBar from "./NavBar.vue";
-import { employeeService } from './service/employeeservice'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/vue-loading.css'
+import Table from '../../components/Employee/SurveyTable.vue'
 
 export default {
-  name: 'call_rest_api',
-  data () {
-    return {
-      listItems: [],
-      currentPage: 1,
-      totalPages: 0,
-      recordsPerPage: 10,
-      isLoading: false,
-      fields: [
-        {
-          key: '_id', label: 'Reference Number', sortable: true, sortDirection: 'desc'
-        },
-        {
-          key: 'name', label: 'Name', sortable: true, class: 'text-center'
-        },
-        {
-          key: 'airline[0].name', label: 'Aireline Name', sortable: true, image: true
-        },
-        {
-          key: 'airline[0].country', label: 'Country', sortable: true
-        },
-        {
-          key: 'action', label: 'Actions'
-        }
-      ],
-      params: ''
-    }
-  },
   components: {
-    NavBar, Loading
+    NavBar,
+    Table
   },
-  created () {
-    this.loadPassengers()
+  setup(){
+
+    //An array of values for the data
+       const surveyData = [
+     {ID: "12345", Question1: "4", Question2: "3", Question3: "5", Question4: "4"},
+     {ID: "12346", Question1: "5", Question2: "5", Question3: "5", Question4: "3"},
+     {ID: "12347", Question1: "5", Question2: "4", Question3: "5", Question4: "5"},
+    ]
+
+    const fields = [
+      'ID','Question1','Question2','Question3','Question4'
+    ]
+
+    return{surveyData,fields}
   },
-  watch: {
-    currentPage: {
-      handler: function (value) {
-        this.params = `page=${value}&size=${this.recordsPerPage}`
-        this.loadPassengers()
-      }
-    }
-  },
-  methods: {
-    loadPassengers () {
-      this.isLoading = true
-      this.params = `page=${this.currentPage}&size=${this.recordsPerPage}`
-      employeeService.getListPassengers(this.params).then((response) => {
-        if (response.data) {
-          this.listItems = response.data
-          this.totalPages = response.totalPassengers
-          this.isLoading = false
-        }
-      })
-    },
-    deleteRecord (data) {
-      this.$bvModal.msgBoxConfirm('Are you sure wants to delete?', {
-        title: 'Please Confirm',
-        size: 'mm',
-        buttonSize: 'sm',
-        okVariant: 'danger',
-        okTitle: 'YES',
-        cancelTitle: 'NO',
-        footerClass: 'p-2',
-        hideHeaderClose: false,
-        centered: true
-      })
-        .then((value) => {
-          if (value) {
-            this.listItems.splice(data.index, 1)
-          }
-        })
-    },
-    edit (data) {
-      alert(JSON.stringify(data))
-    }
-  }
 }
 </script>
+
+<style scoped>
+.container {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 10px;
+  width: 80%;
+}
+
+.table-title {
+  color: #008aff;
+  font-size: 32px;
+}
+</style>

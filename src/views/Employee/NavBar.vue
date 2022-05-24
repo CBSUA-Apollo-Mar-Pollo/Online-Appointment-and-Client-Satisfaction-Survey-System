@@ -14,13 +14,13 @@
           >
         </li>
         <li>
-          <a href="/ManageSurvey" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Satisfaction Survey</span></a
+          <a href="/ManageAssessment" class="nav-link"
+            ><i class="bi bi-card-text"></i> <span>Self-Assessment</span></a
           >
         </li>
         <li>
-          <a href="/ManageAssessment" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Self-Assessment</span></a
+          <a href="/ManageSurvey" class="nav-link"
+            ><i class="bi bi-card-text"></i> <span>Satisfaction Survey</span></a
           >
         </li>
         <li>

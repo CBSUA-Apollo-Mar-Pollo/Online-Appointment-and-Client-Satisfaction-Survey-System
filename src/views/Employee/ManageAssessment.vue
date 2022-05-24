@@ -1,123 +1,57 @@
 <template>
 <div>
-<NavBar />
-  <div class="container">
-    <h3 class="table-title">Manage Assessment</h3>
-    <div>
-      <b-table
-        striped
-        hover
-        :items="listItems"
-        :fields="fields"
-        :current-page="currentPage"
-        :per-page="0">
-        <template v-slot:cell(action)="data">
-          <b-button size="sm" class="mr-1" @click="edit(data)">
-            Edit
-          </b-button>
-          <b-button size="sm" @click="deleteRecord(data)">
-            Delete
-          </b-button>
-        </template>
-        </b-table>
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalPages"
-          :per-page="recordsPerPage">
-        </b-pagination>
-        <loading :active.sync="isLoading"
-          :can-cancel="true"
-          :is-full-page="true"></loading>
+    <NavBar />
+    <div class="container text-center  mt-5 mb-5">
+    <h1 class="table-title mt-5 fw-bolder">Manage Assessment</h1>
+     <div class="table-responsive my-5">
+      
+      <!-- The table component -->
+       <Table :fields='fields' :assessmentData ="assessmentData"></Table>
+     </div>
     </div>
-  </div>
 </div>
 </template>
 
 <script>
 import NavBar from "./NavBar.vue";
-import { employeeService } from './service/employeeservice'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/vue-loading.css'
+import Table from '../../components/Employee/AssessmentTable.vue'
 
 export default {
-  name: 'call_rest_api',
-  data () {
-    return {
-      listItems: [],
-      currentPage: 1,
-      totalPages: 0,
-      recordsPerPage: 10,
-      isLoading: false,
-      fields: [
-        {
-          key: '_id', label: 'ID', sortable: true, sortDirection: 'desc'
-        },
-        {
-          key: 'name', label: 'Do you have any of the following symptoms ?', sortable: true, class: 'text-center'
-        },
-        {
-          key: 'airline[0].name', label: 'Have you been in contact with anyone in the last 15 days who is experiencing these symptoms ?', sortable: true, image: true
-        },
-        {
-          key: 'airline[0].country', label: 'Have you been in contact with anyone who has since tested positive for Covid-19?', sortable: true
-        },
-        {
-          key: 'airline[0].q3', label: 'Have you travelled abroad in the last 1-2 months? Where did you go ?', sortable: true
-        },
-        {
-          key: 'action', label: 'Actions'
-        }
-      ],
-      params: ''
-    }
-  },
   components: {
-    NavBar, Loading
+    NavBar,
+    Table
   },
-  created () {
-    this.loadPassengers()
+  setup(){
+
+    //An array of values for the data
+       const assessmentData = [
+     {ID: "12345", Question1: "Lorem ipsum1", Question2: "Lorem ipsum2", Question3: "Lorem ipsum3", Question4: "Lorem ipsum4"},
+     {ID: "12346", Question1: "Lorem ipsum5", Question2: "Lorem ipsum6", Question3: "Lorem ipsum7", Question4: "Lorem ipsum8"},
+     {ID: "12347", Question1: "Lorem ipsum9", Question2: "Lorem ipsum10", Question3: "Lorem ipsum11", Question4: "Lorem ipsum12"},
+    ]
+
+    const fields = [
+      'ID','Question1','Question2','Question3','Question4'
+    ]
+
+    return{assessmentData,fields}
   },
-  watch: {
-    currentPage: {
-      handler: function (value) {
-        this.params = `page=${value}&size=${this.recordsPerPage}`
-        this.loadPassengers()
-      }
-    }
-  },
-  methods: {
-    loadPassengers () {
-      this.isLoading = true
-      this.params = `page=${this.currentPage}&size=${this.recordsPerPage}`
-      employeeService.getListPassengers(this.params).then((response) => {
-        if (response.data) {
-          this.listItems = response.data
-          this.totalPages = response.totalPassengers
-          this.isLoading = false
-        }
-      })
-    },
-    deleteRecord (data) {
-      this.$bvModal.msgBoxConfirm('Are you sure wants to delete?', {
-        title: 'Please Confirm',
-        size: 'mm',
-        buttonSize: 'sm',
-        okVariant: 'danger',
-        okTitle: 'YES',
-        cancelTitle: 'NO',
-        footerClass: 'p-2',
-        hideHeaderClose: false,
-        centered: true
-      })
-        .then((value) => {
-          if (value) {
-            this.listItems.splice(data.index, 1)
-          }
-        })
-    },
-    edit (data) {
-      alert(JSON.stringify(data))
-    }
-  }
 }
 </script>
+
+<style scoped>
+.container {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 10px;
+  width: 80%;
+}
+
+.table-title {
+  color: #008aff;
+  font-size: 32px;
+}
+</style>

@@ -14,7 +14,7 @@ var test = {
       date,
       time,
       comments,
-      referenceNum
+      referenceNum,
     } = args;
 
     const object = new Test();

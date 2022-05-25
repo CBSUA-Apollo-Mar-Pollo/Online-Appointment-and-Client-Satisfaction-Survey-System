@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import NavBar from "./NavBar.vue";
+import NavBar from './Navbar.vue';
 import EmployeeTable from '../../components/Admin/EmployeeTable.vue'
 import EmployeeForm from '../../components/Admin/EmployeeForm.vue'
-
+import Parse from "parse";
 export default {
   name: "app",
   components: {
@@ -42,9 +42,17 @@ export default {
   methods: {
     async getEmployees() {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const data = await response.json()
-        this.employees = data
+          const Data = Parse.Object.extend("_User");
+          const query = new Parse.Query(Data);
+            query.find({useMasterKey: true}).then(
+            async (data) => {
+              var res = await data.map((e) => e.attributes);
+              console.log(res.filter((e) => e.ACL.permissionsById['role:admin']))
+              var employee = res.map((e) => e.ACL.permissionsById['role:Employee'])
+              console.log(data.map((e) => e.attributes));
+              this.employees = res.filter((e) => e.ACL.permissionsById['role:Employee'])
+        //await store.dispatch('allAppointment' , res )
+      })
       } catch (error) {
         console.error(error)
       }

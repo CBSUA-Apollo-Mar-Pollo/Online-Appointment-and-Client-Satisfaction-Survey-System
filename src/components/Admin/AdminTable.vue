@@ -22,10 +22,10 @@
           <td v-if="editing === admin.id">
             <input
               type="text"
-              v-model="admin.name"
+              v-model="admin.username"
             >
           </td>
-          <td v-else>{{admin.name}}</td>
+          <td v-else>{{admin.username}}</td>
           <td v-if="editing === admin.id">
             <input
               type="text"

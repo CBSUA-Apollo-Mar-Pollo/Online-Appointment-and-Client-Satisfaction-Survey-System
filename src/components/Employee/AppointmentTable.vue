@@ -66,7 +66,7 @@ export default {
       const filteredList = computed(() => {
           return sortedList.value.filter((product) => {
             return (
-              product.Firstname.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
+              product.fName.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
             );
           });
 });   

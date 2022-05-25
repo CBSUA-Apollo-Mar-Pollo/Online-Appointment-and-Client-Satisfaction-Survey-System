@@ -19,9 +19,7 @@
           >
         </li>
         <li>
-          <a href="/" class="nav-link"
-            ><i class="bi bi-gear-wide"></i> <span>Logout</span></a
-          >
+          <button @click="handleClick">Logout</button>
         </li>
       </ul>
     </nav>
@@ -37,7 +35,7 @@
         class="topnav navbar navbar-expand-lg container flex pt-5 mx-auto bg-white"
       >
         <div class="topnav-items space-x-8 h5">
-          <a class="pl-3 pr-3">Welcome, Admin!</a>
+          <a class="pl-5 pr-3 text-4xl font-bold">ADMIN DASHBOARD</a>
         </div>
       </nav>
     </div>
@@ -63,6 +61,30 @@
   </label>
 </div>
 </template>
+
+<script>
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import Parse from "parse";
+export default {
+  setup() {
+    const store = useStore()
+    const router = useRouter()
+    var user = Parse.User.current()
+    console.log(user.attributes.username)
+    const handleClick = () => {
+      Parse.User.logOut().then(function(user){
+          router.push('/')
+      })
+    }
+    return { 
+      handleClick ,
+      user
+      //authIsReady: computed(() => store.state.authIsReady)
+    }
+}
+}
+</script>
 
 <style scoped>
 .reminder a {

@@ -35,7 +35,7 @@
         class="topnav navbar navbar-expand-lg container flex pt-5 mx-auto bg-white"
       >
         <div class="topnav-items space-x-8 h5">
-          <a class="pl-3 pr-3">Welcome, Admin!</a>
+          <a class="pl-5 pr-3 text-4xl font-bold">ADMIN DASHBOARD</a>
         </div>
       </nav>
     </div>

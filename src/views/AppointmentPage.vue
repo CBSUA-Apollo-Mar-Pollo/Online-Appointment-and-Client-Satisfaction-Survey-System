@@ -72,9 +72,28 @@
                   <p>Reason for the Visit*</p>
                   <select class="form-select" v-model="reasonOfVisit">
                     <option selected>Select Reason/s*</option>
-                    <option value="Reason 1">Reason 1 - Division</option>
-                    <option value="Reason 2">Reason 2 - Division</option>
-                    <option value="Reason 3">Reason 3 - Division</option>
+                     <option value="Application for Certification, Authentication and Verification (C.A.V.) of Academic Records">Application for Certification, Authentication and Verification (C.A.V.) of Academic Records</option>
+                    <option value="Application for Certification of Student Records and Other Relevant Documents">Application for Certification of Student Records and Other Relevant Documents</option>
+                    <option value="Application for Increase in Tuition and Other School Fees">Application for Increase in Tuition and Other School Fees (TOSF)</option>
+                    <option value="Application for Issuance of Special Orders">Application for Issuance of Special Orders (SOs)</option>
+                    <option value="Application for National Service Training Program (NSTP) Serial Numbers">Application for National Service Training Program (NSTP) Serial Numbers</option>
+                    <option value="Application for Permit/Recognition/Certificate of Program Compliance ">Application for Permit/Recognition/Certificate of Program Compliance (COPC) to
+Operate Graduate Programs, Dentistry, Nursing, Engineering and Programs Without
+Existing Policies, Standards and Guidelines (PSGs) = Phase 1</option>
+                    <option value="Application for Renewal Permit to Operate Undergraduate Programs">Application for Renewal Permit to Operate Undergraduate Programs, Except Medicine,
+Dentistry, Nursing and Engineering, Bachelor of Science in Marine Transportation
+(BSMT), Bachelor of Science in Marine Engineering (BSMarE), Programs Without
+Existing Policies, Standards and Guidelines (PSGs) and those under the Legal
+Education Board (LEB)</option>
+                  <option value="Filing of Complaints, Appeals or Motions for Reconsideration">Filing of Complaints, Appeals or Motions for Reconsideration</option>
+                  <option value="Request for Endorsement of Articles of Incorporation and By-Laws of New Private
+Higher Education Institutions (PHEis) to SEC">Request for Endorsement of Articles of Incorporation and By-Laws of New Private
+Higher Education Institutions (PHEis) to SEC</option>
+                  <option value="Application, Request for Payment and other concerns for CSP/CHED Scholarship
+Program/StuFAPS">Application, Request for Payment and other concerns for CSP/CHED Scholarship
+Program/StuFAPS</option>
+                  <option value="Application, Request for Payment and other concerns for UniFAST">Application, Request for Payment and other concerns for UniFAST</option>
+                  <option value="Application, Request for Payment and other concerns for K12/SIKAP">Application, Request for Payment and other concerns for K12/SIKAP</option>
                   </select>
                 </div>
 
@@ -146,44 +165,6 @@
     </div>
   </section>
 </template>
-
-<style scoped>
-.app-con {
-  margin-top: 3rem !important;
-}
-
-.section-title h2 {
-  padding: 10px 0 0 0px;
-  color: #008aff;
-  text-align: left;
-}
-
-.instruction {
-  color: #626262;
-  text-align: justify;
-}
-
-.btn-primary {
-  background-color: #008aff;
-}
-
-.btn-basic {
-  background-color: #f8f9fa;
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    margin-top: 30px;
-  }
-  .AppointmentPage {
-    padding: 0;
-  }
-  .app-con {
-    margin-top: 1rem !important;
-  }
-}
-</style>
-
 <script>
 import NavBar from "./NavBar.vue";
 import { ref } from "vue";
@@ -227,7 +208,7 @@ export default {
         comments: comments.value,
         referenceNum: referenceNum
       });
-      console.log(data._rawValue);
+      console.log(data);
       localStorage.setItem("storedData", JSON.stringify(data._rawValue));
       router.push({ name: "SelfAssessment" });
     };
@@ -284,3 +265,41 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.app-con {
+  margin-top: 3rem !important;
+}
+
+.section-title h2 {
+  padding: 10px 0 0 0px;
+  color: #008aff;
+  text-align: left;
+}
+
+.instruction {
+  color: #626262;
+  text-align: justify;
+}
+
+.btn-primary {
+  background-color: #008aff;
+}
+
+.btn-basic {
+  background-color: #f8f9fa;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-top: 30px;
+  }
+  .AppointmentPage {
+    padding: 0;
+  }
+  .app-con {
+    margin-top: 1rem !important;
+  }
+}
+</style>
+

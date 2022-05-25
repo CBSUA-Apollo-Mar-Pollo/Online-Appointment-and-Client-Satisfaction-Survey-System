@@ -15,6 +15,12 @@
 <script>
 import NavBar from "./NavBar.vue";
 import Table from '../../components/Employee/AssessmentTable.vue'
+import { ref , reactive , computed} from "vue";
+// eslint-disable-next-line no-unused-vars
+import { test } from "@/parse/test";
+import Parse from "parse";
+import { useRouter } from "vue-router";
+import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -22,19 +28,26 @@ export default {
     Table
   },
   setup(){
-
-    //An array of values for the data
-       const assessmentData = [
-     {ID: "12345", Question1: "Lorem ipsum1", Question2: "Lorem ipsum2", Question3: "Lorem ipsum3", Question4: "Lorem ipsum4"},
-     {ID: "12346", Question1: "Lorem ipsum5", Question2: "Lorem ipsum6", Question3: "Lorem ipsum7", Question4: "Lorem ipsum8"},
-     {ID: "12347", Question1: "Lorem ipsum9", Question2: "Lorem ipsum10", Question3: "Lorem ipsum11", Question4: "Lorem ipsum12"},
-    ]
-
+    const store = useStore();
+    const Data = Parse.Object.extend("Covid19Form");
+    const query = new Parse.Query(Data);
+    query.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        await store.dispatch('allSelfAssessment' , res )
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     const fields = [
-      'ID','Question1','Question2','Question3','Question4'
+      'emailAdd','PositiveContact','past15days','travelAbroad'
     ]
 
-    return{assessmentData,fields}
+    return{assessmentData: computed(() => JSON.parse(JSON.stringify(store.state.selfAssessment)))
+    ,fields}
   },
 }
 </script>

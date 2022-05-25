@@ -22,10 +22,10 @@
           <td v-if="editing === employee.id">
             <input
               type="text"
-              v-model="employee.name"
+              v-model="employee.username"
             >
           </td>
-          <td v-else>{{employee.name}}</td>
+          <td v-else>{{employee.username}}</td>
           <td v-if="editing === employee.id">
             <input
               type="text"
@@ -44,7 +44,6 @@
             <button @click="editMode(employee)">Edit</button>
             <button @click="$emit('delete:employee', employee.id)">Delete</button>
           </td>
-
         </tr>
       </tbody>
     </table>
@@ -74,7 +73,7 @@ export default {
     },
 
     editEmployee(employee) {
-      if (employee.name === '' || employee.email === '') return
+      if (employee.username === '' || employee.email === '') return
       this.$emit('edit:employee', employee.id, employee)
       this.editing = null
     }

@@ -15,11 +15,12 @@
 <script>
 import NavBar from "./NavBar.vue";
 import Table from '../../components/Employee/AppointmentTable.vue'
-import { ref , reactive } from "vue";
+import { ref , reactive , computed} from "vue";
 // eslint-disable-next-line no-unused-vars
 import { test } from "@/parse/test";
 import Parse from "parse";
 import { useRouter } from "vue-router";
+import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -27,30 +28,32 @@ export default {
     Table
   },
   setup(){
-    var appointmentData = ref([])
+    const store = useStore();
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
     query.find().then(
       async (data) => {
-        console.log(data.map((e) => e.id));
+        var id = await data.map((e) => e.id);
         console.log(data.map((e) => e.attributes));
-        appointmentData.value = await data.map((e) => e.attributes)
+        var res = await data.map((e) => e.attributes)
+        await store.dispatch('allAppointment' , res )
       },
       (error) => {
         console.log(error);
       }
     );
 
-    console.log(appointmentData);
+    console.log(JSON.parse(JSON.stringify(store.state.appointment)));
 
 
     const fields = [
-      'FirstName','Lastname','Email','Contact','Affliation','Reason','Date','Message'
+      'fName','lName','emailAdd','contactNum','AffliationOfClient','reasonOfVisit','date','comments'
     ]
 
     
 
-    return{appointmentData,fields}
+    return{appointmentData: computed(() => JSON.parse(JSON.stringify(store.state.appointment))),
+    fields}
   },
 }
 </script>

@@ -40,30 +40,11 @@
         class="topnav navbar navbar-expand-lg container flex pt-5 mx-auto bg-white"
       >
         <div class="topnav-items space-x-8 h5">
-          <a class="pl-3 pr-3">Welcome, Employee!</a>
+          <a class="pl-5 pr-3 text-4xl font-bold">EMPLOYEE DASHBOARD</a>
         </div>
       </nav>
     </div>
   </div>
-
-  <label class="reminder">
-    <input type="checkbox" />
-    <div class="menu-box">
-      <div class="menu-circle"></div>
-      <ul class="menu-items">
-        <li>
-          COVID-19 Reminders: Masks are a key measure to reduce transmission and
-          save lives. Wearing well-fitted masks should be used as part of a
-          comprehensive ‘Do it all!’ approach including maintaining physical
-          distancing, avoiding crowded, closed and close-contact settings,
-          ensuring good ventilation of indoor spaces, cleaning hands regularly,
-          and covering sneezes and coughs with a tissue of bent elbow. Depending
-          on the type, masks can be used for either protection of healthy
-          persons or to prevent onward transmission, or both.
-        </li>
-      </ul>
-    </div>
-  </label>
 </div>
 </template>
 

@@ -15,6 +15,12 @@
 <script>
 import NavBar from "./NavBar.vue";
 import Table from '../../components/Employee/SurveyTable.vue'
+import { ref , reactive , computed} from "vue";
+// eslint-disable-next-line no-unused-vars
+import { test } from "@/parse/test";
+import Parse from "parse";
+import { useRouter } from "vue-router";
+import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -22,19 +28,30 @@ export default {
     Table
   },
   setup(){
+    const store = useStore();
+    const Data = Parse.Object.extend("CSS");
+    const query = new Parse.Query(Data);
+    query.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        await store.dispatch('allSurvey' , res )
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-    //An array of values for the data
-       const surveyData = [
-     {ID: "12345", Question1: "4", Question2: "3", Question3: "5", Question4: "4"},
-     {ID: "12346", Question1: "5", Question2: "5", Question3: "5", Question4: "3"},
-     {ID: "12347", Question1: "5", Question2: "4", Question3: "5", Question4: "5"},
-    ]
+    console.log(JSON.parse(JSON.stringify(store.state.appointment)));
+
 
     const fields = [
-      'ID','Question1','Question2','Question3','Question4'
+      'emailAdd','pickedNo1','pickedNo2','pickedNo3','pickedNo4','pickedNo5','comment'
     ]
 
-    return{surveyData,fields}
+    return{surveyData: computed(() => JSON.parse(JSON.stringify(store.state.survey)))
+    ,fields}
   },
 }
 </script>

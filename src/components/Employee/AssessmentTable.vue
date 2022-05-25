@@ -66,7 +66,7 @@ export default {
       const filteredList = computed(() => {
           return sortedList.value.filter((product) => {
             return (
-              product.Question1.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
+              product.emailAdd.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
             );
           });
 });   

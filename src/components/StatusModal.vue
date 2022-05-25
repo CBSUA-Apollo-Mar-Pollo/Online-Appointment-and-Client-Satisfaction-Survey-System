@@ -95,7 +95,7 @@ export default {
     button {
       border: none;
       font-size: 16px;
-      background-color: #0d6efd;
+      background-color: #c1c1c1;
       color: #fff;
       cursor: pointer;
     }

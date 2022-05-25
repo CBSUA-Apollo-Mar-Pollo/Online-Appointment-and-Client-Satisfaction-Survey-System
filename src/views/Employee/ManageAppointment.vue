@@ -47,7 +47,7 @@ export default {
 
 
     const fields = [
-      'fName','lName','emailAdd','contactNum','AffliationOfClient','reasonOfVisit','date','comments'
+      'fName','lName','emailAdd','contactNum','AffliationOfClient','reasonOfVisit','date','time','comments'
     ]
 
     

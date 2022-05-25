@@ -7,7 +7,7 @@
           <div class="status pt-3">
             <table class="table table-borderless">
               <tbody>
-                <tr>
+                <!-- <tr>
                   <div class="page-wrapper">
                     <div class="circle-wrapper">
                       <div class="success circle"></div>
@@ -16,13 +16,13 @@
                       </div>
                     </div>
                   </div>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>
                     <div class="d-flex flex-column text-center">
                       <span class="head d-block">Status of Appointment</span>
-                      <span class="statustitle pb-1"
-                        ><i class="dots"></i>Processed</span
+                      <span class="text-sky-600 text-3xl pb-1 font-extrabold"
+                        >{{ appointmentStatus?.status }}</span
                       >
                       <hr />
                     </div>
@@ -44,7 +44,7 @@
                         ><i class="bi bi-calendar-week-fill"></i>
                         Time/Date</span
                       >
-                      <span class="subheadings">{{ appointmentStatus?.time + " " + appointmentStatus?.date}}</span>
+                      <span class="subheadings">{{ appointmentStatus?.time + " , " + appointmentStatus?.date}}</span>
                     </div>
                   </td>
                 </tr>
@@ -152,6 +152,9 @@ export default {
   font-weight: 500 !important;
   font-size: 15px;
 }
+span {
+  margin: 10px 30px;
+}
 
 .subheadings {
   font-size: 14px;
@@ -214,7 +217,6 @@ export default {
   background-color: #f0d500;
   border: 2.5px dashed #f0d500;
 }
-
 @keyframes spin {
   100% {
     transform: rotateZ(360deg);

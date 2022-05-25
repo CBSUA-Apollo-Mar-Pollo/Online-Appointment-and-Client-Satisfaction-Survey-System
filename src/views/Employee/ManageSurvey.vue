@@ -2,7 +2,7 @@
 <div>
     <NavBar />
     <div class="container text-center  mt-5 mb-5">
-    <h1 class="table-title mt-5 fw-bolder">Manage Survey</h1>
+    <h1 class="table-title mt-5 fw-bolder">Client Satisfaction Survey Data</h1>
      <div class="table-responsive my-5">
       
       <!-- The table component -->

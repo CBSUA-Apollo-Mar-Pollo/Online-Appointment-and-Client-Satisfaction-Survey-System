@@ -58,6 +58,7 @@
   padding: 5px;
   width: 50%;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .bg-light {
@@ -181,7 +182,8 @@
 @media only screen and (max-width: 600px) {
   .container {
     margin-top: 30px;
-    width: 90%;
+    margin-bottom: 30px;
+    width: 60%;
   }
   .AppointmentPage {
     padding: 0;

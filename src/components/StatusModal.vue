@@ -69,10 +69,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: baseline;
-  height: fit-content;
+  height: 70%;
   width: -webkit-fill-available;
-  position: fixed;
   transform: translate(0%, 10%);
+
   // background-color: rgb(255, 255, 255);
 
   .modal-inner {

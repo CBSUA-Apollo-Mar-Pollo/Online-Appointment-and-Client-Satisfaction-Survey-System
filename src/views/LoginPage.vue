@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <div class="container d-flex justify-around mt-5">
+  <div class="container d-flex justify-around mt-5 mb-6" >
     <div class="content">
       <div class="text">Login Form</div>
       <form @submit.prevent="handleSubmit">
@@ -12,7 +12,7 @@
           <input type="password" placeholder="Password" id="password" name="password" v-model="password" required>
         </div>
         <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
-        <div v-if="er">{{ er }}</div>
+        <div class="text-red-600" v-if="er">{{ er }}</div>
         <button>Sign in</button>
       </form>
       <!-- Temporary Buttons

@@ -108,6 +108,7 @@ export default {
   padding: 5px;
   width: 90%;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .section-title h2 {

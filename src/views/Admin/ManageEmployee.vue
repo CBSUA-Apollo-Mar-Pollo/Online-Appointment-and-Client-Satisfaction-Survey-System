@@ -6,8 +6,13 @@
     class="small-container"
   >
     <h1 class="table-title">Manage Employees</h1>
-
-    <employee-form @add:employee="addEmployee" />
+    
+    <div v-if="showModal">
+      <Modal  theme="sale" @close="toggleModal">
+         <employee-form @add:employee="addEmployee" />
+      </Modal>
+    </div>
+      <button class="Modal" @click="toggleModal">{{ showModal === false ?  'Add New Employee' : 'Close' }}</button>
     <employee-table
       :employees="employees"
       @delete:employee="deleteEmployee"
@@ -21,6 +26,7 @@
 import NavBar from './Navbar.vue';
 import EmployeeTable from '../../components/Admin/EmployeeTable.vue'
 import EmployeeForm from '../../components/Admin/EmployeeForm.vue'
+import Modal from '../../components/Modal.vue';
 import Parse from "parse";
 export default {
   name: "app",
@@ -31,6 +37,7 @@ export default {
   },
   data() {
     return {
+      showModal : false,
       employees: []
     }
   },
@@ -40,6 +47,9 @@ export default {
   },
 
   methods: {
+     toggleModal() {
+      this.showModal = !this.showModal
+    },
     async getEmployees() {
       try {
           const Data = Parse.Object.extend("_User");
@@ -47,9 +57,9 @@ export default {
             query.find({useMasterKey: true}).then(
             async (data) => {
               var res = await data.map((e) => e.attributes);
-              console.log(res.filter((e) => e.ACL.permissionsById['role:admin']))
+              //console.log(res.filter((e) => e.ACL.permissionsById['role:admin']))
               var employee = res.map((e) => e.ACL.permissionsById['role:Employee'])
-              console.log(data.map((e) => e.attributes));
+              //console.log(data.map((e) => e.attributes));
               this.employees = res.filter((e) => e.ACL.permissionsById['role:Employee'])
         //await store.dispatch('allAppointment' , res )
       })
@@ -60,12 +70,25 @@ export default {
 
     async addEmployee(employee) {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users', {
-          method: 'POST',
-          body: JSON.stringify(employee),
-          headers: { "Content-type": "application/json; charset=UTF-8" }
+        console.log(JSON.parse(JSON.stringify(employee)));
+        var res = JSON.parse(JSON.stringify(employee));
+        console.log(res.username)
+        var groupACL  = new Parse.ACL();
+        groupACL.setRoleWriteAccess("Employee" , true);
+        groupACL.setRoleReadAccess("Employee" , true);
+        groupACL.setPublicReadAccess(true);
+        var user = new Parse.User();
+        user.set("username", res.username);
+        user.set("email", res.email);
+        user.set("password", res.password);
+        user.setACL(groupACL);
+        user.signUp().then(function success(user) {
+          console.log("Signed Up" , user);
+        } , function error(err) {
+          console.error(err)
         })
-        const data = await response.json()
+        location.reload();
+        //const data = await response.json()
         this.employees = [...this.employees, data]
       } catch (error) {
         console.error(error)

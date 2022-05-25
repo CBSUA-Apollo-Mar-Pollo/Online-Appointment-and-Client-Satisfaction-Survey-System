@@ -7,7 +7,7 @@
         ref="first"
         type="text"
         :class="{ 'has-error': submitting && invalidName }"
-        v-model="admin.name"
+        v-model="admin.username"
         @focus="clearStatus"
         @keypress="clearStatus"
       >
@@ -16,6 +16,13 @@
         type="text"
         :class="{ 'has-error': submitting && invalidEmail }"
         v-model="admin.email"
+        @focus="clearStatus"
+      >
+       <label>Employee Password</label>
+      <input
+        type="text"
+        :class="{ 'has-error': submitting }"
+        v-model="admin.password"
         @focus="clearStatus"
       >
       <p
@@ -41,8 +48,9 @@ export default {
       submitting: false,
       success: false,
       admin: {
-        name: '',
+        username: '',
         email: '',
+         password: ''
       }
     }
   },
@@ -68,8 +76,9 @@ export default {
       this.$emit('add:admin', this.admin)
       this.$refs.first.focus()
       this.admin = {
-        name: '',
+        username: '',
         email: '',
+         password: '',
       }
       this.success = true
       this.error = false
@@ -85,7 +94,8 @@ export default {
 
 <style scoped src="../../assets/admin.css">
 form {
-  margin-bottom: 2rem;
+  margin-bottom: 10rem;
+  margin-top: 200rem;
 }
 
 [class*="-message"] {

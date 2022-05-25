@@ -7,7 +7,7 @@
         ref="first"
         type="text"
         :class="{ 'has-error': submitting && invalidName }"
-        v-model="employee.name"
+        v-model="employee.username"
         @focus="clearStatus"
         @keypress="clearStatus"
       >
@@ -16,6 +16,13 @@
         type="text"
         :class="{ 'has-error': submitting && invalidEmail }"
         v-model="employee.email"
+        @focus="clearStatus"
+      >
+      <label>Employee Password</label>
+      <input
+        type="text"
+        :class="{ 'has-error': submitting }"
+        v-model="employee.password"
         @focus="clearStatus"
       >
       <p
@@ -41,8 +48,9 @@ export default {
       submitting: false,
       success: false,
       employee: {
-        name: '',
+        username: '',
         email: '',
+        password: ''
       }
     }
   },
@@ -68,8 +76,9 @@ export default {
       this.$emit('add:employee', this.employee)
       this.$refs.first.focus()
       this.employee = {
-        name: '',
+        username: '',
         email: '',
+        password: '',
       }
       this.success = true
       this.error = false

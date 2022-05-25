@@ -7,8 +7,13 @@ import SelfAssessment from "../views/SelfAssessment.vue";
 import ReferenceNumber from "../views/ReferenceNumber.vue";
 import SatisfactionSurvey from "../views/SatisfactionSurvey.vue";
 import LoginPage from "../views/LoginPage.vue";
-import Admin from "../views/admin/Dashboard.vue";
+import Admin from "../views/Admin/Dashboard.vue";
+import ManageAdmin from "../views/Admin/ManageAdmin.vue";
+import ManageEmployee from "../views/Admin/ManageEmployee.vue";
 import Employee from "../views/Employee/Dashboard.vue";
+import ManageAppointment from "../views/Employee/ManageAppointment.vue";
+import ManageSurvey from "../views/Employee/ManageSurvey.vue";
+import ManageAssessment from "../views/Employee/ManageAssessment.vue";
 
 const routes = [
   {
@@ -57,9 +62,34 @@ const routes = [
     component: Admin,
   },
   {
+    path: "/ManageAdmin",
+    name: "ManageAdmin",
+    component: ManageAdmin,
+  },
+  {
+    path: "/ManageEmployee",
+    name: "ManageEmployee",
+    component: ManageEmployee,
+  },
+  {
     path: "/Employee",
     name: "Employee",
     component: Employee,
+  },
+  {
+    path: '/ManageAppointment',
+    name: 'ManageAppointment',
+    component: ManageAppointment,
+  },
+  {
+    path: '/ManageSurvey',
+    name: 'ManageSurvey',
+    component: ManageSurvey,
+  },
+  {
+    path: '/ManageAssessment',
+    name: 'ManageAssessment',
+    component: ManageAssessment
   },
 ];
 

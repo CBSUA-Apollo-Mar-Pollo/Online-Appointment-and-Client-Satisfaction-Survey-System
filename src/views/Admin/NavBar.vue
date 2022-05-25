@@ -4,23 +4,18 @@
     <nav id="navbar" class="bnav b-nav">
       <ul>
         <li>
-          <a href="/Employee" class="nav-link active"
+          <a href="/Admin" class="nav-link active"
             ><i class="bx bx-home"></i> <span>Dashboard</span></a
           >
         </li>
         <li>
-          <a href="/ManageAppointment" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Appointment</span></a
+          <a href="/ManageAdmin" class="nav-link"
+            ><i class="bi bi-card-checklist"></i> <span>Manage Admin</span></a
           >
         </li>
         <li>
-          <a href="/ManageAssessment" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Self-Assessment</span></a
-          >
-        </li>
-        <li>
-          <a href="/ManageSurvey" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Satisfaction Survey</span></a
+          <a href="/ManageEmployee" class="nav-link"
+            ><i class="bi bi-card-text"></i> <span>Manage Employee</span></a
           >
         </li>
         <li>
@@ -42,7 +37,7 @@
         class="topnav navbar navbar-expand-lg container flex pt-5 mx-auto bg-white"
       >
         <div class="topnav-items space-x-8 h5">
-          <a class="pl-3 pr-3">Welcome, Employee!</a>
+          <a class="pl-3 pr-3">Welcome, Admin!</a>
         </div>
       </nav>
     </div>

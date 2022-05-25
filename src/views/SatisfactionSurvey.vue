@@ -4,6 +4,7 @@
     <div class="container" data-aos="fade-up">
       <div class="survey-content">
         <form  @submit.prevent="handleSubmit">
+
           <table>
             <div class="section-title text-left">
               <h2>Client Satisfaction Survey</h2>
@@ -30,6 +31,9 @@
               <th>2</th>
               <th>1</th>
             </tr>
+          </table>
+
+          <table>
             <tr>
               <td class="first-col">
                 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?

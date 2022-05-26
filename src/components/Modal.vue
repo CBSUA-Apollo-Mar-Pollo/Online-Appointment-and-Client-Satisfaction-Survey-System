@@ -21,7 +21,7 @@
     .modal1{
         width: 600px;
         padding: 20px;
-        margin: 220px auto;
+        margin: 350px auto;
         background: white;
         border-radius: 10px;
         cursor: context-menu;

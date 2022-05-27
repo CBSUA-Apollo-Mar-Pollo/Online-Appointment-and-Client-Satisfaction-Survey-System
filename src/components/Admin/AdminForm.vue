@@ -13,14 +13,14 @@
       >
       <label>admin Email</label>
       <input
-        type="text"
+        type="email"
         :class="{ 'has-error': submitting && invalidEmail }"
         v-model="admin.email"
         @focus="clearStatus"
       >
        <label>Employee Password</label>
       <input
-        type="text"
+        type="password"
         :class="{ 'has-error': submitting }"
         v-model="admin.password"
         @focus="clearStatus"

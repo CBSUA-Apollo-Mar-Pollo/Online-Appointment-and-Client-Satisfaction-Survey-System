@@ -5,7 +5,8 @@ export default createStore({
     status : null,
     appointment : null,
     selfAssessment : null,
-    survey : null
+    survey : null,
+    appointmentLength : null 
   },
   mutations: {
     setStatus(state , payload) {
@@ -23,7 +24,11 @@ export default createStore({
     setAllSurvey(state , payload) {
       state.survey = payload
       console.log('object changed' , state.survey);
-    }
+    },
+    setAppointmentLength(state , payload) {
+      state.appointmentLength = payload
+      console.log('object changed' , state.appointmentLength);
+    },
   },
   actions: {
     async appointmentStatus(context , payload) {
@@ -37,6 +42,9 @@ export default createStore({
     },
     async allSurvey(context , payload) {
       context.commit('setAllSurvey' , payload);
+    },
+    async appointmentLength(context , payload) {
+      context.commit('setAppointmentLength' , payload);
     }
   },
   getters: {},

@@ -7,8 +7,11 @@
           <StatusInformation />
           <slot />
           <div class="text-center">
-            <button class="col-8 btn btn-basic" @click="close" type="button">
+            <button class="col-8 btn btn-basic m-3" @click="close" type="button">
               Close
+            </button>
+            <button class="col-8 btn btn-basic" @click="cancel" type="button">
+              Cancel Appointment
             </button>
           </div>
         </div>
@@ -19,6 +22,9 @@
 
 <script>
 import StatusInformation from "./StatusInfo.vue";
+import { useStore } from 'vuex'
+import { ref , reactive , computed} from "vue";
+import Parse from "parse";
 
 export default {
   components: {
@@ -31,8 +37,29 @@ export default {
       emit("close");
       //window.location.reload();
     };
+    const store = useStore();
 
-    return { close };
+    const cancel = () => {
+      const refNum = store.state.status;
+      console.log("Cancel Request", refNum.referenceNum);
+      var Data = Parse.Object.extend("test");
+      var query = new Parse.Query(Data);
+      query.equalTo("referenceNum", refNum.referenceNum);
+      query.first().then(
+        async (data) => {
+          console.log(data.attributes);
+           data.set("status", "Canceled");
+           data.save();
+           location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    
+
+    return { close , cancel , refNum: computed(() => store.state.status) };
   },
 };
 </script>

@@ -2,7 +2,7 @@
 <div>
     <NavBar />
     <div class="container text-center  mt-5 mb-5">
-    <h1 class="table-title mt-5 fw-bolder">Manage Appointment</h1>
+    <h1 class="table-title mt-5 fw-bolder">Canceled By Users Appointment</h1>
      <div class="table-responsive my-5">
       
       <!-- The table component -->
@@ -31,6 +31,7 @@ export default {
     const store = useStore();
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
+    query.equalTo("status" , 'Canceled');
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);

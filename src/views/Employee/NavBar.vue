@@ -9,8 +9,23 @@
           >
         </li>
         <li>
-          <a href="/ManageAppointment" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Appointment</span></a
+          <a href="/ManageAppointmentPending" class="nav-link"
+            ><i class="bi bi-card-checklist"></i> <span>Pending Appointment</span></a
+          >
+        </li>
+        <li>
+          <a href="/ManageAppointmentApprove" class="nav-link"
+            ><i class="bi bi-card-checklist"></i> <span>Request Approve Appointment</span></a
+          >
+        </li>
+        <li>
+          <a href="/ManageAppointmentRejected" class="nav-link"
+            ><i class="bi bi-card-checklist"></i> <span>Rejected Request Appointment</span></a
+          >
+        </li>
+        <li>
+          <a href="/ManageAppointmentCanceled" class="nav-link"
+            ><i class="bi bi-card-checklist"></i> <span>Canceled By User</span></a
           >
         </li>
         <li>

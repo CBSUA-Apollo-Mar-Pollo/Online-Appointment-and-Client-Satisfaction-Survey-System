@@ -6,7 +6,7 @@
             <div className="cardBox">
                 <div className="card">
                         <div className="numbers">{{ a }}</div>
-                        <div className="cardName">Last Week and today's Appointment</div>
+                        <div className="cardName">Last Week and today's Appointment Total</div>
                 </div>
                 </div>
                 </div>
@@ -132,7 +132,7 @@ export default {
               ['Very Dissatisfied', VeryDissatisfied]
             ]);
             var options = {
-              title: 'Satisfaction Survey',
+              title: 'Satisfaction Survey Data',
               is3D: true,
             };
 
@@ -152,7 +152,7 @@ export default {
     q.find().then(async data => {
       console.log(data.map((e) => e.attributes));
       const res  = await data.map((e) => e.attributes).length ;
-      localStorage.setItem("appointmentLength", JSON.stringify(res));
+      await store.dispatch('appointmentLength' , res )
     },(error) => {
       console.log(error);
     });
@@ -165,7 +165,7 @@ export default {
 
 
     return { 
-      user, a 
+      user, a: computed(() => store.state.appointmentLength)
       //authIsReady: computed(() => store.state.authIsReady)
     }
 }
@@ -207,8 +207,8 @@ export default {
 .cardBox .card .numbers {
     position: relative ; 
     font-weight: 600;
-    margin-left: 20px;
-    font-size: 4em;
+    margin-left: 50px;
+    font-size: 5em;
     color : #4a81da;;
     padding : 3px ;
 }

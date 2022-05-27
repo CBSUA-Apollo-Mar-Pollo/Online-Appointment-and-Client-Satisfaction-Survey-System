@@ -11,7 +11,10 @@ import Admin from "../views/Admin/Dashboard.vue";
 import ManageAdmin from "../views/Admin/ManageAdmin.vue";
 import ManageEmployee from "../views/Admin/ManageEmployee.vue";
 import Employee from "../views/Employee/Dashboard.vue";
-import ManageAppointment from "../views/Employee/ManageAppointment.vue";
+import ManageAppointmentPending from "../views/Employee/ManageAppointmentPending.vue";
+import ManageAppointmentApproved from "../views/Employee/ManageAppointmentApproved.vue";
+import ManageAppointmentRejected from "../views/Employee/ManageAppointmentRejected.vue";
+import ManageAppointmentCanceled from "../views/Employee/ManageAppointmentCanceled.vue";
 import ManageSurvey from "../views/Employee/ManageSurvey.vue";
 import ManageAssessment from "../views/Employee/ManageAssessment.vue";
 
@@ -77,9 +80,24 @@ const routes = [
     component: Employee,
   },
   {
-    path: '/ManageAppointment',
-    name: 'ManageAppointment',
-    component: ManageAppointment,
+    path: '/ManageAppointmentPending',
+    name: 'ManageAppointmentPending',
+    component: ManageAppointmentPending,
+  },
+  {
+    path: '/ManageAppointmentApprove',
+    name: 'ManageAppointmentApprove',
+    component: ManageAppointmentApproved,
+  },
+  {
+    path: '/ManageAppointmentRejected',
+    name: 'ManageAppointmentRejected',
+    component: ManageAppointmentRejected,
+  },
+  {
+    path: '/ManageAppointmentCanceled',
+    name: 'ManageAppointmentCanceled',
+    component: ManageAppointmentCanceled,
   },
   {
     path: '/ManageSurvey',

@@ -21,7 +21,8 @@
     .modal1{
         width: 600px;
         padding: 20px;
-        margin: 350px auto;
+        height: 30vh;
+        margin: 30vh auto;
         background: white;
         border-radius: 10px;
         cursor: context-menu;
@@ -40,30 +41,5 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
-    }
-    .modal1 .actions {
-        text-align: center;
-        margin: 30px 0 10px 0;
-    }
-    .modal1 .actions a {
-        color: #333;
-        padding: 8px ;
-        border: 1px solid #eee;
-        border-radius: 4px;
-        text-decoration: none;
-        margin: 10px ;
-    }
-    .modal1.sale {
-        background: rgb(236, 101, 128) ; 
-        color: white;
-    }
-    .modal1.sale h1 {
-        color: white;
-    }
-    .modal1.sale .actions {
-        color: white;
-    }
-    .modal1.sale .actions a {
-        color: white ;
     }
 </style>

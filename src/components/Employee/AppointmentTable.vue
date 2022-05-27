@@ -77,12 +77,12 @@ export default {
           console.log(data.attributes);
            data.set("status", "Request Accepted");
            data.save();
+           location.reload();
         },
         (error) => {
           console.log(error);
         }
       );
-      this.showModal = !this.showModal
     },
     declineRequest(data) {
       console.log("Decline Request");
@@ -94,6 +94,7 @@ export default {
           console.log(data.attributes);
            data.set("status", "Rejected");
            data.save();
+           location.reload();
         },
         (error) => {
           console.log(error);

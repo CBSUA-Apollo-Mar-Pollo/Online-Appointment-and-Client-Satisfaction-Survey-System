@@ -4,11 +4,6 @@
     <nav id="navbar" class="bnav b-nav">
       <ul>
         <li>
-          <a href="/Admin" class="nav-link active"
-            ><i class="bx bx-home"></i> <span>Dashboard</span></a
-          >
-        </li>
-        <li>
           <a href="/ManageAdmin" class="nav-link"
             ><i class="bi bi-card-checklist"></i> <span>Manage Admin</span></a
           >

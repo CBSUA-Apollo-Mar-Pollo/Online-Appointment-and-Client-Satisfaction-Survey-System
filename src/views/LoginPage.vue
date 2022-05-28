@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <div class="container d-flex justify-around mt-5 mb-6" >
+  <div class="d-flex justify-around mt-20 mb-6" >
     <div class="content">
       <div class="text">Login Form</div>
       <form @submit.prevent="handleSubmit">
@@ -12,8 +12,8 @@
           <input type="password" placeholder="Password" id="password" name="password" v-model="password" required>
         </div>
         <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
-        <div class="text-red-600" v-if="er">{{ er }}</div>
         <button>Sign in</button>
+        <div class="text-red-600 mt-2" v-if="er">{{ er }}</div>
       </form>
       <!-- Temporary Buttons
         <button
@@ -95,19 +95,22 @@ body {
 }
 
 .content {
-  width: 430px;
+  width: 410px;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 0px;
   padding: 40px 30px;
-  box-shadow: -3px -3px 7px #ffffff73, 2px 2px 5px rgba(94, 104, 121, 0.288);
+  box-shadow: 5px 2px 5px 4px rgba(94, 104, 121, 0.288);
 }
 
 .content .text {
-  font-size: 33px;
+  font-size: 20px;
   font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
   margin-bottom: 35px;
-  color: #008aff;
+  color: rgb(65, 153, 212);
   font-weight: 700;
+  text-transform: uppercase 
 }
 
 .content .field {
@@ -118,16 +121,17 @@ body {
 }
 
 .field input {
-  height: 100%;
   width: 100%;
-  padding-left: 45px;
-  font-size: 18px;
+  padding: 20px;
+  font-size: 15px;
+  margin: 8px 0;
   outline: none;
-  border: none;
-  color: #595959;
-  background: #e6effa;
-  border-radius: 5px;
-  box-shadow: inset 1px 1px 6px #babecc, inset -5px -5px 10px #ffffff73;
+  border-bottom: 0.1px solid rgb(204, 204, 204);
+  box-shadow: none;
+  color: #333;
+  background: #f5f5f5f5;
+  letter-spacing: 1px;
+  font-weight: 300;
 }
 
 .field input:focus ~ label {
@@ -160,7 +164,7 @@ body {
 
 .forgot-pass {
   text-align: left;
-  margin: 10px 0 10px 5px;
+  margin: 40px 0 20px 5px;
 }
 
 .forgot-pass a {
@@ -173,24 +177,18 @@ body {
   text-decoration: underline;
 }
 
-button {
-  margin: 15px 0;
-  width: 100%;
-  height: 50px;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: 600;
-  background: #008aff;
-  border: none;
-  outline: none;
+.content button {
+  max-width: 100px;
+  background: #677eff;
+  color: #fff;
   cursor: pointer;
-  border-radius: 25px;
-}
-
-button:focus {
-  color: #0e7ac2;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
-  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  padding: 10px 20px;
+  margin: 20px 120px;
+  letter-spacing: 2px;
 }
 
 .signup {

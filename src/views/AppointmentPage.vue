@@ -69,31 +69,102 @@
                 </div>
 
                 <div class="col-md-12">
+                  <p>Select Office*</p>
+                  <select class="form-select" 
+                    v-model="selectOffice"  
+                    type="tel"
+                    placeholder="09XXXXXXXXX">
+                    <option selected>Local Graduate Scholarship Office</option>
+                    <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
+                    <option selected>Office of Student Development and Services (OSDS)</option>
+                    <option selected>Regional Office V</option>
+                  </select>
+                </div>
+
+                  <!-- Local Graduate Scholarship Office-->
+                <div class="col-md-12" v-if="selectOffice == 'Local Graduate Scholarship Office' || selectOffice == ''">
                   <p>Reason for the Visit*</p>
                   <select class="form-select" v-model="reasonOfVisit">
-                    <option selected>Select Reason/s*</option>
-                     <option value="Application for Certification, Authentication and Verification (C.A.V.) of Academic Records">Application for Certification, Authentication and Verification (C.A.V.) of Academic Records</option>
-                    <option value="Application for Certification of Student Records and Other Relevant Documents">Application for Certification of Student Records and Other Relevant Documents</option>
-                    <option value="Application for Increase in Tuition and Other School Fees">Application for Increase in Tuition and Other School Fees (TOSF)</option>
-                    <option value="Application for Issuance of Special Orders">Application for Issuance of Special Orders (SOs)</option>
-                    <option value="Application for National Service Training Program (NSTP) Serial Numbers">Application for National Service Training Program (NSTP) Serial Numbers</option>
-                    <option value="Application for Permit/Recognition/Certificate of Program Compliance ">Application for Permit/Recognition/Certificate of Program Compliance (COPC) to
-Operate Graduate Programs, Dentistry, Nursing, Engineering and Programs Without
-Existing Policies, Standards and Guidelines (PSGs) = Phase 1</option>
-                    <option value="Application for Renewal Permit to Operate Undergraduate Programs">Application for Renewal Permit to Operate Undergraduate Programs, Except Medicine,
-Dentistry, Nursing and Engineering, Bachelor of Science in Marine Transportation
-(BSMT), Bachelor of Science in Marine Engineering (BSMarE), Programs Without
-Existing Policies, Standards and Guidelines (PSGs) and those under the Legal
-Education Board (LEB)</option>
-                  <option value="Filing of Complaints, Appeals or Motions for Reconsideration">Filing of Complaints, Appeals or Motions for Reconsideration</option>
-                  <option value="Request for Endorsement of Articles of Incorporation and By-Laws of New Private
-Higher Education Institutions (PHEis) to SEC">Request for Endorsement of Articles of Incorporation and By-Laws of New Private
-Higher Education Institutions (PHEis) to SEC</option>
-                  <option value="Application, Request for Payment and other concerns for CSP/CHED Scholarship
-Program/StuFAPS">Application, Request for Payment and other concerns for CSP/CHED Scholarship
-Program/StuFAPS</option>
-                  <option value="Application, Request for Payment and other concerns for UniFAST">Application, Request for Payment and other concerns for UniFAST</option>
-                  <option value="Application, Request for Payment and other concerns for K12/SIKAP">Application, Request for Payment and other concerns for K12/SIKAP</option>
+                    <optgroup selected label="For Scholars">
+                      <option value="[For Scholars] Follow-up on Financial Privileges">[For Scholars] Follow-up on Financial Privileges</option>
+                      <option value="[For Scholars] Submission of Documents for Living Allowances or Special Requests">[For Scholars] Submission of Documents for Living Allowances or Special Requests</option>
+                     </optgroup>
+                     <optgroup selected label="For DHEIs">
+                      <option value="[For DHEIs] Submission of Documents for Tuition and Fees">[For DHEIs] Submission of Documents for Tuition and Fees</option>
+                      <option value="[For DHEIs] Follow-up on Settlement of Tuition and Fees">[For DHEIs] Follow-up on Settlement of Tuition and Fees</option>
+                      </optgroup>
+                  </select>
+                </div>
+
+                 <!-- Office of Institutional Quality Assurance and Governance (OICAG) -->
+                <div class="col-md-12" v-if="selectOffice == 'Office of Institutional Quality Assurance and Governance (OICAG)'">
+                  <p>Reason for the Visit*</p>
+                  <select class="form-select" v-model="reasonOfVisit">
+                      <option value="Consultation">Consultation</option>
+                      <option value="Submission of Documents">Submission of Documents</option>
+                      <option value="Meeting">Meeting</option>
+                  </select>
+                </div>
+
+                 <!-- Office of Student Development and Services (OSDS)-->
+                <div class="col-md-12" v-if="selectOffice == 'Office of Student Development and Services (OSDS)'">
+                  <p>Reason for the Visit*</p>
+                  <select class="form-select" v-model="reasonOfVisit">
+                      <option value="CAV">CAV</option>
+                      <option value="CAV">CAV</option>
+                      <option value="CED">CED</option>
+                      <option value="FS Indorsement">FS Indorsement</option>
+                      <option value="SIAP">SIAP</option>
+                  </select>
+                </div>
+
+              
+                  <!-- Regional Office V-->
+                <div class="col-md-12" v-if="selectOffice == 'Regional Office V'">
+                  <p>Reason for the Visit*</p>
+                  <select class="form-select" v-model="reasonOfVisit">
+                      <option value="Administrative - CAV Application (Local)">Administrative - CAV Application (Local) (Reminders: 5 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
+                      <option value="Administrative - CAV Application (Abroad)">Administrative - CAV Application (Abroad) (Reminders: 5 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
+                      <option value="Administrative - SO Application">Administrative - SO Application (Reminders: 10 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
+                      <option value="Administrative - SO Releasing">Administrative - SO Releasing (Reminders: 10 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
+                      <option value="Appointment with the Regional Director">Appointment with the Regional Director</option>
+                      <option value="Technical - Concerns related to Accreditation of Health Facilities Utilized for Internship">Technical - Concerns related to Accreditation of Health Facilities Utilized for Internship</option>
+                      <option value="Technical - Concerns related to Amalgamation">Technical - Concerns related to Amalgamation</option>
+                      <option value="Technical - Concerns related to Agricultural, Forestry, Fisheries, and Vet Med. Education Programs">Technical - Concerns related to Agricultural, Forestry, Fisheries, and Vet Med. Education Programs</option>
+                      <option value="Technical - Concerns related to Business and Related Education Programs">Technical - Concerns related to Business and Related Education Programs</option>
+                      <option value="Technical - Concerns related to Autonomous and Deregulated Statues">Technical - Concerns related to Autonomous and Deregulated Statues</option>
+                      <option value="Technical - Concerns related to Criminology Education Programs">Technical - Concerns related to Criminology Education Programs</option>
+                      <option value="Technical - Concerns related to Engineering Education Programs">Technical - Concerns related to Engineering Education Programs</option>
+                      <option value="Technical - Concerns related to Environmental Science Education Programs">Technical - Concerns related to Environmental Science Education Programs</option>
+                      <option value="Technical - Concerns related to Fine and Applied Arts Education Programs">Technical - Concerns related to Fine and Applied Arts Education Programs</option>
+                      <option value="Technical - Concerns related to HEMIS">Technical - Concerns related to HEMIS</option>
+                      <option value="Technical - Concerns related to Home Economics Education Programs">Technical - Concerns related to Home Economics Education Programs</option>
+                      <option value="Technical - Concerns related to Humanities Education Programs">Technical - Concerns related to Humanities Education Programs</option>
+                      <option value="Technical - Concerns related to Information Technology Education Programs">Technical - Concerns related to Information Technology Education Programs</option>
+                      <option value="Technical - Concerns related to K-12 Transition Programs">Technical - Concerns related to K-12 Transition Programs</option>
+                      <option value="Technical - Concerns related to Law and Jurisprudence Education Programs">Technical - Concerns related to Law and Jurisprudence Education Programs</option>
+                      <option value="Technical - Concerns related to Limited Face-to-Face Classes for Selected Health Programs">Technical - Concerns related to Limited Face-to-Face Classes for Selected Health Programs</option>
+                      <option value="Technical - Concerns related to Local Universities and Colleges (LUCs)">Technical - Concerns related to Local Universities and Colleges (LUCs)</option>
+                      <option value="Technical - Concerns related to Maritime Education Programs">Technical - Concerns related to Maritime Education Programs</option>
+                      <option value="Technical - Concerns related to Mass Communication and Documentation Education Programs">Technical - Concerns related to Mass Communication and Documentation Education Programs</option>
+                      <option value="Technical - Concerns related to Mathematics Education Programs">Technical - Concerns related to Mathematics Education Programs</option>
+                      <option value="Technical - Concerns related to Medical and Allied Programs">Technical - Concerns related to Medical and Allied Programs</option>
+                      <option value="Technical - Concerns related to National Service Training Program (NSTP)">Technical - Concerns related to National Service Training Program (NSTP)</option>
+                      <option value="Technical - Concerns related to Natural Science Education Programs">Technical - Concerns related to Natural Science Education Programs</option>
+                      <option value="Technical - Concerns related to Religion and Theology Education Programs">Technical - Concerns related to Religion and Theology Education Programs</option>
+                      <option value="Technical - Concerns related to Service Trades Education Programs">Technical - Concerns related to Service Trades Education Programs</option>
+                      <option value="Technical - Concerns related to Social and Behavioral Sciences Education Programs">Technical - Concerns related to Social and Behavioral Sciences Education Programs</option>
+                      <option value="Technical - Concerns related to Social Work Education Programs">Technical - Concerns related to Social Work Education Programs</option>
+                      <option value="Technical - Concerns related to State Universities and Colleges (SUCs)">Technical - Concerns related to State Universities and Colleges (SUCs)</option>
+                      <option value="Technical - Concerns related to Student Financial Assistance Programs (StuFAPs)">Technical - Concerns related to Student Financial Assistance Programs (StuFAPs)</option>
+                      <option value="Technical - Concerns related to Teacher Education Programs">Technical - Concerns related to Teacher Education Programs</option>
+                      <option value="Technical - Concerns related to Trade, Craft and Industrial Education Programs">Technical - Concerns related to Trade, Craft and Industrial Education Programs</option>
+                      <option value="Technical - Concerns related to Tuition Fees">Technical - Concerns related to Tuition Fees</option>
+                      <option value="Technical - Concerns related to Unified Student Financial Assistance System for Tertiary Education (UniFAST)">Technical - Concerns related to Unified Student Financial Assistance System for Tertiary Education (UniFAST)</option>
+                      <option value="Administrative - Submit F19 and Enrollment list documents">Administrative - Submit F19 and Enrollment list documents</option>
+                      <option value="Administrative - Claim CAV documents">Administrative - Claim CAV documents</option>
+                      <option value="Administrative - Correction of name deficiency reply/application">Administrative - Correction of name deficiency reply/application</option>
+                      <option value="Administrative - Compliance to CAV deficiency">Administrative - Compliance to CAV deficiency</option>       
                   </select>
                 </div>
 
@@ -190,6 +261,7 @@ export default {
     const date = ref("");
     const time = ref("");
     const comments = ref("");
+    const selectOffice = ref("");
 
     const Referencenum = Math.random().toString().substr(2, 8);
     const year = new Date().getUTCFullYear();
@@ -206,24 +278,13 @@ export default {
         date: date.value,
         time: time.value,
         comments: comments.value,
+        selectOffice : selectOffice.value,
         referenceNum: referenceNum
       });
-      console.log(data);
+      console.log(data._rawValue);
       localStorage.setItem("storedData", JSON.stringify(data._rawValue));
       router.push({ name: "SelfAssessment" });
     };
-
-    const Data = Parse.Object.extend("test");
-    const query = new Parse.Query(Data);
-    query.find().then(
-      (data) => {
-        console.log(data.map((e) => e.attributes));
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
     return {
       onSubmit,
       fName,
@@ -235,6 +296,7 @@ export default {
       date,
       time,
       comments,
+      selectOffice
     };
   },
 

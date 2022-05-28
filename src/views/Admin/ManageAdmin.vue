@@ -5,7 +5,7 @@
     id="app"
     class="small-container"
   >
-    <h1 class="table-title">Manage Admins</h1>
+    <h1 class="table-title">Admin add account</h1>
 
     
     <div v-if="showModal">
@@ -14,6 +14,7 @@
       </Modal>
     </div>
     <button class="Modal" @click="toggleModal">{{ showModal === false ?  'Add New Admin' : 'Close' }}</button>
+    <h3>Total of {{ admins.length }} Admin Account</h3>
     <admin-table
       :admins="admins"
       @delete:admin="deleteadmin"

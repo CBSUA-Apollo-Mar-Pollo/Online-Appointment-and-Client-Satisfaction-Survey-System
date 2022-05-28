@@ -1,5 +1,5 @@
 <template>
-  <div id="employee-table">
+  <div class="employee-table">
     <p
       v-if="employees.length < 1"
       class="empty-table"
@@ -11,6 +11,8 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
+          <th>Designated Office</th>
+          <th>Created At</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -33,6 +35,8 @@
             >
           </td>
           <td v-else>{{employee.email}}</td>
+          <td>{{employee.office}}</td>
+          <td>{{employee.createdAt}}</td>
           <td v-if="editing === employee.id">
             <button @click="editEmployee(employee)">Save</button>
             <button
@@ -92,5 +96,9 @@ input {
 
 .empty-table {
   text-align: center;
+}
+.employee-table thead tr th{
+  background-color: rgba(9, 11, 17, 0.884);
+  color: rgb(134, 21, 21);
 }
 </style>

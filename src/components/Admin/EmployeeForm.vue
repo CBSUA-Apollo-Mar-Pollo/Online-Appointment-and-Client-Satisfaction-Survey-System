@@ -18,6 +18,18 @@
         v-model="employee.email"
         @focus="clearStatus"
       >
+      <label>Designation of Employee</label>
+      <select class="form-select" 
+                    v-model="employee.office"  
+                    type="text"
+                    :class="{ 'has-error': submitting  }"
+                    @focus="clearStatus"
+                    placeholder="09XXXXXXXXX">
+                    <option selected>Local Graduate Scholarship Office</option>
+                    <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
+                    <option selected>Office of Student Development and Services (OSDS)</option>
+                    <option selected>Regional Office V</option>
+                  </select>
       <label>Employee Password</label>
       <input
         type="password"
@@ -50,7 +62,8 @@ export default {
       employee: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        office: ''
       }
     }
   },
@@ -79,6 +92,7 @@ export default {
         username: '',
         email: '',
         password: '',
+        office: ''
       }
       this.success = true
       this.error = false

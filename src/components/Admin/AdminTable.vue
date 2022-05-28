@@ -11,6 +11,7 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
+          <th>Created At</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -33,6 +34,7 @@
             >
           </td>
           <td v-else>{{admin.email}}</td>
+          <td>{{admin.createdAt}}</td>
           <td v-if="editing === admin.id">
             <button @click="editadmin(admin)">Save</button>
             <button

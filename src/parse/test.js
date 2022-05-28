@@ -15,6 +15,7 @@ var test = {
       time,
       comments,
       referenceNum,
+      selectOffice
     } = args;
 
     const object = new Test();
@@ -23,6 +24,7 @@ var test = {
     object.set("emailAdd", emailAdd);
     object.set("contactNum", contactNum);
     object.set("AffliationOfClient", AffliationOfClient);
+    object.set("selectOffice", selectOffice);
     object.set("reasonOfVisit", reasonOfVisit);
     object.set("date", date);
     object.set("time", time);

@@ -63,6 +63,17 @@
                   <td>
                     <div class="d-flex flex-column">
                       <span class="heading d-block"
+                        ><i class="bi bi-card-heading"></i> Selected Office
+                        </span
+                      >
+                      <span class="subheadings">{{ appointmentStatus?.selectOffice }}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex flex-column">
+                      <span class="heading d-block"
                         ><i class="bi bi-card-heading"></i> Reason for the
                         Visit</span
                       >

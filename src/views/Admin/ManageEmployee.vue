@@ -3,9 +3,9 @@
   <NavBar />
   <div
     id="app"
-    class="small-container"
+    class="medium-container"
   >
-    <h1 class="table-title">Manage Employees</h1>
+    <h1 class="table-title">Employees Add New Account Page</h1>
     
     <div v-if="showModal">
       <Modal  theme="sale" @close="toggleModal">
@@ -13,6 +13,7 @@
       </Modal>
     </div>
       <button class="Modal" @click="toggleModal">{{ showModal === false ?  'Add New Employee' : 'Close' }}</button>
+       <h3>Total of {{ employees.length }} Employee Account</h3>
     <employee-table
       :employees="employees"
       @delete:employee="deleteEmployee"
@@ -81,6 +82,7 @@ export default {
         user.set("username", res.username);
         user.set("email", res.email);
         user.set("password", res.password);
+        user.set("office", res.office);
         user.setACL(groupACL);
         user.signUp().then(function success(user) {
           console.log("Signed Up" , user);
@@ -88,7 +90,6 @@ export default {
           console.error(err)
         })
         location.reload();
-        //const data = await response.json()
         this.employees = [...this.employees, data]
       } catch (error) {
         console.error(error)

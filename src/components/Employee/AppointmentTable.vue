@@ -12,7 +12,7 @@
     <tr>
       <!-- loop through each value of the fields to get the table header -->
       <th  v-for="field in fields" :key='field' @click="sortTable(field)" > 
-        {{field}} <i class="bi bi-sort-alpha-down" aria-label='Sort Icon'></i>
+        {{field}}
        </th>
     </tr>
   </thead>
@@ -157,6 +157,26 @@ h5{
   letter-spacing: 1px;
   font-family: 'Outfit', sans-serif;
   transition: all 0.4s ease-in-out;
+}
+
+.table td , th{
+  border: none;
+  padding: 10px ;
+}
+.table th{
+  padding: 20px 10px;
+}
+.table tr {
+  background-color: #fff;
+}
+.table td{
+  padding: 15px 5px;
+  background-color: #fff;
+}
+.table th:nth-child(4) {
+  padding: 10px 5px;
+  background-color: #fff;
+  width: 20%;
 }
 table th:hover {
         background:#f2f2f2;

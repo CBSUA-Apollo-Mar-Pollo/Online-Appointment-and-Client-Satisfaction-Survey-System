@@ -80,21 +80,17 @@ export default {
         groupACL.setRoleReadAccess("Employee" , true);
         groupACL.setPublicReadAccess(true);
         var user = new Parse.User();
-        var Office = Parse.Object.extend("Office");
-        var office = new Office();  
         user.set("username", res.username);
         user.set("email", res.email);
         user.set("password", res.password);
-        office.set("Office", res.office);
-        office.set("parent" , user);
-        //user.set("office", res.office);
+        user.set("office", res.office);
         user.setACL(groupACL);
         user.signUp().then(function success(user) {
           console.log("Signed Up" , user);
         } , function error(err) {
           console.error(err)
         })
-        //location.reload();
+        location.reload();
         //this.employees = [...this.employees, data]
       } catch (error) {
         console.error(error)
@@ -115,12 +111,19 @@ export default {
       }
     },
 
-    async deleteEmployee(id) {
+    async deleteEmployee(employee) {
       try {
-        await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-          method: 'DELETE'
-        })
-        this.employees = this.employees.filter(employee => employee.id !== id)
+          const User = Parse.Object.extend("_User");
+          const query = new Parse.Query(User);
+          query.equalTo('email', employee.email);
+          const delRes = await query.first();
+
+          delRes.destroy({useMasterKey: true}).then(() => {
+            console.log('success deleted')
+          },(err) => {
+            console.log(err)
+          })
+          location.reload();
       } catch (error) {
         console.error(error)
       }

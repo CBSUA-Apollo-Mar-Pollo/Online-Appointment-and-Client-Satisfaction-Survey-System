@@ -23,7 +23,7 @@
           <td v-if="editing === admin.id">
             <input
               type="text"
-              v-model="admin.username"
+              v-model="admin.username"  
             >
           </td>
           <td v-else>{{admin.username}}</td>
@@ -43,8 +43,8 @@
             >Cancel</button>
           </td>
           <td v-else>
-            <button @click="editMode(admin)">Edit</button>
-            <button @click="$emit('delete:admin', admin.id)">Delete</button>
+            <!-- <button @click="editMode(admin)">Edit</button> -->
+            <button @click="$emit('delete:admin', admin)">Delete</button>
           </td>
 
         </tr>
@@ -72,7 +72,7 @@ export default {
 
     cancelEdit(admin) {
       Object.assign(admin, this.cachedadmin)
-      this.editing = null;
+      this.editing = null;    
     },
 
     editadmin(admin) {

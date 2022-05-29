@@ -45,8 +45,8 @@
             >Cancel</button>
           </td>
           <td v-else>
-            <button @click="editMode(employee)">Edit</button>
-            <button @click="$emit('delete:employee', employee.id)">Delete</button>
+            <!-- <button @click="editMode(employee)">Edit</button> -->
+            <button @click="$emit('delete:employee', employee)">Delete</button>
           </td>
         </tr>
       </tbody>

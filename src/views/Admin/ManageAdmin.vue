@@ -98,25 +98,34 @@ export default {
     },
 
     async editadmin(id, updatedadmin) {
-      try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-          method: 'PUT',
-          body: JSON.stringify(updatedadmin),
-          headers: { "Content-type": "application/json; charset=UTF-8" }
-        })
-        const data = await response.json()
-        this.admins = this.admins.map(admin => admin.id === id ? data : admin)
-      } catch (error) {
-        console.error(error)
-      }
+      console.log(updatedadmin)
+      // try {
+      //   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      //     method: 'PUT',
+      //     body: JSON.stringify(updatedadmin),
+      //     headers: { "Content-type": "application/json; charset=UTF-8" }
+      //   })
+      //   const data = await response.json()
+      //   this.admins = this.admins.map(admin => admin.id === id ? data : admin)
+      // } catch (error) {
+      //   console.error(error)
+      // }
     },
 
-    async deleteadmin(id) {
+    async deleteadmin(admin) {
+      console.log(admin)
       try {
-        await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-          method: 'DELETE'
-        })
-        this.admins = this.admins.filter(admin => admin.id !== id)
+          const User = Parse.Object.extend("_User");
+          const query = new Parse.Query(User);
+          query.equalTo('email', admin.email);
+          const delRes = await query.first();
+
+          delRes.destroy({useMasterKey: true}).then(() => {
+            console.log('success deleted')
+          },(err) => {
+            console.log(err)
+          })
+          location.reload();
       } catch (error) {
         console.error(error)
       }

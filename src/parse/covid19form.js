@@ -4,7 +4,7 @@ const COVIDFORM = Parse.Object.extend("Covid19Form");
 
 var covidForm = {
   save(args = {}) {
-    const { symptoms, past15days, PositiveContact, travelAbroad, emailAdd } =
+    const { symptoms, past15days, PositiveContact, travelAbroad, emailAdd , office } =
       args;
 
     const object = new COVIDFORM();
@@ -13,6 +13,7 @@ var covidForm = {
     object.set("PositiveContact", PositiveContact);
     object.set("travelAbroad", travelAbroad);
     object.set("emailAdd", emailAdd);
+    object.set("office", office);
     return object.save();
   },
 };

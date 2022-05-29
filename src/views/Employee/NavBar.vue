@@ -2,7 +2,7 @@
 <div>
   <header id="header" class="d-flex flex-column justify-content-center">
     <nav id="navbar" class="bnav b-nav">
-      <ul>
+       <ul>
         <li>
           <a href="/Employee" class="nav-link active"
             ><i class="bx bx-home"></i> <span>Dashboard</span></a
@@ -10,36 +10,38 @@
         </li>
         <li>
           <a href="/ManageAppointmentPending" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Pending Appointment</span></a
+            ><i class="bi bi-clock"></i> <span>Pending Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentApprove" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Request Approve Appointment</span></a
+            ><i class="bi bi-check-circle"></i> <span>Request Approve Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentRejected" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Rejected Request Appointment</span></a
+            ><i class="bi bi-x-circle"></i> <span>Rejected Request Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentCanceled" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Canceled By User</span></a
+            ><i class="bi-x-octagon"></i> <span>Canceled By User</span></a
           >
         </li>
         <li>
           <a href="/ManageAssessment" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Self-Assessment</span></a
+            ><i class="bi-person-check"></i> <span>Self-Assessment</span></a
           >
         </li>
         <li>
           <a href="/ManageSurvey" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Satisfaction Survey</span></a
+            ><i class="bi-graph-up"></i> <span>Satisfaction Survey</span></a
           >
         </li>
         <li>
-          <button @click="handleClick">Logout</button>
+          <a @click="handleClick" class="nav-link cursor-pointer"
+            ><i class="bi bi-box-arrow-in-right"></i> <span>Log out</span></a
+          >
         </li>
       </ul>
     </nav>

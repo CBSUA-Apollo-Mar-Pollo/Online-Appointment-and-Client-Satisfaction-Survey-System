@@ -10,6 +10,26 @@
                 </div>
                 </div>
                 </div>
+     <div className='totalcard'>
+            <div className="cardBox1">
+                <div className="card">
+                        <div className="numbers">{{ pending }}</div>
+                        <div className="cardName">Pending Appointment Total</div>
+                </div>
+                <div className="card">
+                        <div className="numbers">{{ approved }}</div>
+                        <div className="cardName">Approved Appointment Total</div>
+                </div>
+                <div className="card">
+                        <div className="numbers">{{ rejected }}</div>
+                        <div className="cardName">Rejected Appointment Total</div>
+                </div>
+                <div className="card">
+                        <div className="numbers">{{ canceled }}</div>
+                        <div className="cardName">Canceled By User</div>
+                </div>
+                </div>
+                </div>
                 <div id="piechart_3d" style="width: 1000px; height: 700px; margin: auto;"></div>
 </div>
 </template>
@@ -29,12 +49,11 @@ export default {
     NavBar,
   },
   setup() {
-    var user = Parse.User.current()
-    console.log(user.attributes.username)
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user)
      const store = useStore();
     const Data = Parse.Object.extend("CSS");
     const query = new Parse.Query(Data);
-    var e = ref();
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);
@@ -163,9 +182,82 @@ export default {
     var currentDate = new Date();
     console.log(currentDate);
 
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user.attributes.office)
+    const DataApproved = Parse.Object.extend("test");
+    const query1 = new Parse.Query(DataApproved);
+    query1.equalTo("status" , 'Request Accepted');
+    query1.equalTo("selectOffice" , user.attributes.office);
+    query1.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        console.log(res.length)
+        await store.dispatch('approvedTotal' , res.length)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    const DataPending = Parse.Object.extend("test");
+    const query2 = new Parse.Query(DataPending);
+    query2.equalTo("status" , 'On Process');
+    query2.equalTo("selectOffice" , user.attributes.office);
+    query2.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        console.log(res.length)
+        await store.dispatch('pendingTotal' , res.length)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    const DataRejected = Parse.Object.extend("test");
+    const query3 = new Parse.Query(DataRejected);
+    query3.equalTo("status" , 'Rejected');
+    query3.equalTo("selectOffice" , user.attributes.office);
+    query3.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        console.log(res.length)
+        await store.dispatch('rejectedTotal' , res.length)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    const DataCancel = Parse.Object.extend("test");
+    const query4 = new Parse.Query(DataCancel);
+    query4.equalTo("status" , 'Canceled');
+    query4.equalTo("selectOffice" , user.attributes.office);
+    query4.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        console.log(res.length)
+        await store.dispatch('cancelTotal' , res.length)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+
 
     return { 
-      user, a: computed(() => store.state.appointmentLength)
+      user, 
+      a: computed(() => store.state.appointmentLength),
+      approved: computed(() => store.state.approvedTotal),
+      pending: computed(() => store.state.pendingTotal),
+      rejected: computed(() => store.state.rejectedTotal),
+      canceled: computed(() => store.state.cancelTotal),
       //authIsReady: computed(() => store.state.authIsReady)
     }
 }
@@ -224,6 +316,45 @@ export default {
 .cardBox .card:hover .numbers ,
 .cardBox .card:hover .cardName ,
 .cardBox .card:hover .iconBox
+{
+    color : var(--white);
+}
+.cardBox1
+{
+    position: relative;
+    width: 100%;
+    padding : 50px 200px;
+    display : grid ;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+.cardBox1 .card{
+    position : relative ;
+    background : var(--white);
+    padding : 20px ;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.2);
+}
+.cardBox1 .card .numbers {
+    position: relative ; 
+    font-weight: 600;
+    margin-left: 50px;
+    font-size: 3em;
+    color : #4a81da;;
+    padding : 3px ;
+}
+.cardBox1 .card .cardName {
+    color : var(--black1);
+    font-size: 1em;
+    margin-top: 5px;
+    padding : 2px ;
+}
+.cardBox1 .card:hover {
+    background: var(--blue);
+}
+.cardBox1 .card:hover .numbers ,
+.cardBox1 .card:hover .cardName ,
+.cardBox1 .card:hover .iconBox
 {
     color : var(--white);
 }

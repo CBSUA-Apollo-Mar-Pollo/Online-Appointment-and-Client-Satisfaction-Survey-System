@@ -31,9 +31,11 @@ export default {
  
   setup(){
     const store = useStore();
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user.attributes.office)
     const Data = Parse.Object.extend("CSS");
     const query = new Parse.Query(Data);
-    var e = ref();
+    query.equalTo("office" , user.attributes.office);
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);

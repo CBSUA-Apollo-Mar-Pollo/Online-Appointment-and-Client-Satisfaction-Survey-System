@@ -6,7 +6,6 @@
         <input type="search" class="form-control" v-model='searchQuery' placeholder="Search here..." aria-label="Recipient's username" aria-describedby="button-addon2">
       </div>
   </div>
-
 <table id="tableComponent" class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -17,12 +16,19 @@
     </tr>
   </thead>
   <tbody>
+
       <!-- Loop through the list get the each appointment data -->
       <tr v-for="item in filteredList" @click="handleClick(item)" :key='item'>
       <td class="cursor-pointer" v-for="field in fields" :key='field'>{{item[field]}}</td>
     </tr>
-  </tbody>
+  </tbody> 
 </table>
+    <p
+      v-if="filteredList.length < 1"
+      class="text-center"
+    >
+      No Appointment yet
+    </p>
     <div v-if="showModal">
       <Modal  @close="handleClick">
           <h1><b>Email :</b> {{ data.emailAdd }}</h1>

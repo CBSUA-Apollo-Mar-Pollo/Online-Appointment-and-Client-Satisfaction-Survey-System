@@ -15,7 +15,8 @@ var test = {
       time,
       comments,
       referenceNum,
-      selectOffice
+      selectOffice,
+      status
     } = args;
 
     const object = new Test();
@@ -30,6 +31,7 @@ var test = {
     object.set("time", time);
     object.set("comments", comments);
     object.set("referenceNum", referenceNum);
+    object.set("status", status);
     return object.save();
   },
 };

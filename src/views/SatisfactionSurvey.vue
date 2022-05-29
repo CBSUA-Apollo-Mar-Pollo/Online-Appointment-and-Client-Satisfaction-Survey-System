@@ -134,6 +134,7 @@ export default {
         No5: pickedNo5.value,
         comment: comment.value,
         emailAdd: userData.emailAdd,
+        office: userData.selectOffice
       });
       css.save({
         pickedNo1: pickedNo1.value,
@@ -143,6 +144,7 @@ export default {
         pickedNo5: pickedNo5.value,
         comment: comment.value,
         emailAdd: userData.emailAdd,
+        office: userData.selectOffice
       });
 
       router.push({ name: "WelcomePage" });

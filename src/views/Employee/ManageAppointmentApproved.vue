@@ -29,15 +29,20 @@ export default {
   },
   setup(){
     const store = useStore();
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user.attributes.office)
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
     query.equalTo("status" , 'Request Accepted');
+    query.equalTo("selectOffice" , user.attributes.office);
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);
         console.log(data.map((e) => e.attributes));
         var res = await data.map((e) => e.attributes)
+        console.log(res.length)
         await store.dispatch('allAppointment' , res )
+        await store.dispatch('approvedTotal' , res.length)
       },
       (error) => {
         console.log(error);

@@ -71,6 +71,7 @@
                 <div class="col-md-12">
                   <p>Select Office*</p>
                   <select class="form-select" 
+                    @change="checkDate()"
                     v-model="selectOffice"  
                     type="tel"
                     placeholder="09XXXXXXXXX">
@@ -171,6 +172,7 @@
                 <div class="col-md-6">
                   <p>Chooose Date*</p>
                   <input
+                    @change="checkDate()"
                     type="date"
                     class="form-control"
                     placeholder="Enter Date"
@@ -186,7 +188,10 @@
                     v-model="time"
                   />
                 </div>
-
+                <div class="col-md-12 text-center">
+                  <b v-if="dateStatus === 'Available'" class="text-green-500">This Date is Available.</b>
+                  <b v-if="dateStatus === 'NotAvailable'" class="text-red-500">This Date is Not Available. Please Select Another</b>
+                </div>
                 <div class="container">
                   <div class="col-md-4"></div>
                   <div class="col-md-12">
@@ -211,11 +216,18 @@
                   ></textarea>
                 </div>
                 <div class="text-center mt-5">
-                  <button
+                  <button v-if="dateStatus === 'Available'"
                     class="col-8 btn btn-primary"
                     href="/AssessmentForm"
                     role="button"
                     type="submit"
+                  >
+                    Next</button
+                  >
+                  <button v-else
+                    disabled
+                    class="col-8 btn btn-primary opacity-30 cursor-not-allowed"
+                    type="button"
                   >
                     Next</button
                   ><br />
@@ -248,6 +260,11 @@ export default {
   components: {
     NavBar,
   },
+  data() {
+    return {
+      dateStatus: "",
+    }
+  },
   
   setup() {
     const router = useRouter();
@@ -279,7 +296,8 @@ export default {
         time: time.value,
         comments: comments.value,
         selectOffice : selectOffice.value,
-        referenceNum: referenceNum
+        referenceNum: referenceNum,
+        status : 'On Process'
       });
       console.log(data._rawValue);
       localStorage.setItem("storedData", JSON.stringify(data._rawValue));
@@ -301,6 +319,22 @@ export default {
   },
 
   methods: {
+    async checkDate(){
+      const test= Parse.Object.extend("test");
+      const query = new Parse.Query(test);
+      query.equalTo("date", this.date);
+      query.equalTo("selectOffice", this.selectOffice);
+      query.notEqualTo("status", "Canceled");
+      const count = await query.count();
+      if(this.selectOffice && this.date){
+        if(count < 2){
+          this.dateStatus = "Available";
+        }else{
+          this.dateStatus = "NotAvailable";
+        }
+      }
+      console.log(count);
+    },
     showAlert() {
       // Use sweetalert2
       this.$swal

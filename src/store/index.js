@@ -6,7 +6,11 @@ export default createStore({
     appointment : null,
     selfAssessment : null,
     survey : null,
-    appointmentLength : null 
+    appointmentLength : null ,
+    approvedTotal: null,
+    pendingTotal: null,
+    rejectedTotal: null,
+    cancelTotal: null,
   },
   mutations: {
     setStatus(state , payload) {
@@ -29,6 +33,23 @@ export default createStore({
       state.appointmentLength = payload
       console.log('object changed' , state.appointmentLength);
     },
+    setapprovedTotal(state , payload) {
+      state.approvedTotal = payload
+      console.log('object changed' , state.approvedTotal);
+    },
+    setpendingTotal(state , payload) {
+      state.pendingTotal = payload
+      console.log('object changed' , state.pendingTotal);
+    },
+    setrejectedTotal(state , payload) {
+      state.rejectedTotal = payload
+      console.log('object changed' , state.rejectedTotal);
+    },
+    setcancelTotal(state , payload) {
+      state.cancelTotal = payload
+      console.log('object changed' , state.cancelTotal);
+    },
+    
   },
   actions: {
     async appointmentStatus(context , payload) {
@@ -45,7 +66,19 @@ export default createStore({
     },
     async appointmentLength(context , payload) {
       context.commit('setAppointmentLength' , payload);
-    }
+    },
+    async approvedTotal(context , payload) {
+      context.commit('setapprovedTotal' , payload);
+    },
+    async pendingTotal(context , payload) {
+      context.commit('setpendingTotal' , payload);
+    },
+    async rejectedTotal(context , payload) {
+      context.commit('setrejectedTotal' , payload);
+    },
+    async cancelTotal(context , payload) {
+      context.commit('setcancelTotal' , payload);
+    },
   },
   getters: {},
   modules: {},

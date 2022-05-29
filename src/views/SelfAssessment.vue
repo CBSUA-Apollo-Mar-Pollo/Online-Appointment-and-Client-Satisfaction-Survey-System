@@ -388,6 +388,7 @@ export default {
         PositiveContact: PositiveContact.value,
         travelAbroad: travelAbroad.value,
         emailAdd: userData.emailAdd,
+        office: userData.selectOffice
       });
 
       router.push({ name: "ReferenceNumber" });

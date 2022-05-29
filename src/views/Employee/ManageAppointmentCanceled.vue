@@ -29,9 +29,12 @@ export default {
   },
   setup(){
     const store = useStore();
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user.attributes.office)
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
     query.equalTo("status" , 'Canceled');
+    query.equalTo("selectOffice" , user.attributes.office);
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);

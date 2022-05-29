@@ -62,6 +62,7 @@ export default {
               var employee = res.map((e) => e.ACL.permissionsById['role:Employee'])
               //console.log(data.map((e) => e.attributes));
               this.employees = res.filter((e) => e.ACL.permissionsById['role:Employee'])
+              console.log(this.employees)
         //await store.dispatch('allAppointment' , res )
       })
       } catch (error) {
@@ -79,18 +80,22 @@ export default {
         groupACL.setRoleReadAccess("Employee" , true);
         groupACL.setPublicReadAccess(true);
         var user = new Parse.User();
+        var Office = Parse.Object.extend("Office");
+        var office = new Office();  
         user.set("username", res.username);
         user.set("email", res.email);
         user.set("password", res.password);
-        user.set("office", res.office);
+        office.set("Office", res.office);
+        office.set("parent" , user);
+        //user.set("office", res.office);
         user.setACL(groupACL);
         user.signUp().then(function success(user) {
           console.log("Signed Up" , user);
         } , function error(err) {
           console.error(err)
         })
-        location.reload();
-        this.employees = [...this.employees, data]
+        //location.reload();
+        //this.employees = [...this.employees, data]
       } catch (error) {
         console.error(error)
       }

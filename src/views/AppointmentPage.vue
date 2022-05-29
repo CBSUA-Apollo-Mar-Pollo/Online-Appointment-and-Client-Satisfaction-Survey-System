@@ -192,7 +192,7 @@
                   <b v-if="dateStatus === 'Available'" class="text-green-500">This Date is Available.</b>
                   <b v-if="dateStatus === 'NotAvailable'" class="text-red-500">This Date is Not Available. Please Select Another</b>
                 </div>
-                <div class="container">
+                <!-- <div class="container">
                   <div class="col-md-4"></div>
                   <div class="col-md-12">
                     <form method="post" enctype="multipart/form-data">
@@ -205,7 +205,7 @@
                     </form>
                   </div>
                   <div class="col-md-4"></div>
-                </div>
+                </div> -->
 
                 <div class="col-12">
                   <p>Reason for Appointment:</p>

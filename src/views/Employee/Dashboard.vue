@@ -1,7 +1,7 @@
 <template>
 <div>
     <NavBar />
-    <p class="welcome">Logged In as  {{ user.attributes.username }} </p>
+    <p class="welcome">Logged In as  {{ user.attributes.username }} of {{ user.attributes.office  }} </p>
      <div className='totalcard'>
             <div className="cardBox">
                 <div className="card">
@@ -54,6 +54,7 @@ export default {
      const store = useStore();
     const Data = Parse.Object.extend("CSS");
     const query = new Parse.Query(Data);
+    query.equalTo("office" , user.attributes.office);
     query.find().then(
       async (data) => {
         var id = await data.map((e) => e.id);
@@ -165,9 +166,12 @@ export default {
         console.log(error);
       }
     );
+    var user = Parse.User.current({useMasterKey: true})
+    console.log(user.attributes.office)
     const d = Parse.Object.extend("test");
     const q = new Parse.Query(d);
     q.greaterThan('createdAt', { $relativeTime: '7 days ago' });
+    q.equalTo("selectOffice" , user.attributes.office);
     q.find().then(async data => {
       console.log(data.map((e) => e.attributes));
       const res  = await data.map((e) => e.attributes).length ;
@@ -181,9 +185,6 @@ export default {
     const a = JSON.parse(localStorage.getItem("appointmentLength"));
     var currentDate = new Date();
     console.log(currentDate);
-
-    var user = Parse.User.current({useMasterKey: true})
-    console.log(user.attributes.office)
     const DataApproved = Parse.Object.extend("test");
     const query1 = new Parse.Query(DataApproved);
     query1.equalTo("status" , 'Request Accepted');

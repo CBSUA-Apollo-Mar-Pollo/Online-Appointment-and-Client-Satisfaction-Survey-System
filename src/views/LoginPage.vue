@@ -71,7 +71,7 @@ export default {
         if(res['role:Employee']) {
           router.push('/Employee')
         } else if(res['role:admin']){
-          router.push('/ManageAdmin')
+          router.push('/Admin')
         }  
       } , function error(err) {
         er.value = "Authentication Failed"

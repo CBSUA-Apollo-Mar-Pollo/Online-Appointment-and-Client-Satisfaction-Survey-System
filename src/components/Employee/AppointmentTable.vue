@@ -31,9 +31,15 @@
     </p>
     <div v-if="showModal">
       <Modal  @close="handleClick">
-          <h1><b>Email :</b> {{ data.emailAdd }}</h1>
-          <h5><b>Reason for the Visit :</b> {{ data.reasonOfVisit }}</h5>
-          <h5><b>Date and time :</b> {{ data.date + " " + data.time }}</h5>
+        <div class="mt-2">
+          <h1 class="p-2"><b>Name :</b> {{ data.fName }} {{ data.lName }}</h1>
+          <h1 class="p-2"><b>Email :</b> {{ data.emailAdd }}</h1>
+          <h1 class="p-2"><b>Contact Number:</b> {{ data.contactNum }}</h1>
+          <h1 class="p-2"><b>Affliation Of Client:</b> {{ data.AffliationOfClient }}</h1>
+          <h5 class="p-2"><b>Reason for the Visit :</b> {{ data.reasonOfVisit }}</h5>
+          <h5 class="p-2"><b>Date and time :</b> {{ data.date + "," + data.time }}</h5>
+          <h5 class="p-2"><b>Reason for Appointment :</b> {{ data.comments }}</h5>
+        </div>
           <div class="buttons">
             <button @click="acceptRequest(data)">Accept Request</button>
             <button @click="declineRequest(data)">Decline Request</button>

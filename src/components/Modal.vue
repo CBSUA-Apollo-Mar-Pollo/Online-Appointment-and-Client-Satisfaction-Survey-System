@@ -19,14 +19,11 @@
 
 <style>
     .modal1{
-        width: 600px;
+        width: 500px;
         padding: 20px;
-        height: 30vh;
-        margin: 30vh auto;
+        margin: 250px auto;
         background: white;
         border-radius: 10px;
-        cursor: context-menu;
-         position: fixed;
     top:0;
     bottom: 0;
     left: 0;

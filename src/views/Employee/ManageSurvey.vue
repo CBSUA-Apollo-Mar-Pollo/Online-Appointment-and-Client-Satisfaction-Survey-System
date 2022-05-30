@@ -35,6 +35,7 @@ export default {
     console.log(user.attributes.office)
     const Data = Parse.Object.extend("CSS");
     const query = new Parse.Query(Data);
+    query.descending('createdAt');
     query.equalTo("office" , user.attributes.office);
     query.find().then(
       async (data) => {
@@ -151,7 +152,7 @@ export default {
     //console.log(JSON.parse(JSON.stringify(store.state.appointment)));
 
     const fields = [
-      'emailAdd','pickedNo1','pickedNo2','pickedNo3','pickedNo4','pickedNo5','comment'
+      'emailAdd','pickedNo1','pickedNo2','pickedNo3','pickedNo4','pickedNo5','pickedNo6','pickedNo7','pickedNo8','comment'
     ]
 
     return{surveyData: computed(() => JSON.parse(JSON.stringify(store.state.survey)))

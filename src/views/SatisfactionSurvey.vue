@@ -36,7 +36,7 @@
           <table>
             <tr>
               <td class="first-col">
-                1. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
+                1. How satisfied are you with the assistance and speed in which the service was delivered by email?
               </td>
               <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo1"/></td>
               <td><input type="radio" value="Satisfied" name="" v-model="pickedNo1"/></td>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
               <td class="first-col">
-                2. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
+                2. How satisfied are you with the quality of advice, guidance and accuracy of information in which the services was rendered?
               </td>
               <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo2"/></td>
               <td><input type="radio" value="Satisfied" name="" v-model="pickedNo2"/></td>
@@ -56,7 +56,7 @@
             </tr>
             <tr>
               <td class="first-col">
-                3. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
+                3.How satisfied are you with the provision of email facility in terms of promptness, relevance and accuracy of response and action?
               </td>
                <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo3"/></td>
               <td><input type="radio" value="Satisfied" name="" v-model="pickedNo3"/></td>
@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td class="first-col">
-                4. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
+                4. How satisfied are you that our written communications were clear, concise, and in understandable language?
               </td>
                <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo4"/></td>
               <td><input type="radio" value="Satisfied" name="" v-model="pickedNo4"/></td>
@@ -76,13 +76,43 @@
             </tr>
             <tr>
               <td class="first-col">
-                5. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed?
+                5. How satisfied are you with the amount of your fees and cost given the quality of services provided?
               </td>
               <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo5"/></td>
               <td><input type="radio" value="Satisfied" name="" v-model="pickedNo5"/></td>
               <td><input type="radio" value="Not Sure" name="" v-model="pickedNo5"/></td>
               <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo5"/></td>
               <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo5"/></td>
+            </tr>
+            <tr>
+              <td class="first-col">
+                6. How satisfied are you with the professionalism shown by the personnel handling the services you have requested?
+              </td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo6"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo6"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo6"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo6"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo6"/></td>
+            </tr>
+            <tr>
+              <td class="first-col">
+                7. How satisfied are you with the ability of our staff to meet your service needs?
+              </td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo7"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo7"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo7"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo7"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo7"/></td>
+            </tr>
+            <tr>
+              <td class="first-col">
+                8.How satisfied are you with the overall quality of the services you received?
+              </td>
+              <td><input type="radio" value="Very Satisfied" name="" v-model="pickedNo8"/></td>
+              <td><input type="radio" value="Satisfied" name="" v-model="pickedNo8"/></td>
+              <td><input type="radio" value="Not Sure" name="" v-model="pickedNo8"/></td>
+              <td><input type="radio" value="Dissatisfied" name="" v-model="pickedNo8"/></td>
+              <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo8"/></td>
             </tr>
           </table>
           <h4 class="pt-4">Comment/s:</h4>
@@ -104,6 +134,7 @@
 <script>
 import NavBar from "./NavBar.vue";
 import { ref } from "vue";
+import { useStore } from 'vuex'
 // eslint-disable-next-line no-unused-vars
 import Parse from "parse";
 import { useRouter } from "vue-router";
@@ -116,13 +147,18 @@ export default {
   },
 
   setup() {
+     const store = useStore();
     const router = useRouter();
-    const userData = JSON.parse(localStorage.getItem("storedData"));
+    const userData = JSON.parse(localStorage.getItem("status"));
+    console.log(userData)
     const pickedNo1 = ref("");
     const pickedNo2 = ref("");
     const pickedNo3 = ref("");
     const pickedNo4 = ref("");
     const pickedNo5 = ref("");
+    const pickedNo6 = ref("");
+    const pickedNo7 = ref("");
+    const pickedNo8 = ref("");
     const comment = ref("");
 
     const handleSubmit = () => {
@@ -132,6 +168,9 @@ export default {
         No3: pickedNo3.value,
         No4: pickedNo4.value,
         No5: pickedNo5.value,
+        No6: pickedNo6.value,
+        No7: pickedNo7.value,
+        No8: pickedNo8.value,
         comment: comment.value,
         emailAdd: userData.emailAdd,
         office: userData.selectOffice
@@ -142,12 +181,17 @@ export default {
         pickedNo3: pickedNo3.value,
         pickedNo4: pickedNo4.value,
         pickedNo5: pickedNo5.value,
+        pickedNo6: pickedNo6.value,
+        pickedNo7: pickedNo7.value,
+        pickedNo8: pickedNo8.value,
+
         comment: comment.value,
         emailAdd: userData.emailAdd,
         office: userData.selectOffice
       });
+      //localStorage.removeItem("status");
 
-      router.push({ name: "WelcomePage" });
+      //router.push({ name: "WelcomePage" });
     };
     return {
       handleSubmit,
@@ -156,6 +200,9 @@ export default {
       pickedNo3,
       pickedNo4,
       pickedNo5,
+      pickedNo6,
+      pickedNo7,
+      pickedNo8,
       comment
     };
   },

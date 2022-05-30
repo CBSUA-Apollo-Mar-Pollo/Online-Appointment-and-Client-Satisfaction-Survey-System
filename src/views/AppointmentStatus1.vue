@@ -30,7 +30,7 @@
         <button
           class="col-2 btn bg-primary text-white mt-3 button"
           type="submit"
-          onclick="location.href='/SurveyForm';"
+          onclick="location.href='/';"
         >
           Next
         </button>

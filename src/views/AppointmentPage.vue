@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <section id="AppointmentForm" class="AppointmentPage p-0">
+  <section id="AppointmentForm" class="AppointmentPage p-10">
     <div class="container" data-aos="fade-up">
       <div class="container app-con">
         <div class="row">
@@ -76,6 +76,7 @@
                     type="tel"
                     placeholder="09XXXXXXXXX">
                     <option selected>Local Graduate Scholarship Office</option>
+                    <option selected>LGSO</option>
                     <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
                     <option selected>Office of Student Development and Services (OSDS)</option>
                     <option selected>Regional Office V</option>
@@ -181,12 +182,22 @@
                 </div>
                 <div class="col-md-6">
                   <p>Choose Time*</p>
-                  <input
-                    type="time"
-                    class="form-control"
-                    placeholder="Enter Email"
-                    v-model="time"
-                  />
+                  <select class="form-select" v-model="time">
+                      <option value="09:00 AM">09:00 AM</option>
+                      <option value="09:30 AM">09:30 AM</option>
+                      <option value="10:00 AM">10:00 AM</option>
+                      <option value="10:30 AM">10:30 AM</option>
+                      <option value="11:00 AM">11:00 AM</option>
+                      <option value="11:30 AM">11:30 AM</option>
+                      <option value="01:00 AM">01:00 PM</option>
+                      <option value="01:30 AM">01:30 PM</option>
+                      <option value="02:00 AM">02:00 PM</option>
+                      <option value="02:30 AM">02:30 PM</option>
+                      <option value="03:00 AM">03:00 PM</option>
+                      <option value="03:30 AM">03:30 PM</option>
+                      <option value="04:00 AM">04:00 PM</option>
+                      <option value="04:30 AM">04:30 PM</option>
+                  </select>
                 </div>
                 <div class="col-md-12 text-center">
                   <b v-if="dateStatus === 'Available'" class="text-green-500">This Date is Available.</b>

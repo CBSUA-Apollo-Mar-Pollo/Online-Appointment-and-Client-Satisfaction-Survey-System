@@ -34,7 +34,33 @@ export default {
   props: ["modalActive"],
   setup(props, { emit }) {
     const close = () => {
-      emit("close");
+      const refNum = store.state.status;
+      console.log("data", refNum.referenceNum);
+      var Data = Parse.Object.extend("test");
+      var query = new Parse.Query(Data);
+      query.equalTo("referenceNum", refNum.referenceNum);
+      query.first().then((data) => {
+        if(data.attributes.status === 'Request Accepted'){
+          //location.href='/SurveyForm';
+          localStorage.setItem("status", JSON.stringify(data.attributes));
+          var Data = Parse.Object.extend("CSS");
+          var query = new Parse.Query(Data);
+          query.equalTo("emailAdd", data.attributes.emailAdd);
+          query.first().then((data) => {
+            try {
+              emit("close");
+              console.log(data.attributes)
+            } catch (e) {
+              location.href='/SurveyForm';
+            }
+          })
+        } else {
+          emit("close");
+        }
+        //console.log(data.attributes.emailAdd);
+      })
+      //emit("close");
+      //location.href='/SurveyForm';
       //window.location.reload();
     };
     const store = useStore();

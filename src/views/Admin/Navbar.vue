@@ -5,21 +5,23 @@
       <ul>
         <li>
           <a href="/Admin" class="nav-link active"
-            ><i class="bx bx-home"></i> <span>Dashboard</span></a
+            ><i class="bx bx-home pr-5"></i>Dashboard</a
           >
         </li>
         <li>
           <a href="/ManageAdmin" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Manage Admin</span></a
+            ><i class="bi bi-card-checklist pr-5"></i>Manage Admin</a
           >
         </li>
         <li>
           <a href="/ManageEmployee" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Manage Employee</span></a
+            ><i class="bi bi-card-text pr-5"></i>Manage Employee</a
           >
         </li>
         <li>
-          <button @click="handleClick">Logout</button>
+          <a @click="handleClick" class="nav-link cursor-pointer"
+            ><i class="bi bi-box-arrow-in-right pr-5"></i>Log out</a
+          >
         </li>
       </ul>
     </nav>
@@ -87,6 +89,12 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 992px) {
+.b-nav a, .b-nav a:focus {
+    width: auto;
+}
+}
+
 .reminder a {
   text-decoration: none;
 }

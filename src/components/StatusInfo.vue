@@ -24,6 +24,9 @@
                       <span class="text-sky-600 text-3xl pb-1 font-extrabold"
                         >{{ appointmentStatus?.status }}</span
                       >
+                      <div v-if="appointmentStatus?.status === 'Rejected'">
+                        <p>Reason for Rejection : {{ appointmentStatus?.RejectedMessage }}</p>
+                      </div>
                       <hr />
                     </div>
                   </td>

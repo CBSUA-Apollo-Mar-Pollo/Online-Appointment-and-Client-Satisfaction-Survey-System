@@ -42,7 +42,18 @@
         </div>
           <div class="buttons">
             <button @click="acceptRequest(data)">Accept Request</button>
-            <button @click="declineRequest(data)">Decline Request</button>
+            <button @click="reason()">{{ showReason === false ? 'Reject Request' : 'close' }}</button>
+          </div>
+          <div class="col-12" v-if="showReason">
+                  <p>Reason:</p>
+                  <textarea
+                    class="form-control"
+                    placeholder="Message"
+                    v-model="comments"
+                  ></textarea>
+                  <div class="buttons">
+                     <button @click="declineRequest(data)">Send</button>
+                  </div>
           </div>
       </Modal>
     </div> 
@@ -70,6 +81,8 @@ export default {
   data() {
     return {
       showModal : false,
+      showReason : false,
+      comments: '',
       data : []
     }
   },
@@ -96,6 +109,9 @@ export default {
         }
       );
     },
+    reason() {
+       this.showReason = !this.showReason
+    },
     declineRequest(data) {
       console.log("Decline Request");
        var Data = Parse.Object.extend("test");
@@ -105,6 +121,7 @@ export default {
         async (data) => {
           console.log(data.attributes);
            data.set("status", "Rejected");
+           data.set("RejectedMessage", this.comments);
            data.save();
            location.reload();
         },

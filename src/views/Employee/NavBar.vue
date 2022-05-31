@@ -5,42 +5,42 @@
        <ul>
         <li>
           <a href="/Employee" class="nav-link active"
-            ><i class="bx bx-home"></i> <span>Dashboard</span></a
+            ><i class="bx bx-home pr-5"></i>Dashboard</a
           >
         </li>
         <li>
           <a href="/ManageAppointmentPending" class="nav-link"
-            ><i class="bi bi-clock"></i> <span>Pending Appointment</span></a
+            ><i class="bi bi-clock pr-5"></i>Pending Appointment</a
           >
         </li>
         <li>
           <a href="/ManageAppointmentApprove" class="nav-link"
-            ><i class="bi bi-check-circle"></i> <span>Request Approve Appointment</span></a
+            ><i class="bi bi-check-circle pr-5"></i>Request Approve Appointment</a
           >
         </li>
         <li>
           <a href="/ManageAppointmentRejected" class="nav-link"
-            ><i class="bi bi-x-circle"></i> <span>Rejected Request Appointment</span></a
+            ><i class="bi bi-x-circle pr-5"></i>Rejected Request Appointment</a
           >
         </li>
         <li>
           <a href="/ManageAppointmentCanceled" class="nav-link"
-            ><i class="bi-x-octagon"></i> <span>Canceled By User</span></a
+            ><i class="bi-x-octagon pr-5"></i>Canceled By User</a
           >
         </li>
         <li>
           <a href="/ManageAssessment" class="nav-link"
-            ><i class="bi-person-check"></i> <span>Self-Assessment</span></a
+            ><i class="bi-person-check pr-5"></i>Self-Assessment</a
           >
         </li>
         <li>
           <a href="/ManageSurvey" class="nav-link"
-            ><i class="bi-graph-up"></i> <span>Satisfaction Survey</span></a
+            ><i class="bi-graph-up pr-5"></i>Satisfaction Survey</a
           >
         </li>
         <li>
           <a @click="handleClick" class="nav-link cursor-pointer"
-            ><i class="bi bi-box-arrow-in-right"></i> <span>Log out</span></a
+            ><i class="bi bi-box-arrow-in-right pr-5"></i>Log out</a
           >
         </li>
       </ul>
@@ -99,6 +99,12 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 992px) {
+.b-nav a, .b-nav a:focus {
+    width: auto;
+}
+}
+
 .reminder a {
   text-decoration: none;
 }

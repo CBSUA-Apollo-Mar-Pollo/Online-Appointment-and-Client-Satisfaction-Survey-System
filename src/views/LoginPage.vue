@@ -99,7 +99,7 @@ body {
   background: #ffffff;
   border-radius: 0px;
   padding: 40px 30px;
-  box-shadow: 5px 2px 5px 4px rgba(94, 104, 121, 0.288);
+  box-shadow: 2px 2px 4px 4px rgb(94 104 121 / 29%);
 }
 
 .content .text {
@@ -108,7 +108,7 @@ body {
   letter-spacing: 2px;
   text-align: center;
   margin-bottom: 35px;
-  color: rgb(65, 153, 212);
+  color: #008aff;
   font-weight: 700;
   text-transform: uppercase 
 }
@@ -179,7 +179,7 @@ body {
 
 .content button {
   max-width: 100px;
-  background: #677eff;
+  background: #008aff;
   color: #fff;
   cursor: pointer;
   font-size: 14px;

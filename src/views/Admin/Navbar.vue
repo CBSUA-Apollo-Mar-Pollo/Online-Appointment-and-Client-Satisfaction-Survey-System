@@ -5,22 +5,22 @@
       <ul>
         <li>
           <a href="/Admin" class="nav-link active"
-            ><i class="bx bx-home"></i> <span>Dashboard</span></a
+            ><i class="bx bx-home pr-5"></i>Dashboard</a
           >
         </li>
         <li>
           <a href="/ManageAdmin" class="nav-link"
-            ><i class="bi bi-card-checklist"></i> <span>Manage Admin</span></a
+            ><i class="bi bi-card-checklist pr-5"></i>Manage Admin</a
           >
         </li>
         <li>
           <a href="/ManageEmployee" class="nav-link"
-            ><i class="bi bi-card-text"></i> <span>Manage Employee</span></a
+            ><i class="bi bi-card-text pr-5"></i>Manage Employee</a
           >
         </li>
         <li>
-           <a @click="handleClick" class="nav-link cursor-pointer"
-            ><i class="bi bi-box-arrow-in-right"></i> <span>Log out</span></a
+          <a @click="handleClick" class="nav-link cursor-pointer"
+            ><i class="bi bi-box-arrow-in-right pr-5"></i>Log out</a
           >
         </li>
       </ul>
@@ -28,17 +28,8 @@
   </header>
   <div class="w-100">
     <div class="bg-sky-300 w-100 p-1">
-       <div class="logo">
-        <img id="timage" src="logoofched.svg" alt="CHED LOGO" align="left" />
-        <div class="txt">
-              <div class="text2">
-                <h4>Republic of the phillippines</h4>
-                <hr />
-                <p>Office of the president</p>
-              </div>
-              <h2>Commision on higher Education</h2>
-              <h2>Region V</h2>
-        </div>
+      <div class="topnav container d-flex py-3 mx-auto">
+        <img id="timage" src="img/CHED-LOGO.png" alt="CHED LOGO" align="left" />
       </div>
     </div>
     <div>
@@ -98,6 +89,12 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 992px) {
+.b-nav a, .b-nav a:focus {
+    width: auto;
+}
+}
+
 .reminder a {
   text-decoration: none;
 }
@@ -188,46 +185,6 @@ input:checked + .menu-box .menu-items {
 .topnav-items {
   padding-left: 10px;
 }
-.logo{
-  margin: 15px 100px;
-  display: flex;
-}
-.txt {
-  margin-top: 0px;
-}
-.logo img {
-  height: 120px;
-  vertical-align: bottom;
-  margin-right: 10px;
-}
-.logo h2 {
-  text-decoration: none;
-  font-size: 1.8em;
-  color: rgb(255, 255, 255);
-  flex-basis: 0;
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.logo h4 {
-   color: rgb(255, 255, 255);
-   /* border-bottom: 1px solid #fff; */
-   font-family: 'Poppins', sans-serif;
-   font-size: 1.3em;
-   text-transform: uppercase;
-}
-.logo p {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-family: 'Poppins', sans-serif;
-  font-size: 1em;
-  text-transform: uppercase;
-}
-.text2 hr {
-  border: 1px solid rgb(255, 255, 255);
-  margin-right: 200px;
-}
-
 @media only screen and (max-width: 600px) {
   .reminder {
     right: 7px;

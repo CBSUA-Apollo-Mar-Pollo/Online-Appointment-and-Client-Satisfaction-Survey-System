@@ -19,7 +19,7 @@
                 selected office.
               </p>
             </div>
-            <form @submit.prevent="onSubmit">
+            <form ref="form" @submit.prevent="onSubmit">
               <div class="row g-3">
                 <div class="col-md-6">
                   <p>First Name*</p>
@@ -43,6 +43,7 @@
                   <p>Email Address*</p>
                   <input
                     type="email"
+                    name="emailAdd"
                     class="form-control"
                     placeholder="username@domain.com"
                     v-model="emailAdd"
@@ -76,10 +77,10 @@
                     type="tel"
                     placeholder="09XXXXXXXXX">
                     <option selected>Local Graduate Scholarship Office</option>
-                    <option selected>LGSO</option>
                     <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
                     <option selected>Office of Student Development and Services (OSDS)</option>
-                    <option selected>Regional Office V</option>
+                    <option selected>Admin Division</option>
+                    <option selected>Technical Division</option>
                   </select>
                 </div>
 
@@ -122,14 +123,23 @@
 
               
                   <!-- Regional Office V-->
-                <div class="col-md-12" v-if="selectOffice == 'Regional Office V'">
+                <div class="col-md-12" v-if="selectOffice == 'Admin Division'">
                   <p>Reason for the Visit*</p>
                   <select class="form-select" v-model="reasonOfVisit">
-                      <option value="Administrative - CAV Application (Local)">Administrative - CAV Application (Local) (Reminders: 5 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
-                      <option value="Administrative - CAV Application (Abroad)">Administrative - CAV Application (Abroad) (Reminders: 5 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
-                      <option value="Administrative - SO Application">Administrative - SO Application (Reminders: 10 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
-                      <option value="Administrative - SO Releasing">Administrative - SO Releasing (Reminders: 10 Max. Applications per Slot; Please indicate the number of applications under "Remarks")</option>
+                      <option value="Administrative - CAV Application (Local)">Administrative - CAV Application (Local) </option>
+                      <option value="Administrative - CAV Application (Abroad)">Administrative - CAV Application (Abroad)</option>
+                      <option value="Administrative - SO Application">Administrative - SO Application </option>
+                      <option value="Administrative - SO Releasing">Administrative - SO Releasing </option>
                       <option value="Appointment with the Regional Director">Appointment with the Regional Director</option>
+                      <option value="Administrative - Submit F19 and Enrollment list documents">Administrative - Submit F19 and Enrollment list documents</option>
+                      <option value="Administrative - Claim CAV documents">Administrative - Claim CAV documents</option>
+                      <option value="Administrative - Correction of name deficiency reply/application">Administrative - Correction of name deficiency reply/application</option>
+                      <option value="Administrative - Compliance to CAV deficiency">Administrative - Compliance to CAV deficiency</option>       
+                  </select>
+                </div>
+                <div class="col-md-12" v-if="selectOffice == 'Technical Division'">
+                  <p>Reason for the Visit*</p>
+                  <select class="form-select" v-model="reasonOfVisit"> 
                       <option value="Technical - Concerns related to Accreditation of Health Facilities Utilized for Internship">Technical - Concerns related to Accreditation of Health Facilities Utilized for Internship</option>
                       <option value="Technical - Concerns related to Amalgamation">Technical - Concerns related to Amalgamation</option>
                       <option value="Technical - Concerns related to Agricultural, Forestry, Fisheries, and Vet Med. Education Programs">Technical - Concerns related to Agricultural, Forestry, Fisheries, and Vet Med. Education Programs</option>
@@ -163,10 +173,6 @@
                       <option value="Technical - Concerns related to Trade, Craft and Industrial Education Programs">Technical - Concerns related to Trade, Craft and Industrial Education Programs</option>
                       <option value="Technical - Concerns related to Tuition Fees">Technical - Concerns related to Tuition Fees</option>
                       <option value="Technical - Concerns related to Unified Student Financial Assistance System for Tertiary Education (UniFAST)">Technical - Concerns related to Unified Student Financial Assistance System for Tertiary Education (UniFAST)</option>
-                      <option value="Administrative - Submit F19 and Enrollment list documents">Administrative - Submit F19 and Enrollment list documents</option>
-                      <option value="Administrative - Claim CAV documents">Administrative - Claim CAV documents</option>
-                      <option value="Administrative - Correction of name deficiency reply/application">Administrative - Correction of name deficiency reply/application</option>
-                      <option value="Administrative - Compliance to CAV deficiency">Administrative - Compliance to CAV deficiency</option>       
                   </select>
                 </div>
 
@@ -266,6 +272,8 @@ import { ref } from "vue";
 import { test } from "@/parse/test";
 import Parse from "parse";
 import { useRouter } from "vue-router";
+import emailjs from 'emailjs-com';
+
 
 export default {
   components: {

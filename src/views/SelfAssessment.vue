@@ -359,6 +359,7 @@ import { covidForm } from "@/parse/covid19form";
 // eslint-disable-next-line no-unused-vars
 import Parse from "parse";
 import { useRouter } from "vue-router";
+import emailjs from 'emailjs-com';
 
 export default {
   components: {
@@ -390,6 +391,12 @@ export default {
         emailAdd: userData.emailAdd,
         office: userData.selectOffice
       });
+       emailjs.send('service_bc6nlv6', 'template_fuaev7v', userData, 'AUOfD5xoR_mTisc5k')
+        .then((result) => {
+            console.log('SUCCESS!', result.text);
+        }, (error) => {
+            console.log('FAILED...', error.text);
+        });
 
       router.push({ name: "ReferenceNumber" });
     };
@@ -403,5 +410,6 @@ export default {
       userData,
     };
   },
+
 };
 </script>

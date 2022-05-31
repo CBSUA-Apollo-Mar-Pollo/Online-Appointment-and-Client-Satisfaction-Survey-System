@@ -72,7 +72,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
-  width: 80%;
+  width: 75%;
+}
+
+@media (min-width: 992px) {
+.container {
+    transform: translateX(15%);
+}
 }
 
 .table-title {

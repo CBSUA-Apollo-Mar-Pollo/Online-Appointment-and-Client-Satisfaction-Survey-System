@@ -94,6 +94,9 @@ export default {
 .b-nav a, .b-nav a:focus {
     width: auto;
 }
+#navbar {
+    transform: translateY(10%);
+}
 }
 
 .reminder a {

@@ -192,12 +192,12 @@ input:checked + .menu-box .menu-items {
 }
 .logo h2 {
   text-decoration: none;
-  font-size: 1.6em;
+  font-size: 2em;
   color: rgb(255, 255, 255);
   flex-basis: 0;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: bold;
 }
 .logo h4 {
    color: rgb(255, 255, 255);

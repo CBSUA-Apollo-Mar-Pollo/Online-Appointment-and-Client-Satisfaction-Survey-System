@@ -189,9 +189,9 @@ export default {
         emailAdd: userData.emailAdd,
         office: userData.selectOffice
       });
-      //localStorage.removeItem("status");
+      localStorage.removeItem("status");
 
-      //router.push({ name: "WelcomePage" });
+      router.push({ name: "WelcomePage" });
     };
     return {
       handleSubmit,

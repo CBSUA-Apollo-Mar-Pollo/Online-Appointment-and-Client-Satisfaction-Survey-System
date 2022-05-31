@@ -2,45 +2,45 @@
 <div>
   <header id="header" class="d-flex flex-column justify-content-center">
     <nav id="navbar" class="bnav b-nav">
-       <ul>
+          <ul>
         <li>
           <a href="/Employee" class="nav-link active"
-            ><i class="bx bx-home pr-5"></i>Dashboard</a
+            ><i class="bx bx-home"></i> <span>Dashboard</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentPending" class="nav-link"
-            ><i class="bi bi-clock pr-5"></i>Pending Appointment</a
+            ><i class="bi bi-clock"></i> <span>Pending Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentApprove" class="nav-link"
-            ><i class="bi bi-check-circle pr-5"></i>Request Approve Appointment</a
+            ><i class="bi bi-check-circle"></i> <span>Request Approve Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentRejected" class="nav-link"
-            ><i class="bi bi-x-circle pr-5"></i>Rejected Request Appointment</a
+            ><i class="bi bi-x-circle"></i> <span>Rejected Request Appointment</span></a
           >
         </li>
         <li>
           <a href="/ManageAppointmentCanceled" class="nav-link"
-            ><i class="bi-x-octagon pr-5"></i>Canceled By User</a
+            ><i class="bi-x-octagon"></i> <span>Canceled By User</span></a
           >
         </li>
         <li>
           <a href="/ManageAssessment" class="nav-link"
-            ><i class="bi-person-check pr-5"></i>Self-Assessment</a
+            ><i class="bi-person-check"></i> <span>Self-Assessment</span></a
           >
         </li>
         <li>
           <a href="/ManageSurvey" class="nav-link"
-            ><i class="bi-graph-up pr-5"></i>Satisfaction Survey</a
+            ><i class="bi-graph-up"></i> <span>Satisfaction Survey</span></a
           >
         </li>
         <li>
           <a @click="handleClick" class="nav-link cursor-pointer"
-            ><i class="bi bi-box-arrow-in-right pr-5"></i>Log out</a
+            ><i class="bi bi-box-arrow-in-right"></i> <span>Log out</span></a
           >
         </li>
       </ul>
@@ -99,16 +99,9 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 992px) {
-.b-nav a, .b-nav a:focus {
-    width: auto;
-}
-}
-
 .reminder a {
   text-decoration: none;
 }
-
 .reminder {
   position: fixed;
   right: 15px;
@@ -122,7 +115,6 @@ export default {
   cursor: pointer;
   z-index: 1;
 }
-
 .menu-box {
   position: relative;
   border: 2px solid #7dd3fc;
@@ -148,7 +140,6 @@ export default {
   transform: scale(1.1);
   transition: 0.2s;
 }
-
 .menu-items {
   position: absolute;
   right: 0;
@@ -163,46 +154,38 @@ export default {
   transition: 0.4s;
   border-radius: 5px;
 }
-
 .menu-items li {
   width: 700px;
   padding: 10px;
   list-style: none;
 }
-
 .menu-items a {
   color: #fff;
   line-height: 1.5;
 }
-
 input {
   position: absolute;
   left: -1000rem;
 }
-
 input:checked + .menu-box {
   border: 2px solid rgb(0 138 255);
   transition: 0.4s;
 }
-
 input:checked + .menu-box .menu-circle {
   background-color: rgb(0 138 255);
   transition: 0.4s;
 }
-
 input:checked + .menu-box .menu-items {
   transform: translateY(7%) scale(1) translateX(-7%);
   transition: 0.4s;
   z-index: -1;
 }
-
 .topnav {
   /* padding-left: 200px; */
   transform: translateY(0%) scale(1) translateX(1%);
   font-weight: 500;
   color: #7d8b9f;
 }
-
 .topnav-items {
   padding-left: 10px;
 }
@@ -245,30 +228,25 @@ input:checked + .menu-box .menu-items {
   border: 1px solid rgb(255, 255, 255);
   margin-right: 200px;
 }
-
 @media only screen and (max-width: 600px) {
   .reminder {
     right: 7px;
     bottom: 7px;
   }
-
   .menu-items li {
     font-size: 12px;
     width: 285px;
     padding: 5px;
     list-style: none;
   }
-
   input:checked + .menu-box .menu-items {
     transform: translateY(1%) scale(1) translateX(-17%);
     transition: 0.4s;
     z-index: -1;
   }
-
   .topnav {
     padding-left: 0;
   }
-
   .topnav-items {
     padding-left: 0;
   }

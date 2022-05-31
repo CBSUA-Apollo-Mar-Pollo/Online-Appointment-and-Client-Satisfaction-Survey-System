@@ -19,6 +19,11 @@
           >
         </li>
         <li>
+          <a href="/ManageAppointmentCompleted" class="nav-link"
+            ><i class="bi bi-check2-all"></i> <span>Request Completed Appointment</span></a
+          >
+        </li>
+        <li>
           <a href="/ManageAppointmentRejected" class="nav-link"
             ><i class="bi bi-x-circle"></i> <span>Rejected Request Appointment</span></a
           >

@@ -2,7 +2,7 @@
 <div>
     <NavBar />
     <div class="container text-center  mt-5 mb-5">
-    <h1 class="table-title mt-5 fw-bolder">Rejected Appointment</h1>
+    <h1 class="table-title mt-5 fw-bolder">Completed Appointment</h1>
      <div class="table-responsive my-5">
       
       <!-- The table component -->
@@ -21,6 +21,7 @@ import { test } from "@/parse/test";
 import Parse from "parse";
 import { useRouter } from "vue-router";
 import { useStore } from 'vuex'
+import emailjs from 'emailjs-com';
 
 export default {
   components: {
@@ -34,7 +35,7 @@ export default {
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
     query.descending('createdAt');
-    query.equalTo("status" , 'Rejected');
+    query.equalTo("status" , 'Completed');
     query.equalTo("selectOffice" , user.attributes.office);
     query.find().then(
       async (data) => {

@@ -13,6 +13,7 @@ import ManageEmployee from "../views/Admin/ManageEmployee.vue";
 import Employee from "../views/Employee/Dashboard.vue";
 import ManageAppointmentPending from "../views/Employee/ManageAppointmentPending.vue";
 import ManageAppointmentApproved from "../views/Employee/ManageAppointmentApproved.vue";
+import ManageAppointmentCompleted from "../views/Employee/ManageAppointmentCompleted.vue";
 import ManageAppointmentRejected from "../views/Employee/ManageAppointmentRejected.vue";
 import ManageAppointmentCanceled from "../views/Employee/ManageAppointmentCanceled.vue";
 import ManageSurvey from "../views/Employee/ManageSurvey.vue";
@@ -88,6 +89,11 @@ const routes = [
     path: '/ManageAppointmentApprove',
     name: 'ManageAppointmentApprove',
     component: ManageAppointmentApproved,
+  },
+  {
+    path: '/ManageAppointmentCompleted',
+    name: 'ManageAppointmentCompleted',
+    component: ManageAppointmentCompleted,
   },
   {
     path: '/ManageAppointmentRejected',

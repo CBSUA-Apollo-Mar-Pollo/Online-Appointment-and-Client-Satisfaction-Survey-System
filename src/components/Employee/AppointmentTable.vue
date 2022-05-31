@@ -31,7 +31,23 @@
     </p>
     <div v-if="showModal">
       <Modal  @close="handleClick">
-        <div class="mt-2">
+        <div v-if="data.status === 'Request Accepted'">
+            <div class="mt-2">
+              <h1 class="p-2"><b>Name :</b> {{ data.fName }} {{ data.lName }}</h1>
+              <h1 class="p-2"><b>Email :</b> {{ data.emailAdd }}</h1>
+              <h1 class="p-2"><b>Contact Number:</b> {{ data.contactNum }}</h1>
+              <h1 class="p-2"><b>Affliation Of Client:</b> {{ data.AffliationOfClient }}</h1>
+              <h5 class="p-2"><b>Reason for the Visit :</b> {{ data.reasonOfVisit }}</h5>
+              <h5 class="p-2"><b>Date and time :</b> {{ data.date + "," + data.time }}</h5>
+              <h5 class="p-2"><b>Reason for Appointment :</b> {{ data.comments }}</h5>
+          </div>
+          <div class="buttons">
+              <button @click="CompleteRequest(data)">Appointment Completed</button>
+              <button @click="reason()">{{ showReason === false ? 'Reject Request' : 'close' }}</button>
+          </div>
+        </div>
+        <div v-else>
+          <div class="mt-2">
           <h1 class="p-2"><b>Name :</b> {{ data.fName }} {{ data.lName }}</h1>
           <h1 class="p-2"><b>Email :</b> {{ data.emailAdd }}</h1>
           <h1 class="p-2"><b>Contact Number:</b> {{ data.contactNum }}</h1>
@@ -40,10 +56,16 @@
           <h5 class="p-2"><b>Date and time :</b> {{ data.date + "," + data.time }}</h5>
           <h5 class="p-2"><b>Reason for Appointment :</b> {{ data.comments }}</h5>
         </div>
-          <div class="buttons">
-            <button @click="acceptRequest(data)">Accept Request</button>
-            <button @click="reason()">{{ showReason === false ? 'Reject Request' : 'close' }}</button>
+          <div v-if="data.status === 'Completed'">
+            <h1></h1>
           </div>
+          <div v-else>
+            <div class="buttons">
+              <button @click="acceptRequest(data)">Accept Request</button>
+              <button @click="reason()">{{ showReason === false ? 'Reject Request' : 'close' }}</button>
+            </div>
+          </div>
+          
           <div class="col-12" v-if="showReason">
                   <p>Reason:</p>
                   <textarea
@@ -55,6 +77,8 @@
                      <button @click="declineRequest(data)">Send</button>
                   </div>
           </div>
+        </div>
+       
       </Modal>
     </div> 
 </template>
@@ -64,6 +88,8 @@ import {computed,ref} from "vue";
 import { sortBy} from 'lodash';
 import Modal from "../Modal.vue";
 import Parse from "parse";
+import emailjs from 'emailjs-com';
+import { useRouter } from "vue-router";
 
 export default {
   name: 'TableComponent',
@@ -103,6 +129,30 @@ export default {
            data.set("status", "Request Accepted");
            data.save();
            location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    CompleteRequest(data) {
+      const router = useRouter();
+      console.log("Accept Request", data.referenceNum);
+      var Data = Parse.Object.extend("test");
+      var query = new Parse.Query(Data);
+      query.equalTo("referenceNum", data.referenceNum);
+      query.first().then(
+        async (data) => {
+          console.log(data.attributes);
+           data.set("status", "Completed");
+           data.save();
+           emailjs.send('service_bc6nlv6', 'template_eb51gnn', data.attributes, 'AUOfD5xoR_mTisc5k')
+          .then((result) => {
+              console.log('SUCCESS!', result.text);
+              location.reload();
+          }, (error) => {
+              console.log('FAILED...', error.text);
+          });
         },
         (error) => {
           console.log(error);

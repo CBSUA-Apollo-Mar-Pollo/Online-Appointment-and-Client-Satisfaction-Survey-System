@@ -33,6 +33,7 @@ export default {
     console.log(user.attributes.office)
     const Data = Parse.Object.extend("test");
     const query = new Parse.Query(Data);
+    query.descending('createdAt');
     query.equalTo("status" , 'Request Accepted');
     query.equalTo("selectOffice" , user.attributes.office);
     query.find().then(

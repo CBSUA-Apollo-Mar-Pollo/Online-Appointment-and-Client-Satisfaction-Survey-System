@@ -33,6 +33,7 @@ export default {
     console.log(user.attributes.office)
     const Data = Parse.Object.extend("Covid19Form");
     const query = new Parse.Query(Data);
+    query.descending('createdAt');
     query.equalTo("office" , user.attributes.office);
     query.find().then(
       async (data) => {

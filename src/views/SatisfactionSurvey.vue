@@ -16,6 +16,7 @@
                 delivered public service.
               </p>
             </div>
+            
             <tr>
               <h1 class="pb-3 text-center">
                 Please rate our service under each specific dimensions in scale
@@ -34,6 +35,7 @@
           </table>
 
           <table>
+            
             <tr>
               <td class="first-col">
                 1. How satisfied are you with the assistance and speed in which the service was delivered by email?
@@ -115,7 +117,30 @@
               <td><input type="radio" value="Very Dissatisfied" name="" v-model="pickedNo8"/></td>
             </tr>
           </table>
-          <h4 class="pt-4">Comment/s:</h4>
+           <div class="col-md-6">
+                  <p class="pt-2 pb-2">Email Address*</p>
+                  <input
+                    type="email"
+                    name="emailAdd"
+                    class="form-control p-2"
+                    placeholder="username@domain.com"
+                    v-model="emailAdd"
+                    required
+                  />
+                </div>
+             <label class="pt-3 pb-2">Select the office you appointed to</label>
+      <select class="form-select" 
+                    v-model="office"  
+                    type="text"
+                    :class="{ 'has-error': submitting  }"
+                    @focus="clearStatus"
+                    placeholder="09XXXXXXXXX" required>
+                    <option selected>Local Graduate Scholarship Office</option>
+                    <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
+                    <option selected>Office of Student Development and Services (OSDS)</option>
+                    <option selected>Regional Office V</option>
+                  </select>
+          <h4 class="pt-1">Comment/s:</h4>
           <textarea
             class="rounded"
             rows="5"
@@ -159,6 +184,8 @@ export default {
     const pickedNo6 = ref("");
     const pickedNo7 = ref("");
     const pickedNo8 = ref("");
+    const emailAdd = ref("");
+    const office = ref("");
     const comment = ref("");
 
     const handleSubmit = () => {
@@ -172,8 +199,8 @@ export default {
         No7: pickedNo7.value,
         No8: pickedNo8.value,
         comment: comment.value,
-        emailAdd: userData.emailAdd,
-        office: userData.selectOffice
+        emailAdd: emailAdd.value,
+        office: office.value
       });
       css.save({
         pickedNo1: pickedNo1.value,
@@ -186,11 +213,9 @@ export default {
         pickedNo8: pickedNo8.value,
 
         comment: comment.value,
-        emailAdd: userData.emailAdd,
-        office: userData.selectOffice
+        emailAdd: emailAdd.value,
+        office: office.value
       });
-      localStorage.removeItem("status");
-
       router.push({ name: "WelcomePage" });
     };
     return {
@@ -203,7 +228,9 @@ export default {
       pickedNo6,
       pickedNo7,
       pickedNo8,
-      comment
+      comment,
+      emailAdd,
+      office
     };
   },
 };

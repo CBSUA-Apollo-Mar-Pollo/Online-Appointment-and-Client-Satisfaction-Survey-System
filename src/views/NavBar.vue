@@ -14,7 +14,7 @@
         </li>
         <li>
           <a href="/CheckStatus" class="nav-link"
-            ><i class="bi bi-card-checklist"></i>
+            ><i class="bi bi-calendar2-check"></i>
             <span>APPOINTMENT STATUS</span></a
           >
         </li>

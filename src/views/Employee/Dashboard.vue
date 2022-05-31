@@ -1,6 +1,7 @@
 <template>
 <div>
     <NavBar />
+    <div class="container">
     <p class="welcome">Logged In as  {{ user.attributes.username }} of {{ user.attributes.office  }} </p>
      <div className='totalcard'>
             <div className="cardBox">
@@ -31,6 +32,7 @@
                 </div>
                 </div>
                 <div id="piechart_3d" style="width: 1000px; height: 700px; margin: auto;"></div>
+      </div>
 </div>
 </template>
 
@@ -266,6 +268,18 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 75%;
+}
+
+@media (min-width: 992px) {
+.container {
+    transform: translateX(15%);
+}
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap');
 :root
 {

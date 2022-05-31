@@ -1,6 +1,7 @@
 <template>
 <div>
     <NavBar />
+  <div class="container">
    <p class="welcome">Logged In as  {{ user.attributes.username }} </p>
     <div className='totalcard'>
             <div className="cardBox1">
@@ -14,6 +15,7 @@
                 </div>
                 </div>
                 </div>
+    </div>
 </div>
 </template>
 
@@ -89,6 +91,18 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 75%;
+}
+
+@media (min-width: 992px) {
+.container {
+    transform: translateX(15%);
+}
+}
+
 .welcome {
   margin-left: 13em;
 }

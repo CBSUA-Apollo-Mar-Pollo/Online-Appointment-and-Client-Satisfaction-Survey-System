@@ -34,6 +34,7 @@
         <h2 class="ref">Reference ID</h2>
       </div>
       <p>To see your appointment status, copy the request number below</p>
+      <p>You can check your reference number in your {{ ReferenceNumber.emailAdd}} email account</p>
       <h2 class="number">{{ ReferenceNumber.referenceNum }}</h2>
       <div class="text-center">
         <!-- <button

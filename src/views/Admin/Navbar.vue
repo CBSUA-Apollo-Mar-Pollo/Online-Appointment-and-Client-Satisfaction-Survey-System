@@ -19,15 +19,26 @@
           >
         </li>
         <li>
-          <button @click="handleClick">Logout</button>
+           <a @click="handleClick" class="nav-link cursor-pointer"
+            ><i class="bi bi-box-arrow-in-right"></i> <span>Log out</span></a
+          >
         </li>
       </ul>
     </nav>
   </header>
   <div class="w-100">
     <div class="bg-sky-300 w-100 p-1">
-      <div class="topnav container d-flex py-3 mx-auto">
-        <img id="timage" src="img/CHED-LOGO.png" alt="CHED LOGO" align="left" />
+       <div class="logo">
+        <img id="timage" src="logoofched.svg" alt="CHED LOGO" align="left" />
+        <div class="txt">
+              <div class="text2">
+                <h4>Republic of the phillippines</h4>
+                <hr />
+                <p>Office of the president</p>
+              </div>
+              <h2>Commision on higher Education</h2>
+              <h2>Region V</h2>
+        </div>
       </div>
     </div>
     <div>
@@ -177,6 +188,46 @@ input:checked + .menu-box .menu-items {
 .topnav-items {
   padding-left: 10px;
 }
+.logo{
+  margin: 15px 100px;
+  display: flex;
+}
+.txt {
+  margin-top: 0px;
+}
+.logo img {
+  height: 120px;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+.logo h2 {
+  text-decoration: none;
+  font-size: 1.8em;
+  color: rgb(255, 255, 255);
+  flex-basis: 0;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.logo h4 {
+   color: rgb(255, 255, 255);
+   /* border-bottom: 1px solid #fff; */
+   font-family: 'Poppins', sans-serif;
+   font-size: 1.3em;
+   text-transform: uppercase;
+}
+.logo p {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+.text2 hr {
+  border: 1px solid rgb(255, 255, 255);
+  margin-right: 200px;
+}
+
 @media only screen and (max-width: 600px) {
   .reminder {
     right: 7px;

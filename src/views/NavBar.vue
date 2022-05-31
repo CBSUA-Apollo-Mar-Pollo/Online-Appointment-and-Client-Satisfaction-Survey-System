@@ -76,6 +76,10 @@
   text-decoration: none;
 }
 
+nav {
+  margin: 0 !important;
+}
+
 .reminder {
   position: fixed;
   right: 15px;
@@ -164,8 +168,7 @@ input:checked + .menu-box .menu-items {
 }
 
 .topnav {
-  /* padding-left: 200px; */
-  transform: translateY(0%) scale(1) translateX(1%);
+  transform: translateY(0%) scale(1) translateX(6%);
   font-weight: 500;
   color: #7d8b9f;
 }
@@ -174,9 +177,10 @@ input:checked + .menu-box .menu-items {
   padding-left: 10px;
 }
 
-.logo{
-  margin: 15px 100px;
-  display: flex;
+.logo {
+    margin: 15px 0 15px 0;
+    display: flex;
+    transform: translateY(0%) scale(1) translateX(6%);
 }
 .txt {
   margin-top: 0px;
@@ -188,12 +192,12 @@ input:checked + .menu-box .menu-items {
 }
 .logo h2 {
   text-decoration: none;
-  font-size: 1.8em;
+  font-size: 1.6em;
   color: rgb(255, 255, 255);
   flex-basis: 0;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
 }
 .logo h4 {
    color: rgb(255, 255, 255);
@@ -243,5 +247,20 @@ input:checked + .menu-box .menu-items {
   .topnav {
     justify-content: center;
   }
+  .topnav {
+  transform: translateY(0%) scale(1) translateX(1%);
+}
+.logo {
+    transform: translateY(0%) scale(1) translateX(18%);
+    font-size: 11px;
+    width: 20%;
+}
+.logo h2 {
+    font-size: 11px;
+    width: auto;
+}
+.txt {
+    transform: translateY(25%) scale(1) translateX(0%);
+}
 }
 </style>

@@ -100,3 +100,6 @@ Online-Appointment-and-Client-Satisfaction-Survey-System
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Helpful links
+View [Github Repository](https://github.com/CBSUA-Apollo-Mar-Pollo/Online-Appointment-and-Client-Satisfaction-Survey-System.git)

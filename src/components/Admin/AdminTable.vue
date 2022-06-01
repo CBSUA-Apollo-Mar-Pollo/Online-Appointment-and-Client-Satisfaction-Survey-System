@@ -44,7 +44,7 @@
           </td>
           <td v-else>
             <!-- <button @click="editMode(admin)">Edit</button> -->
-            <button @click="$emit('delete:admin', admin)">Delete</button>
+            <button @click="$emit('delete:admin', admin)">Deactivate Account</button>
           </td>
 
         </tr>

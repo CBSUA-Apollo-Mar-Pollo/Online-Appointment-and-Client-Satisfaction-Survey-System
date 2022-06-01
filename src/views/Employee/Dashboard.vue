@@ -30,7 +30,13 @@
                 </div>
                 </div>
                 </div>
-                <div id="piechart_3d" style="width: 1000px; height: 700px; margin: auto;"></div>
+                <div v-if="noData">
+                   <div id="piechart_3d" style="width: 1000px; height: 700px; margin: auto;"></div>
+                </div>
+                <div v-else>
+                  
+                </div>
+               
 </div>
 </template>
 
@@ -52,6 +58,7 @@ export default {
     var user = Parse.User.current({useMasterKey: true})
     console.log(user)
      const store = useStore();
+     const noData = false ;
     const Data = Parse.Object.extend("CSS");
     const query = new Parse.Query(Data);
     query.equalTo("office" , user.attributes.office);
@@ -60,7 +67,10 @@ export default {
         var id = await data.map((e) => e.id);
         //console.log(data.map((e) => e.attributes));
         var res = await data.map((e) => e.attributes)
-        let VerySatisfied = 0;
+        if(res === null){
+          noData = true
+        } else {
+          let VerySatisfied = 0;
         for (const obj of res) {
           if (obj.pickedNo1 === 'Very Satisfied')VerySatisfied++
         }
@@ -160,6 +170,8 @@ export default {
         chart.draw(data, options);
       }
 
+        }
+        
         await store.dispatch('allSurvey' , res )
       },
       (error) => {
@@ -259,6 +271,7 @@ export default {
       pending: computed(() => store.state.pendingTotal),
       rejected: computed(() => store.state.rejectedTotal),
       canceled: computed(() => store.state.cancelTotal),
+      noData
       //authIsReady: computed(() => store.state.authIsReady)
     }
 }

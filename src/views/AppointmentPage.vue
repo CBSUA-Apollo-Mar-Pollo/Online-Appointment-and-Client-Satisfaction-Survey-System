@@ -85,6 +85,9 @@
                     <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
                     <option selected>Office of Student Development and Services (OSDS)</option>
                     <option selected>Regional Office V</option>
+                    <option selected>CSP</option>
+                    <option selected>HEMIS</option>
+                    <option selected>UNIFAST</option>
                   </select>
                 </div>
 

@@ -17,6 +17,7 @@
     <employee-table
       :employees="employees"
       @delete:employee="deleteEmployee"
+      @activate:employee="ActivateEmployee"
       @edit:employee="editEmployee"
     />
   </div>
@@ -116,14 +117,63 @@ export default {
           const User = Parse.Object.extend("_User");
           const query = new Parse.Query(User);
           query.equalTo('email', employee.email);
-          const delRes = await query.first();
+          query.first().then(
+          async (data) => {
+          console.log(data.attributes);
+           data.set("status", "InActive");
+           try {
+            data.save(null, { useMasterKey: true });
+            return "User updated successfully!";
+          } catch (e) {
+            return e.message;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+          //const delRes = await query.first();
 
-          delRes.destroy({useMasterKey: true}).then(() => {
-            console.log('success deleted')
-          },(err) => {
-            console.log(err)
-          })
-          location.reload();
+          // delRes.destroy({useMasterKey: true}).then(() => {
+          //   console.log('success deleted')
+          // },(err) => {
+          //   console.log(err)
+          // })
+          // location.reload();
+      } catch (error) {
+        console.error(error)
+      }
+     
+    },
+    async ActivateEmployee(employee) {
+      try {
+          const User = Parse.Object.extend("_User");
+          const query = new Parse.Query(User);
+          query.equalTo('email', employee.email);
+          query.first().then(
+          async (data) => {
+          console.log(data.attributes);
+           data.set("status", "Active");
+           try {
+            data.save(null, { useMasterKey: true });
+            return "User updated successfully!";
+          } catch (e) {
+            return e.message;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+        
+      );
+          //const delRes = await query.first();
+
+          // delRes.destroy({useMasterKey: true}).then(() => {
+          //   console.log('success deleted')
+          // },(err) => {
+          //   console.log(err)
+          // })
+          // location.reload();
       } catch (error) {
         console.error(error)
       }

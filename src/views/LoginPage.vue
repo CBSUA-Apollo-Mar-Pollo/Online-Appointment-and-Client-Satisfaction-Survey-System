@@ -66,10 +66,17 @@ export default {
       // }
       console.log(email.value , password.value)
       Parse.User.logIn(email.value , password.value).then(function(user){
-        console.log(Parse.User.current().attributes.ACL.permissionsById['role:Employee'])
+        console.log(Parse.User.current().attributes.status)
+        var status = Parse.User.current().attributes.status ;
         var res = Parse.User.current().attributes.ACL.permissionsById ;
         if(res['role:Employee']) {
-          router.push('/Employee')
+          if(status === 'InActive'){
+            //router.push('/Login')
+            er.value = 'Your Account has been Deactivated'
+          } else {
+            router.push('/Employee')
+          }
+          //
         } else if(res['role:admin']){
           router.push('/Admin')
         }  

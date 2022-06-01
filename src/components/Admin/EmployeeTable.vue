@@ -37,16 +37,17 @@
           <td v-else>{{employee.email}}</td>
           <td>{{employee.office}}</td>
           <td>{{employee.createdAt}}</td>
-          <td v-if="editing === employee.id">
-            <button @click="editEmployee(employee)">Save</button>
+          <td v-if="employee.status === 'InActive'">
+            <!-- <button @click="editEmployee(employee)">Save</button>
             <button
               class="muted-button"
               @click="cancelEdit(employee)"
-            >Cancel</button>
+            >Cancel</button> -->
+            <button @click="$emit('activate:employee', employee)">Activate Account</button>
           </td>
           <td v-else>
             <!-- <button @click="editMode(employee)">Edit</button> -->
-            <button @click="$emit('delete:employee', employee)">Delete</button>
+            <button @click="$emit('delete:employee', employee)">Deactivate Account</button>
           </td>
         </tr>
       </tbody>

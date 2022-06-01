@@ -118,12 +118,11 @@
             </tr>
           </table>
            <div class="col-md-6">
-                  <p class="pt-2 pb-2">Email Address*</p>
+                  <p class="pt-2 pb-2">Reference Number</p>
                   <input
                     type="email"
                     name="emailAdd"
                     class="form-control p-2"
-                    placeholder="username@domain.com"
                     v-model="emailAdd"
                     required
                   />

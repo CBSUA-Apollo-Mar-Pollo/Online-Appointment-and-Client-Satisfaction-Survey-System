@@ -178,9 +178,8 @@ input:checked + .menu-box .menu-items {
 }
 
 .logo {
-    margin: 15px 0 15px 0;
+    margin: 15px 0px 15px 100px;
     display: flex;
-    transform: translateY(0%) scale(1) translateX(6%);
 }
 .txt {
   margin-top: 0px;

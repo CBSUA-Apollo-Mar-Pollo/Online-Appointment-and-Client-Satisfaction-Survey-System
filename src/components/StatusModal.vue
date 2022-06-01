@@ -6,7 +6,7 @@
           <i @click="close" class="far fa-times-circle"></i>
           <StatusInformation />
           <slot />
-          <div class="text-center">
+          <div class="text-center mb-9">
             <button class="col-8 btn btn-basic m-3" @click="close" type="button">
               Close
             </button>
@@ -93,12 +93,12 @@ export default {
 }
 
 .modal {
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: baseline;
-  height: 70%;
+  height: 100%;
   width: -webkit-fill-available;
-  transform: translate(0%, 10%);
 
   // background-color: rgb(255, 255, 255);
 

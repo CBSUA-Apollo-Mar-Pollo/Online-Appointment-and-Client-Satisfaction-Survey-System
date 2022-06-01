@@ -28,6 +28,7 @@
                     class="form-control"
                     placeholder="Juan"
                     v-model="fName"
+                    required
                   />
                 </div>
                 <div class="col-md-6">
@@ -37,6 +38,7 @@
                     class="form-control"
                     placeholder="Dela Cruz"
                     v-model="lName"
+                    required
                   />
                 </div>
                 <div class="col-md-6">
@@ -47,6 +49,7 @@
                     class="form-control"
                     placeholder="username@domain.com"
                     v-model="emailAdd"
+                    required
                   />
                 </div>
                 <div class="col-md-6">
@@ -56,6 +59,7 @@
                     class="form-control"
                     placeholder="09XXXXXXXXX"
                     v-model="contactNum"
+                    required
                   />
                 </div>
 
@@ -66,6 +70,7 @@
                     class="form-control"
                     placeholder=""
                     v-model="AffliationOfClient"
+                    required
                   />
                 </div>
 
@@ -77,7 +82,6 @@
                     type="tel"
                     placeholder="09XXXXXXXXX">
                     <option selected>Local Graduate Scholarship Office</option>
-                    <option selected>LGSO</option>
                     <option selected>Office of Institutional Quality Assurance and Governance (OICAG)</option>
                     <option selected>Office of Student Development and Services (OSDS)</option>
                     <option selected>Regional Office V</option>
@@ -238,7 +242,7 @@
                   >
                   <button v-else
                     disabled
-                    class="col-8 btn btn-primary opacity-30 cursor-not-allowed"
+                    class="bg-slate-300 p-2 w-60 rounded text-white cursor-not-allowed"
                     type="button"
                   >
                     Next</button

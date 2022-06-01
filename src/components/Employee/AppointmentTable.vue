@@ -152,6 +152,7 @@ export default {
               location.reload();
           }, (error) => {
               console.log('FAILED...', error.text);
+               location.reload();
           });
         },
         (error) => {

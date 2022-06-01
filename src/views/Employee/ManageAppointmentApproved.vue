@@ -59,7 +59,9 @@ export default {
 
     
 
-    return{appointmentData: computed(() => JSON.parse(JSON.stringify(store.state.appointment))),
+    return{
+      appointmentData: computed(() => JSON.parse(JSON.stringify(store.state.appointment))),
+      approved: computed(() => store.state.approvedTotal),
     fields}
   },
 }

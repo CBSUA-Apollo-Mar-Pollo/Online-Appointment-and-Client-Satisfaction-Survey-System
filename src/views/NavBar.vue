@@ -27,11 +27,11 @@
         <img id="timage" src="logoofched.svg" alt="CHED LOGO" align="left" />
         <div class="txt">
               <div class="text2">
-                <h4>Republic of the phillippines</h4>
+                <h4>Republic of the Philippines</h4>
                 <hr />
                 <p>Office of the president</p>
               </div>
-              <h2>Commision on higher Education</h2>
+              <h2>Commission on Higher Education</h2>
               <h2>Region V</h2>
         </div>
       </div>

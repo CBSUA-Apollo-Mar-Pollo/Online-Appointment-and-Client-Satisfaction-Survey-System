@@ -54,7 +54,7 @@ Online-Appointment-and-Client-Satisfaction-Survey-System
     │   │   └── StatusModal.vue
     │   ├── firebase
     │   │   └── config.js
-    │   ├── firebase
+    │   ├── parse
     │   │   ├── covid19form.js
     │   │   ├── css.js
     │   │   └── test.js

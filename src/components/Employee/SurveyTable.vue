@@ -2,9 +2,9 @@
 
   <div class="searchBar">
     <!-- Filter Search -->
-      <div class="input-group mb-5">
+      <!-- <div class="input-group mb-5">
         <input type="search" class="form-control" v-model='searchQuery' placeholder="Search here..." aria-label="Recipient's username" aria-describedby="button-addon2">
-      </div>
+      </div> -->
   </div>
 
 <table id="tableComponent" class="table table-bordered table-striped">
@@ -66,7 +66,7 @@ export default {
       const filteredList = computed(() => {
           return sortedList.value.filter((product) => {
             return (
-              product.emailAdd.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
+              product.office.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
             );
           });
 });   

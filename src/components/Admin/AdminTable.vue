@@ -35,12 +35,13 @@
           </td>
           <td v-else>{{admin.email}}</td>
           <td>{{admin.createdAt}}</td>
-          <td v-if="editing === admin.id">
-            <button @click="editadmin(admin)">Save</button>
+          <td  v-if="admin.status === 'InActive'">
+            <!-- <button @click="editadmin(admin)">Save</button>
             <button
               class="muted-button"
               @click="cancelEdit(admin)"
-            >Cancel</button>
+            >Cancel</button> -->
+              <button @click="$emit('activate:admin', admin)">Activate Account</button>
           </td>
           <td v-else>
             <!-- <button @click="editMode(admin)">Edit</button> -->

@@ -120,12 +120,13 @@
            <div class="col-md-6">
                   <p class="pt-2 pb-2">Reference Number</p>
                   <input
-                    type="email"
-                    name="emailAdd"
+                    type="text"
+                    name="referenceNum"
                     class="form-control p-2"
-                    v-model="emailAdd"
+                    v-model="referenceNum"
                     required
                   />
+                  <div  v-if="er"><p style="color: red ">{{ er }}</p></div>
                 </div>
              <label class="pt-3 pb-2">Select the office you appointed to</label>
       <select class="form-select" 
@@ -146,6 +147,7 @@
             placeholder=" Your answer "
             v-model="comment"
           ></textarea>
+          <div  v-if="alreadyResponded"><p style="color: red; margin:25px ; textAlign: center ">{{ alreadyResponded }}</p></div>
           <div class="btn-block">
             <button class="col-5" type="submit" href="/">Submit</button>
           </div>
@@ -173,6 +175,8 @@ export default {
   setup() {
      const store = useStore();
     const router = useRouter();
+    const er = ref(null);
+    const alreadyResponded = ref(null);
     const userData = JSON.parse(localStorage.getItem("status"));
     console.log(userData)
     const pickedNo1 = ref("");
@@ -183,7 +187,7 @@ export default {
     const pickedNo6 = ref("");
     const pickedNo7 = ref("");
     const pickedNo8 = ref("");
-    const emailAdd = ref("");
+    const referenceNum = ref("");
     const office = ref("");
     const comment = ref("");
 
@@ -198,24 +202,64 @@ export default {
         No7: pickedNo7.value,
         No8: pickedNo8.value,
         comment: comment.value,
-        emailAdd: emailAdd.value,
+        referenceNum: referenceNum.value,
         office: office.value
       });
-      css.save({
-        pickedNo1: pickedNo1.value,
-        pickedNo2: pickedNo2.value,
-        pickedNo3: pickedNo3.value,
-        pickedNo4: pickedNo4.value,
-        pickedNo5: pickedNo5.value,
-        pickedNo6: pickedNo6.value,
-        pickedNo7: pickedNo7.value,
-        pickedNo8: pickedNo8.value,
+      // check if the user has already responded 
+      var Data = Parse.Object.extend("CSS");
+      var query = new Parse.Query(Data);
+      query.equalTo("referenceNum", referenceNum.value);
+      query.first().then(
+        async (data) => {
+          console.log(data);
+          // check if the reference num they input is in the database
+          if(data === undefined){
+            var Data1 = Parse.Object.extend("test");
+            var query1 = new Parse.Query(Data1);
+            query1.equalTo("referenceNum", referenceNum.value);
+            query1.first().then( 
+              async (data) => {
+                if(data === undefined){
+                  //check if the reference they put is invalid it will show an error 
+                    er.value = "Invalid Reference Number!" 
+                  console.log('mau man sa database ang nilaag mong reference num')
+                }else {
+                  // if the user has data then the input will be save in the css database 
+                  console.log('may reference num ka sa database')
+                }
+                console.log(data.attributes)
+              },
+                (error) => {
+                  console.log(error)
+              })
+            console.log('i have no data')
+            css.save({
+            pickedNo1: pickedNo1.value,
+            pickedNo2: pickedNo2.value,
+            pickedNo3: pickedNo3.value,
+            pickedNo4: pickedNo4.value,
+            pickedNo5: pickedNo5.value,
+            pickedNo6: pickedNo6.value,
+            pickedNo7: pickedNo7.value,
+            pickedNo8: pickedNo8.value,
 
-        comment: comment.value,
-        emailAdd: emailAdd.value,
-        office: office.value
-      });
-      router.push({ name: "WelcomePage" });
+            comment: comment.value,
+            referenceNum: referenceNum.value,
+            office: office.value
+            })
+            router.push({ name: "WelcomePage" });
+          } else {
+            console.log("i have a data")
+            alreadyResponded.value = "You already Responded!" 
+            // put a modal that the user has already responded
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      
+      //router.push({ name: "WelcomePage" });
     };
     return {
       handleSubmit,
@@ -228,8 +272,10 @@ export default {
       pickedNo7,
       pickedNo8,
       comment,
-      emailAdd,
-      office
+      referenceNum,
+      office,
+      er,
+      alreadyResponded
     };
   },
 };

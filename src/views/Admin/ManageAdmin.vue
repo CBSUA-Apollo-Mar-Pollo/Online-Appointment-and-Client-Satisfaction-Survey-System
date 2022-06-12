@@ -18,6 +18,7 @@
     <admin-table
       :admins="admins"
       @delete:admin="deleteadmin"
+      @activate:admin="ActivateAdmin"
       @edit:admin="editadmin"
     />
   </div>
@@ -118,14 +119,48 @@ export default {
           const User = Parse.Object.extend("_User");
           const query = new Parse.Query(User);
           query.equalTo('email', admin.email);
-          const delRes = await query.first();
-
-          delRes.destroy({useMasterKey: true}).then(() => {
-            console.log('success deleted')
-          },(err) => {
-            console.log(err)
-          })
-          location.reload();
+          query.first().then(
+          async (data) => {
+          console.log(data.attributes);
+           data.set("status", "InActive");
+           try {
+            data.save(null, { useMasterKey: true });
+             location.reload();
+            return "User updated successfully!";
+          } catch (e) {
+            return e.message;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async ActivateAdmin(admin) {
+      console.log(admin)
+      try {
+          const User = Parse.Object.extend("_User");
+          const query = new Parse.Query(User);
+          query.equalTo('email', admin.email);
+          query.first().then(
+          async (data) => {
+          console.log(data.attributes);
+           data.set("status", "Active");
+           try {
+            data.save(null, { useMasterKey: true });
+            location.reload();
+            return "User updated successfully!";
+          } catch (e) {
+            return e.message;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
       } catch (error) {
         console.error(error)
       }

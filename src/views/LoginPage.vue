@@ -78,7 +78,12 @@ export default {
           }
           //
         } else if(res['role:admin']){
-          router.push('/Admin')
+          if(status === 'InActive'){
+            //router.push('/Login')
+            er.value = 'Your Account has been Deactivated'
+          } else {
+            router.push('/Admin')
+          }
         }  
       } , function error(err) {
         er.value = "Authentication Failed"

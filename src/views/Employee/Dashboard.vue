@@ -21,6 +21,10 @@
                         <div className="cardName">Approved Appointment Total</div>
                 </div>
                 <div className="card">
+                        <div className="numbers">{{ completed }}</div>
+                        <div className="cardName">Completed Appointment Total</div>
+                </div>
+                <div className="card">
                         <div className="numbers">{{ rejected }}</div>
                         <div className="cardName">Rejected Appointment Total</div>
                 </div>
@@ -30,11 +34,8 @@
                 </div>
                 </div>
                 </div>
-                <div v-if="noData">
+                <div>
                    <div id="piechart_3d" style="width: 1000px; height: 700px; margin: auto;"></div>
-                </div>
-                <div v-else>
-                  
                 </div>
                
 </div>
@@ -213,6 +214,22 @@ export default {
         console.log(error);
       }
     );
+    const DataCompleted = Parse.Object.extend("test");
+    const query5 = new Parse.Query(DataApproved);
+    query5.equalTo("status" , 'Completed');
+    query5.equalTo("selectOffice" , user.attributes.office);
+    query5.find().then(
+      async (data) => {
+        var id = await data.map((e) => e.id);
+        console.log(data.map((e) => e.attributes));
+        var res = await data.map((e) => e.attributes)
+        console.log(res.length)
+        await store.dispatch('completedTotal' , res.length)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     const DataPending = Parse.Object.extend("test");
     const query2 = new Parse.Query(DataPending);
     query2.equalTo("status" , 'On Process');
@@ -268,6 +285,7 @@ export default {
       user, 
       a: computed(() => store.state.appointmentLength),
       approved: computed(() => store.state.approvedTotal),
+      completed: computed(() => store.state.completedTotal),
       pending: computed(() => store.state.pendingTotal),
       rejected: computed(() => store.state.rejectedTotal),
       canceled: computed(() => store.state.cancelTotal),

@@ -8,6 +8,7 @@ export default createStore({
     survey : null,
     appointmentLength : null ,
     approvedTotal: null,
+    completedTotal: null,
     pendingTotal: null,
     rejectedTotal: null,
     cancelTotal: null,
@@ -36,6 +37,10 @@ export default createStore({
     setapprovedTotal(state , payload) {
       state.approvedTotal = payload
       console.log('object changed' , state.approvedTotal);
+    },
+    setcompletedTotal(state , payload) {
+      state.completedTotal = payload
+      console.log('object changed completed' , state.completedTotal);
     },
     setpendingTotal(state , payload) {
       state.pendingTotal = payload
@@ -69,6 +74,9 @@ export default createStore({
     },
     async approvedTotal(context , payload) {
       context.commit('setapprovedTotal' , payload);
+    },
+    async completedTotal(context , payload) {
+      context.commit('setcompletedTotal' , payload);
     },
     async pendingTotal(context , payload) {
       context.commit('setpendingTotal' , payload);

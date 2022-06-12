@@ -58,6 +58,15 @@ export default {
         for (const obj of res) {
           if (obj.pickedNo5 === 'Very Satisfied')VerySatisfied++
         }
+        for (const obj of res) {
+          if (obj.pickedNo6 === 'Very Satisfied')VerySatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo7 === 'Very Satisfied')VerySatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo8 === 'Very Satisfied')VerySatisfied++
+        }
         let Satisfied = 0;
         for (const obj of res) {
           if (obj.pickedNo1 === 'Satisfied')Satisfied++
@@ -73,6 +82,15 @@ export default {
         }
         for (const obj of res) {
           if (obj.pickedNo5 === 'Satisfied')Satisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo6 === 'Satisfied')Satisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo7 === 'Satisfied')Satisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo8 === 'Satisfied')Satisfied++
         }
         let NotSure = 0;
         for (const obj of res) {
@@ -90,6 +108,15 @@ export default {
         for (const obj of res) {
           if (obj.pickedNo5 === 'Not Sure')NotSure++
         }
+        for (const obj of res) {
+          if (obj.pickedNo6 === 'Not Sure')NotSure++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo7 === 'Not Sure')NotSure++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo8 === 'Not Sure')NotSure++
+        }
         let Dissatisfied = 0;
         for (const obj of res) {
           if (obj.pickedNo1 === 'Dissatisfied')Dissatisfied++
@@ -106,6 +133,15 @@ export default {
         for (const obj of res) {
           if (obj.pickedNo5 === 'Dissatisfied')Dissatisfied++
         }
+        for (const obj of res) {
+          if (obj.pickedNo6 === 'Dissatisfied')Dissatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo7 === 'Dissatisfied')Dissatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo8 === 'Dissatisfied')Dissatisfied++
+        }
         let VeryDissatisfied = 0;
         for (const obj of res) {
           if (obj.pickedNo1 === 'Very Dissatisfied')VeryDissatisfied++
@@ -121,6 +157,15 @@ export default {
         }
         for (const obj of res) {
           if (obj.pickedNo5 === 'Very Dissatisfied')VeryDissatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo6 === 'Very Dissatisfied')VeryDissatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo7 === 'Very Dissatisfied')VeryDissatisfied++
+        }
+        for (const obj of res) {
+          if (obj.pickedNo8 === 'Very Dissatisfied')VeryDissatisfied++
         }
           google.charts.load("current", {packages:["corechart"]});
           google.charts.setOnLoadCallback(drawChart);
@@ -152,7 +197,7 @@ export default {
     //console.log(JSON.parse(JSON.stringify(store.state.appointment)));
 
     const fields = [
-      'emailAdd','pickedNo1','pickedNo2','pickedNo3','pickedNo4','pickedNo5','pickedNo6','pickedNo7','pickedNo8','comment'
+      'referenceNum','pickedNo1','pickedNo2','pickedNo3','pickedNo4','pickedNo5','pickedNo6','pickedNo7','pickedNo8','comment'
     ]
 
     return{surveyData: computed(() => JSON.parse(JSON.stringify(store.state.survey)))

@@ -12,7 +12,7 @@ var css = {
         pickedNo6,
         pickedNo7,
         pickedNo8,
-        comment , emailAdd , office } =
+        comment ,referenceNum , office } =
       args;
 
     const object = new CSS();
@@ -25,7 +25,7 @@ var css = {
     object.set("pickedNo7", pickedNo7);
     object.set("pickedNo8", pickedNo8);
     object.set("comment", comment);
-    object.set("emailAdd", emailAdd);
+    object.set("referenceNum", referenceNum);
     object.set("office", office);
     return object.save();
   },

@@ -149,7 +149,7 @@
           ></textarea>
           <div  v-if="alreadyResponded"><p style="color: red; margin:25px ; textAlign: center ">{{ alreadyResponded }}</p></div>
           <div class="btn-block">
-            <button class="col-5" type="submit" href="/">Submit</button>
+            <button class="col-5" type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -221,11 +221,26 @@ export default {
               async (data) => {
                 if(data === undefined){
                   //check if the reference they put is invalid it will show an error 
-                    er.value = "Invalid Reference Number!" 
+                    er.value = "Cannot find Reference Number!" 
                   console.log('mau man sa database ang nilaag mong reference num')
                 }else {
                   // if the user has data then the input will be save in the css database 
                   console.log('may reference num ka sa database')
+                  css.save({
+                  pickedNo1: pickedNo1.value,
+                  pickedNo2: pickedNo2.value,
+                  pickedNo3: pickedNo3.value,
+                  pickedNo4: pickedNo4.value,
+                  pickedNo5: pickedNo5.value,
+                  pickedNo6: pickedNo6.value,
+                  pickedNo7: pickedNo7.value,
+                  pickedNo8: pickedNo8.value,
+
+                  comment: comment.value,
+                  referenceNum: referenceNum.value,
+                  office: office.value
+                  })
+                  router.push({ name: "WelcomePage" });
                 }
                 console.log(data.attributes)
               },
@@ -233,21 +248,6 @@ export default {
                   console.log(error)
               })
             console.log('i have no data')
-            css.save({
-            pickedNo1: pickedNo1.value,
-            pickedNo2: pickedNo2.value,
-            pickedNo3: pickedNo3.value,
-            pickedNo4: pickedNo4.value,
-            pickedNo5: pickedNo5.value,
-            pickedNo6: pickedNo6.value,
-            pickedNo7: pickedNo7.value,
-            pickedNo8: pickedNo8.value,
-
-            comment: comment.value,
-            referenceNum: referenceNum.value,
-            office: office.value
-            })
-            router.push({ name: "WelcomePage" });
           } else {
             console.log("i have a data")
             alreadyResponded.value = "You already Responded!" 
